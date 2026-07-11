@@ -135,7 +135,3 @@ That limited scope is deliberate: the codebase stays approachable, and the draw-
 ## Project status
 
 OSGui is an early, usable foundation. The API may evolve as more controls and backends are added. If you use it in a project, pin the commit you integrated and review changes before upgrading.
-
-## License
-
-Add a `LICENSE` file before redistributing OSGui or accepting outside contributions.
