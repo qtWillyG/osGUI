@@ -1,65 +1,55 @@
-// osgui_demo.cpp - the demo windows (cf. imgui_demo.cpp)
+// OSGui control-center showcase.
 #include "osgui.h"
 
 namespace og {
 
 void ShowDemoWindow(bool* p_open) {
-    SetNextWindowPos(Vec2(30, 30));
-    SetNextWindowSize(Vec2(470, 540));
-    if (!Begin("osGUI Demo", p_open)) { End(); return; }
+    SetNextWindowPos(Vec2(42, 34));
+    SetNextWindowSize(Vec2(560, 660));
+    if (!Begin("OSGui / Control Center", p_open)) { End(); return; }
 
-    Text("osGUI says hello! (v1.0.0)");
-    TextDisabled("a tiny Dear ImGui-style library in C++");
+    TextColored(Vec4(0.55f, 0.93f, 0.85f, 1.0f), "WELCOME BACK");
+    Text("A modern immediate-mode interface for native tools.");
+    TextDisabled("Lightweight core  /  zero external dependencies  /  60 FPS");
     Separator();
 
-    static bool cfg_nav = true, cfg_dock = false, cfg_view = false;
-    if (CollapsingHeader("Configuration")) {
-        Checkbox("io.ConfigFlags: NavEnableKeyboard", &cfg_nav);
-        Checkbox("io.ConfigFlags: DockingEnable",     &cfg_dock);
-        Checkbox("io.ConfigFlags: ViewportsEnable",   &cfg_view);
-    }
+    static bool enabled = true, notifications = false;
+    TextDisabled("PREFERENCES");
+    Checkbox("Enable live preview", &enabled);
+    Checkbox("Desktop notifications", &notifications);
 
-    if (CollapsingHeader("Widgets")) {
+    TextDisabled("QUICK ACTIONS");
+    static int counter = 0;
+    if (Button("Run task", Vec2(122, 34))) counter++;
+    SameLine();
+    if (Button("Save preset", Vec2(122, 34))) counter++;
+    SameLine(); TextDisabled("%d actions", counter);
+
+    Separator();
+    TextDisabled("CONTROLS");
+    {
         static int counter = 0;
         static bool check = true;
         static int radio = 0;
         static float f1 = 0.345f;
         static int   i1 = 42;
 
-        TextDisabled("Basic");
-        if (Button("Button")) counter++;
-        SameLine();
-        Text("clicked %d times", counter);
-
-        Checkbox("checkbox", &check);
-
-        RadioButton("radio a", &radio, 0); SameLine();
-        RadioButton("radio b", &radio, 1); SameLine();
-        RadioButton("radio c", &radio, 2);
-
-        TextDisabled("Sliders");
-        SliderFloat("float", &f1, 0.0f, 1.0f);
-        SliderInt("int", &i1, 0, 100);
-
-        TextDisabled("Trees");
-        if (TreeNode("Root node")) {
-            BulletText("child leaf 0");
-            if (TreeNode("Child node")) {
-                BulletText("grand-child 0");
-                BulletText("grand-child 1");
-                TreePop();
-            }
-            BulletText("child leaf 1");
-            TreePop();
-        }
+        Checkbox("Adaptive mode", &check);
+        RadioButton("Balanced", &radio, 0); SameLine();
+        RadioButton("Quality", &radio, 1); SameLine();
+        RadioButton("Speed", &radio, 2);
+        SliderFloat("Opacity", &f1, 0.0f, 1.0f, "%.2f");
+        SliderInt("Intensity", &i1, 0, 100);
     }
 
-    if (CollapsingHeader("Progress / Plots")) {
+    Separator();
+    TextDisabled("LIVE ACTIVITY");
+    {
         static float t = 0.0f;
         t += GetIO().delta_time * 0.3f;
         if (t > 1.0f) t -= 1.0f;
         ProgressBar(t, Vec2(-1, 0), 0);
-        SameLine(); Text("Loading...");
+        SameLine(); Text("Syncing workspace");
 
         static float samples[90];
         static int   so = 0;
@@ -69,8 +59,7 @@ void ShowDemoWindow(bool* p_open) {
         // rotate so newest is last
         float ordered[90];
         for (int i = 0; i < 90; i++) ordered[i] = samples[(so + i) % 90];
-        PlotLines("ms/frame", ordered, 90, Vec2(-1, 60));
-        PlotHistogram("hist", ordered, 90, Vec2(-1, 60));
+        PlotLines("Frame time", ordered, 90, Vec2(-1, 72));
     }
 
     End();

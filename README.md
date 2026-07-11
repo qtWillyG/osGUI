@@ -1,108 +1,141 @@
-# osGUI
+# OSGui
 
-A tiny **immediate-mode GUI** library written in C++, structured exactly like
-[Dear ImGui](https://github.com/ocornut/imgui): a portable core that emits draw
-lists of vertices/indices, a **platform backend** that feeds input, and a
-**renderer backend** that draws the geometry.
+<p align="center">
+  <strong>A small, modern immediate-mode GUI for native C++ tools.</strong><br>
+  Purpose-built controls, a portable draw-list core, and a dependency-free Windows demo.
+</p>
 
-![demo](docs/demo.png)
+<p align="center">
+  <img src="docs/demo.png" alt="OSGui modern control center demo" width="820">
+</p>
 
-This is **not** Dear ImGui — it's a small homage that follows the same
-architecture and visual style (the "Dark" theme colors, the famous
-`(0.45, 0.55, 0.60)` clear color, ProggyClean-ish monospace text).
+## Why OSGui?
 
-## File layout (mirrors Dear ImGui)
+OSGui is for projects that need a compact native interface without bringing in a large UI framework. It keeps the convenient immediate-mode workflow, but uses its own modern visual language: spacious dark surfaces, rounded controls, vivid violet actions, mint status accents, switch-style checkboxes, and crisp Cascadia Mono typography.
 
-| osGUI                      | Dear ImGui equivalent                       |
-|----------------------------|---------------------------------------------|
-| `osgui.h` / `osgui.cpp`    | `imgui.h` / `imgui.cpp` (core)              |
-| `osgui_demo.cpp`           | `imgui_demo.cpp` (the demo window)          |
-| `osgui_impl_win32.cpp`     | `imgui_impl_win32.cpp` (platform backend)   |
-| `osgui_impl_opengl2.cpp`   | `imgui_impl_opengl2.cpp` (renderer backend) |
-| `main.cpp`                 | `examples/example_win32_opengl3/main.cpp`   |
+The project is intentionally focused. It is not trying to replace a full desktop application framework—it is a practical foundation for debug panels, launchers, utilities, overlays, editors, and game-development tools.
 
-## Build (Windows / MSVC)
+## Highlights
 
-Everything links against libraries that ship with Windows
-(`user32`, `gdi32`, `opengl32`) — **no GLFW / GLEW / GLAD / external downloads.**
+- **Modern by default** — a cohesive dark theme designed specifically for OSGui.
+- **Familiar controls** — buttons, switches, radio buttons, sliders, progress bars, trees, plots, and layout helpers.
+- **Tiny integration surface** — one core pair plus a platform and renderer backend.
+- **No downloaded dependencies** — the Windows demo uses Win32, GDI, and the OpenGL library included with Windows.
+- **Backend-friendly core** — widgets emit vertices, indices, textures, and clip commands instead of talking directly to the OS.
+- **Immediate-mode workflow** — describe the current interface each frame; OSGui handles interaction state and draw data.
+
+## Quick start
+
+### 1. Build the included Windows demo
+
+Open an **x64 Native Tools Command Prompt for Visual Studio**, change to this folder, then run:
 
 ```bat
 build.bat
 ```
 
-or manually from a *Developer Command Prompt*:
-
-```bat
-cl /EHsc /O2 /MD main.cpp osgui.cpp osgui_demo.cpp ^
-   osgui_impl_win32.cpp osgui_impl_opengl2.cpp ^
-   /Fe:osgui_demo.exe ^
-   /link user32.lib gdi32.lib opengl32.lib /SUBSYSTEM:WINDOWS
-```
-
-### MinGW / g++
+The build uses only libraries shipped with Windows. MinGW users can build with:
 
 ```sh
 g++ main.cpp osgui.cpp osgui_demo.cpp osgui_impl_win32.cpp osgui_impl_opengl2.cpp \
     -o osgui_demo.exe -lopengl32 -lgdi32 -luser32 -mwindows
 ```
 
-## Usage (the immediate-mode loop)
+### 2. Add OSGui to your application
+
+Compile these source files with your project:
+
+```text
+osgui.cpp
+osgui_impl_win32.cpp
+osgui_impl_opengl2.cpp
+```
+
+Then initialize a context and both backends after creating your Win32/OpenGL window:
 
 ```cpp
 og::CreateContext();
 OG_ImplWin32_Init(hwnd);
 OG_ImplOpenGL2_Init();
-
-while (running) {
-    OG_ImplOpenGL2_NewFrame();
-    OG_ImplWin32_NewFrame();
-    og::NewFrame();
-
-    og::Begin("Hello, world!");
-    if (og::Button("Click me")) counter++;
-    og::SameLine();
-    og::Text("counter = %d", counter);
-    og::SliderFloat("float", &f, 0.0f, 1.0f);
-    og::End();
-
-    og::Render();
-    glClear(GL_COLOR_BUFFER_BIT);
-    OG_ImplOpenGL2_RenderDrawData(og::GetDrawData());
-    SwapBuffers(hdc);
-}
 ```
 
-## What's implemented
+### 3. Build the interface each frame
 
-- **Core**: context, draw list (vertex/index buffers + clip-rect command list),
-  font atlas, ID stack with `##` label hashing, hover/active interaction model.
-- **Windows**: draggable title bar, collapse arrow, close button, resize grip,
-  mouse-wheel scrolling + scrollbar, focus / z-ordering, `SetNextWindowPos/Size`.
-- **Widgets**: `Text` / `TextDisabled` / `TextColored` / `BulletText`, `Button`,
-  `SmallButton`, `Checkbox`, `RadioButton`, `SliderFloat`, `SliderInt`,
-  `CollapsingHeader`, `TreeNode`/`TreePop`, `Separator`, `Spacing`,
-  `Indent`/`Unindent`, `SameLine`, `ProgressBar`, `PlotLines`, `PlotHistogram`.
-- **Platform backend (Win32)**: mouse/wheel/keyboard/char input, timing,
-  display size, GDI font-atlas baking.
-- **Renderer backend (OpenGL 1.x)**: ortho projection, per-command scissor,
-  textured triangle draw via client arrays.
+```cpp
+OG_ImplOpenGL2_NewFrame();
+OG_ImplWin32_NewFrame();
+og::NewFrame();
 
-## Scope / honesty
+og::Begin("Project settings");
+static bool preview = true;
+static float opacity = 0.75f;
 
-Dear ImGui is ~60k lines with 15+ backends (GLFW, SDL2/3, DX9–12, Vulkan, Metal,
-WebGPU, OSX, Android…). This is a focused subset that demonstrates the **same
-architecture** with **one** platform backend and **one** renderer backend — the
-canonical Win32 + OpenGL pair.
+og::Checkbox("Live preview", &preview);
+og::SliderFloat("Opacity", &opacity, 0.0f, 1.0f);
+if (og::Button("Apply changes")) {
+    // Handle the action here.
+}
+og::End();
 
-Adding another backend follows the exact same interface:
+og::Render();
+OG_ImplOpenGL2_RenderDrawData(og::GetDrawData());
+```
 
-- **A new renderer** (e.g. `osgui_impl_dx11.cpp`) only needs to implement
-  `CreateFontsTexture()` (upload `og::GetFontAtlas().pixels`) and
-  `RenderDrawData()` (walk `og::DrawData` -> per `DrawCmd`: set scissor from
-  `clip_rect`, bind `tex_id`, draw `elem_count` indices from `idx_offset`).
-- **A new platform** (e.g. `osgui_impl_sdl2.cpp`) only needs to fill `og::IO`
-  (mouse, wheel, keys, chars, `display_size`, `delta_time`) each frame.
+## Included widgets
 
-Not implemented vs. real ImGui: docking/viewports, tables, full text editing
-(`InputText` caret/selection), combo/menu popups, drag-drop, multi-viewport,
-TrueType atlas baking via stb_truetype (osGUI bakes via GDI instead).
+| Category | API |
+| --- | --- |
+| Text | `Text`, `TextDisabled`, `TextColored`, `BulletText` |
+| Actions | `Button`, `SmallButton` |
+| Selection | `Checkbox`, `RadioButton` |
+| Values | `SliderFloat`, `SliderInt`, `ProgressBar` |
+| Structure | `CollapsingHeader`, `TreeNode`, `TreePop` |
+| Data | `PlotLines`, `PlotHistogram` |
+| Layout | `SameLine`, `Separator`, `Spacing`, `Indent`, `Unindent` |
+
+Windows can be moved, collapsed, resized, closed, focused, layered, and scrolled. Stable widget IDs support the familiar `Visible label##unique_id` pattern.
+
+## Architecture
+
+```text
+Application
+    |
+    +-- OSGui core                  layout, state, widgets, draw lists
+    |
+    +-- Platform backend (Win32)    input, timing, display size, font atlas
+    |
+    +-- Renderer backend (OpenGL2)  textures, clipping, indexed triangles
+```
+
+| File | Purpose |
+| --- | --- |
+| `osgui.h` / `osgui.cpp` | Public API, state, layout, widgets, and draw-list generation |
+| `osgui_impl_win32.*` | Win32 input, timing, and Cascadia Mono font-atlas creation |
+| `osgui_impl_opengl2.*` | Fixed-function OpenGL renderer with no loader dependency |
+| `osgui_demo.cpp` | Showcase window used in the screenshot |
+| `main.cpp` | Minimal native Windows host application |
+
+## Customization
+
+Theme colors and spacing are available through `og::GetStyle()`:
+
+```cpp
+og::Style& style = og::GetStyle();
+style.window_padding = og::Vec2(20, 18);
+style.colors[og::Col_Button] = OG_COL32(255, 110, 140, 255);
+style.colors[og::Col_CheckMark] = OG_COL32(110, 235, 200, 255);
+```
+
+## Current scope
+
+OSGui currently ships with one platform backend (Win32) and one renderer backend (OpenGL 1.x/2-compatible fixed function). It does not yet include docking, tables, text editing, pop-up menus, drag and drop, or multi-viewport support.
+
+That limited scope is deliberate: the codebase stays approachable, and the draw-data boundary makes additional backends possible without rewriting the widget layer.
+
+## Project status
+
+OSGui is an early, usable foundation. The API may evolve as more controls and backends are added. If you use it in a project, pin the commit you integrated and review changes before upgrading.
+
+## License
+
+Add a `LICENSE` file before redistributing OSGui or accepting outside contributions.

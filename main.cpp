@@ -1,4 +1,4 @@
-// main.cpp - example app: Win32 + legacy OpenGL  (cf. example_win32_opengl3/main.cpp)
+// OSGui example host: Win32 + dependency-free legacy OpenGL.
 #include "osgui.h"
 #include "osgui_impl_win32.h"
 #include "osgui_impl_opengl2.h"
@@ -60,8 +60,8 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     wc.lpszClassName = "osGUIWindow";
     RegisterClassExA(&wc);
 
-    HWND hwnd = CreateWindowA("osGUIWindow", "osGUI - Win32 + OpenGL example",
-                              WS_OVERLAPPEDWINDOW, 100, 100, 1000, 680,
+    HWND hwnd = CreateWindowA("osGUIWindow", "OSGui - Modern C++ Interface",
+                              WS_OVERLAPPEDWINDOW, 100, 100, 1000, 760,
                               0, 0, hInst, 0);
     if (!CreateGLContext(hwnd)) { MessageBoxA(0, "Failed to create OpenGL context", "osGUI", MB_OK); return 1; }
 
@@ -72,8 +72,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     OG_ImplWin32_Init(hwnd);
     OG_ImplOpenGL2_Init();
 
-    // default clear color = Dear ImGui's famous (0.45, 0.55, 0.60)
-    float clear_col[3] = { 0.45f, 0.55f, 0.60f };
+    float clear_col[3] = { 0.035f, 0.039f, 0.065f };
     bool show_demo = true;
 
     bool running = true;
@@ -92,26 +91,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
 
         // ---- UI ----
         og::ShowDemoWindow(&show_demo);
-
-        {
-            static int counter = 0;
-            static float f = 0.0f;
-            static bool demo_open = true;
-            og::SetNextWindowPos(og::Vec2(530, 30));
-            og::SetNextWindowSize(og::Vec2(420, 200));
-            og::Begin("Hello, world!");
-            og::Text("This is some useful text.");
-            og::Checkbox("Show demo window", &demo_open);
-            show_demo = demo_open;
-            og::SliderFloat("float", &f, 0.0f, 1.0f);
-            if (og::Button("Button")) counter++;
-            og::SameLine();
-            og::Text("counter = %d", counter);
-            og::Separator();
-            og::Text("Application avg %.3f ms/frame (%.1f FPS)",
-                     1000.0f / og::GetIO().framerate, og::GetIO().framerate);
-            og::End();
-        }
 
         // ---- render ----
         og::Render();

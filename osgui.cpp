@@ -1,4 +1,4 @@
-// osgui.cpp - core implementation (cf. imgui.cpp)
+// OSGui core implementation: layout, interaction, widgets, and draw data.
 #include "osgui.h"
 #include <math.h>
 #include <string.h>
@@ -116,6 +116,17 @@ void DrawList::AddRectFilled(const Vec2& a, const Vec2& b, U32 col) {
     idx.push_back(base + 0); idx.push_back(base + 1); idx.push_back(base + 2);
     idx.push_back(base + 0); idx.push_back(base + 2); idx.push_back(base + 3);
 }
+void DrawList::AddRectFilledRounded(const Vec2& a, const Vec2& b, U32 col, float radius) {
+    float w = b.x - a.x, h = b.y - a.y;
+    float r = Min(radius, Min(w, h) * 0.5f);
+    if (r <= 1.0f) { AddRectFilled(a, b, col); return; }
+    AddRectFilled(Vec2(a.x + r, a.y), Vec2(b.x - r, b.y), col);
+    AddRectFilled(Vec2(a.x, a.y + r), Vec2(b.x, b.y - r), col);
+    AddCircleFilled(Vec2(a.x + r, a.y + r), r, col, 10);
+    AddCircleFilled(Vec2(b.x - r, a.y + r), r, col, 10);
+    AddCircleFilled(Vec2(a.x + r, b.y - r), r, col, 10);
+    AddCircleFilled(Vec2(b.x - r, b.y - r), r, col, 10);
+}
 void DrawList::AddQuad(const Vec2& a, const Vec2& b, const Vec2& c, const Vec2& d, U32 col) {
     DrawIdx base = (DrawIdx)vtx.size();
     PrimReserve(6, 4);
@@ -190,41 +201,41 @@ void DrawList::AddText(const Vec2& pos, U32 col, const char* text, const char* t
 //  Style
 // =====================================================================
 Style::Style() {
-    window_padding   = Vec2(8, 8);
-    frame_padding    = Vec2(4, 3);
-    item_spacing     = Vec2(8, 4);
-    item_inner_spacing = Vec2(4, 4);
-    indent_spacing   = 18.0f;
-    scrollbar_size   = 14.0f;
-    grab_min_size    = 10.0f;
+    window_padding   = Vec2(18, 16);
+    frame_padding    = Vec2(10, 6);
+    item_spacing     = Vec2(10, 9);
+    item_inner_spacing = Vec2(10, 6);
+    indent_spacing   = 24.0f;
+    scrollbar_size   = 10.0f;
+    grab_min_size    = 14.0f;
     window_title_height = 0.0f;
-    colors[Col_Text]              = OG_COL32(255, 255, 255, 255);
-    colors[Col_TextDisabled]      = OG_COL32(128, 128, 128, 255);
-    colors[Col_WindowBg]          = OG_COL32(15, 15, 15, 248);
-    colors[Col_TitleBg]           = OG_COL32(10, 10, 10, 255);
-    colors[Col_TitleBgActive]     = OG_COL32(41, 74, 122, 255);
+    colors[Col_Text]              = OG_COL32(237, 240, 249, 255);
+    colors[Col_TextDisabled]      = OG_COL32(139, 146, 170, 255);
+    colors[Col_WindowBg]          = OG_COL32(22, 24, 36, 250);
+    colors[Col_TitleBg]           = OG_COL32(27, 29, 43, 255);
+    colors[Col_TitleBgActive]     = OG_COL32(31, 34, 50, 255);
     colors[Col_MenuBarBg]         = OG_COL32(36, 36, 36, 255);
-    colors[Col_Border]            = OG_COL32(110, 110, 128, 128);
-    colors[Col_FrameBg]           = OG_COL32(41, 74, 122, 138);
-    colors[Col_FrameBgHovered]    = OG_COL32(66, 150, 250, 102);
-    colors[Col_FrameBgActive]     = OG_COL32(66, 150, 250, 171);
-    colors[Col_Button]            = OG_COL32(66, 150, 250, 102);
-    colors[Col_ButtonHovered]     = OG_COL32(66, 150, 250, 255);
-    colors[Col_ButtonActive]      = OG_COL32(15, 135, 250, 255);
-    colors[Col_Header]            = OG_COL32(66, 150, 250, 79);
-    colors[Col_HeaderHovered]     = OG_COL32(66, 150, 250, 204);
-    colors[Col_HeaderActive]      = OG_COL32(66, 150, 250, 255);
-    colors[Col_CheckMark]         = OG_COL32(66, 150, 250, 255);
-    colors[Col_SliderGrab]        = OG_COL32(61, 133, 224, 255);
-    colors[Col_SliderGrabActive]  = OG_COL32(66, 150, 250, 255);
+    colors[Col_Border]            = OG_COL32(59, 63, 86, 210);
+    colors[Col_FrameBg]           = OG_COL32(38, 41, 58, 255);
+    colors[Col_FrameBgHovered]    = OG_COL32(49, 53, 74, 255);
+    colors[Col_FrameBgActive]     = OG_COL32(58, 62, 86, 255);
+    colors[Col_Button]            = OG_COL32(116, 92, 255, 255);
+    colors[Col_ButtonHovered]     = OG_COL32(133, 113, 255, 255);
+    colors[Col_ButtonActive]      = OG_COL32(96, 73, 235, 255);
+    colors[Col_Header]            = OG_COL32(35, 38, 55, 255);
+    colors[Col_HeaderHovered]     = OG_COL32(48, 51, 72, 255);
+    colors[Col_HeaderActive]      = OG_COL32(56, 59, 82, 255);
+    colors[Col_CheckMark]         = OG_COL32(114, 226, 204, 255);
+    colors[Col_SliderGrab]        = OG_COL32(126, 105, 255, 255);
+    colors[Col_SliderGrabActive]  = OG_COL32(139, 238, 218, 255);
     colors[Col_Separator]         = OG_COL32(110, 110, 128, 128);
     colors[Col_ResizeGrip]        = OG_COL32(66, 150, 250, 51);
     colors[Col_ResizeGripHovered] = OG_COL32(66, 150, 250, 171);
     colors[Col_ResizeGripActive]  = OG_COL32(66, 150, 250, 242);
     colors[Col_ScrollbarBg]       = OG_COL32(5, 5, 5, 135);
     colors[Col_ScrollbarGrab]     = OG_COL32(79, 79, 79, 255);
-    colors[Col_PlotLines]         = OG_COL32(156, 156, 156, 255);
-    colors[Col_PlotHistogram]     = OG_COL32(230, 179, 0, 255);
+    colors[Col_PlotLines]         = OG_COL32(114, 226, 204, 255);
+    colors[Col_PlotHistogram]     = OG_COL32(126, 105, 255, 255);
 }
 
 Context::Context() {
@@ -497,17 +508,19 @@ bool Begin(const char* name, bool* p_open) {
     dl->PushClipRect(Vec4(pos.x, pos.y, pos.x + size.x, pos.y + size.y));
 
     if (!w->collapsed)
-        dl->AddRectFilled(Vec2(pos.x, pos.y + title_h), Vec2(pos.x + size.x, pos.y + size.y), GetColorU32(Col_WindowBg));
-    dl->AddRectFilled(pos, Vec2(pos.x + size.x, pos.y + title_h), GetColorU32(focused ? Col_TitleBgActive : Col_TitleBg));
+        dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + size.y), GetColorU32(Col_WindowBg), 10.0f);
+    dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + title_h + 8), GetColorU32(focused ? Col_TitleBgActive : Col_TitleBg), 10.0f);
+    dl->AddRectFilled(Vec2(pos.x, pos.y + title_h), Vec2(pos.x + size.x, pos.y + title_h + 8), GetColorU32(Col_WindowBg));
+    dl->AddCircleFilled(Vec2(pos.x + 18, pos.y + title_h * 0.5f), 4.0f, GetColorU32(Col_CheckMark), 16);
 
     // collapse arrow
     float asz = g.atlas.line_height * 0.7f;
-    RenderArrow(dl, Vec2(pos.x + 6, pos.y + (title_h - asz) * 0.5f), asz, GetColorU32(Col_Text), w->collapsed ? 0 : 1);
-    Vec4 arrow_rect(pos.x, pos.y, pos.x + title_h, pos.y + title_h);
+    RenderArrow(dl, Vec2(pos.x + 30, pos.y + (title_h - asz) * 0.5f), asz, GetColorU32(Col_TextDisabled), w->collapsed ? 0 : 1);
+    Vec4 arrow_rect(pos.x, pos.y, pos.x + 52, pos.y + title_h);
 
     // title text
     const char* disp_end = FindDisplayEnd(name);
-    dl->AddText(Vec2(pos.x + title_h, pos.y + s.frame_padding.y), GetColorU32(Col_Text), name, disp_end);
+    dl->AddText(Vec2(pos.x + title_h + 18, pos.y + s.frame_padding.y), GetColorU32(Col_Text), name, disp_end);
 
     // close button
     bool close_clicked = false;
@@ -654,7 +667,7 @@ static bool ButtonImpl(const char* label, Vec2 size_arg) {
     bool hovered, held;
     bool pressed = ButtonBehavior(r, id, &hovered, &held);
     U32 col = GetColorU32(held ? Col_ButtonActive : (hovered ? Col_ButtonHovered : Col_Button));
-    w->draw.AddRectFilled(pos, Vec2(r.z, r.w), col);
+    w->draw.AddRectFilledRounded(pos, Vec2(r.z, r.w), col, 6.0f);
     RenderTextClipped(r, label, end, true);
     return pressed;
 }
@@ -679,15 +692,15 @@ bool Checkbox(const char* label, bool* v) {
     bool pressed = ButtonBehavior(Vec4(pos.x, pos.y, pos.x + total.x, pos.y + total.y), id, &hovered, &held);
     if (pressed) *v = !*v;
     U32 bg = GetColorU32(held ? Col_FrameBgActive : (hovered ? Col_FrameBgHovered : Col_FrameBg));
-    w->draw.AddRectFilled(Vec2(box.x, box.y), Vec2(box.z, box.w), bg);
+    float pill_h = sq * 0.72f, pill_w = sq * 1.35f;
+    Vec2 pill_a(box.x, box.y + (sq - pill_h) * 0.5f), pill_b(box.x + pill_w, box.y + (sq + pill_h) * 0.5f);
+    w->draw.AddRectFilledRounded(pill_a, pill_b, *v ? GetColorU32(Col_Button) : bg, pill_h * 0.5f);
     if (*v) {
-        float pad = sq * 0.27f;
-        float x0 = box.x + pad, x1 = box.z - pad, y0 = box.y + pad, y1 = box.w - pad;
-        U32 cm = GetColorU32(Col_CheckMark);
-        w->draw.AddLine(Vec2(x0, (y0 + y1) * 0.5f), Vec2(x0 + (x1 - x0) * 0.35f, y1), cm, 2.0f);
-        w->draw.AddLine(Vec2(x0 + (x1 - x0) * 0.35f, y1), Vec2(x1, y0), cm, 2.0f);
+        w->draw.AddCircleFilled(Vec2(pill_b.x - pill_h * 0.5f, (pill_a.y + pill_b.y) * 0.5f), pill_h * 0.34f, OG_COL32_WHITE, 16);
+    } else {
+        w->draw.AddCircleFilled(Vec2(pill_a.x + pill_h * 0.5f, (pill_a.y + pill_b.y) * 0.5f), pill_h * 0.34f, GetColorU32(Col_TextDisabled), 16);
     }
-    w->draw.AddText(Vec2(box.z + s.item_inner_spacing.x, pos.y + s.frame_padding.y), GetColorU32(Col_Text), label, end);
+    w->draw.AddText(Vec2(pos.x + pill_w + s.item_inner_spacing.x, pos.y + s.frame_padding.y), GetColorU32(Col_Text), label, end);
     return pressed;
 }
 
@@ -745,14 +758,17 @@ static bool SliderScalar(const char* label, float* v, float v_min, float v_max, 
     bool changed = SliderBehavior(frame, id, v, v_min, v_max, &held);
     *v = Clamp(*v, v_min, v_max);
     // frame
-    w->draw.AddRectFilled(Vec2(frame.x, frame.y), Vec2(frame.z, frame.w),
-                          GetColorU32(held ? Col_FrameBgActive : Col_FrameBg));
+    float track_y = (frame.y + frame.w) * 0.5f;
+    w->draw.AddRectFilledRounded(Vec2(frame.x, track_y - 3), Vec2(frame.z, track_y + 3),
+                                 GetColorU32(held ? Col_FrameBgActive : Col_FrameBg), 3.0f);
     // grab
     float grab = s.grab_min_size;
     float t = (v_max > v_min) ? (*v - v_min) / (v_max - v_min) : 0.0f;
     float gx = frame.x + t * ((frame.z - frame.x) - grab);
-    w->draw.AddRectFilled(Vec2(gx, frame.y + 2), Vec2(gx + grab, frame.w - 2),
-                          GetColorU32(held ? Col_SliderGrabActive : Col_SliderGrab));
+    w->draw.AddRectFilledRounded(Vec2(frame.x, track_y - 3), Vec2(gx + grab * 0.5f, track_y + 3),
+                                 GetColorU32(held ? Col_SliderGrabActive : Col_SliderGrab), 3.0f);
+    w->draw.AddCircleFilled(Vec2(gx + grab * 0.5f, track_y), 7.0f,
+                            GetColorU32(held ? Col_SliderGrabActive : Col_SliderGrab), 18);
     // value text
     char buf[64];
     if (is_int) snprintf(buf, sizeof(buf), "%d", (int)(*v + (*v >= 0 ? 0.5f : -0.5f)));

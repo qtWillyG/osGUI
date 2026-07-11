@@ -1,14 +1,5 @@
-// osgui.h - a tiny immediate-mode GUI library, structured like Dear ImGui.
-//
-//   osgui.h / osgui.cpp        : core library      (cf. imgui.h / imgui.cpp)
-//   osgui_impl_win32.cpp       : platform backend  (cf. imgui_impl_win32.cpp)
-//   osgui_impl_opengl2.cpp     : renderer backend  (cf. imgui_impl_opengl2.cpp)
-//   osgui_demo.cpp             : demo windows       (cf. imgui_demo.cpp)
-//   main.cpp                   : example app        (cf. examples/example_win32_opengl3)
-//
-// This is NOT Dear ImGui - it is a small homage that follows the same
-// architecture: a core that emits draw lists of vertices/indices, a platform
-// backend that feeds input, and a renderer backend that draws the geometry.
+// OSGui - a compact, modern immediate-mode GUI for native C++ tools.
+// The portable core emits draw data; platform and renderer backends handle the OS.
 
 #pragma once
 #include <stdint.h>
@@ -66,6 +57,7 @@ struct DrawList {
     void PrimReserve(int idx_count, int vtx_count);
 
     void AddRectFilled(const Vec2& a, const Vec2& b, U32 col);
+    void AddRectFilledRounded(const Vec2& a, const Vec2& b, U32 col, float radius = 6.0f);
     void AddRect(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddLine(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddTriangleFilled(const Vec2& a, const Vec2& b, const Vec2& c, U32 col);

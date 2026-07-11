@@ -1,6 +1,5 @@
-// osgui_impl_win32.cpp - platform backend (cf. imgui_impl_win32.cpp)
-//
-// Responsibilities, mirroring the real backend:
+// OSGui Win32 platform backend.
+// Responsibilities:
 //   * feed mouse / wheel / keyboard / text input into og::IO
 //   * provide display size and per-frame delta time
 //   * bake the font atlas (here via GDI, since the core has no TrueType baker)
@@ -21,10 +20,10 @@ static void OG_ImplWin32_BuildFont() {
     HDC screen = GetDC(0);
     HDC dc = CreateCompatibleDC(screen);
 
-    int px = 15; // target pixel height
+    int px = 16; // crisp, readable UI text
     HFONT font = CreateFontA(-px, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
                              ANSI_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS,
-                             CLEARTYPE_QUALITY, FIXED_PITCH | FF_MODERN, "Consolas");
+                             CLEARTYPE_QUALITY, FIXED_PITCH | FF_MODERN, "Cascadia Mono");
     if (!font) font = (HFONT)GetStockObject(ANSI_FIXED_FONT);
     HGDIOBJ old_font = SelectObject(dc, font);
 

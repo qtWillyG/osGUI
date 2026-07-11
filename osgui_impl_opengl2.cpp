@@ -1,4 +1,4 @@
-// osgui_impl_opengl2.cpp - renderer backend (cf. imgui_impl_opengl2.cpp)
+// OSGui OpenGL 2-compatible renderer backend.
 //
 // Uses the fixed-function pipeline (OpenGL 1.x) that ships with opengl32.lib,
 // so the demo builds with zero external loaders (no GLAD/GLEW/GLFW).
