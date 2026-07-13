@@ -35,11 +35,17 @@ struct DrawVert {
     Vec2 uv;
     U32  col;
 };
+enum DrawEffect_ {
+    DrawEffect_None,
+    DrawEffect_BackdropBlur
+};
 struct DrawCmd {
     Vec4         clip_rect;   // x0,y0,x1,y1 in framebuffer space
     unsigned int tex_id;
     unsigned int idx_offset;  // first index
     unsigned int elem_count;  // number of indices
+    int          effect;
+    float        effect_amount;
 };
 
 struct DrawList {
@@ -48,6 +54,8 @@ struct DrawList {
     std::vector<DrawCmd>  cmds;
     std::vector<Vec4>     clip_stack;
     unsigned int          cur_tex;
+    int                   cur_effect;
+    float                 cur_effect_amount;
     Vec2                  white_uv;
 
     void Clear();
@@ -55,6 +63,8 @@ struct DrawList {
     void PopClipRect();
     DrawCmd& CurCmd();
     void PrimReserve(int idx_count, int vtx_count);
+    void PushEffect(int effect, float amount = 0.0f);
+    void PopEffect();
 
     void AddRectFilled(const Vec2& a, const Vec2& b, U32 col);
     void AddRectFilledRounded(const Vec2& a, const Vec2& b, U32 col, float radius = 6.0f);
@@ -62,6 +72,8 @@ struct DrawList {
                                  U32 col_tl, U32 col_tr, U32 col_br, U32 col_bl);
     void AddShadowRect(const Vec2& a, const Vec2& b, U32 col,
                        float radius = 8.0f, float spread = 10.0f);
+    void AddBackdropBlur(const Vec2& a, const Vec2& b, U32 tint,
+                         float radius = 8.0f, float rounding = 8.0f);
     void AddRect(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddLine(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddTriangleFilled(const Vec2& a, const Vec2& b, const Vec2& c, U32 col);
@@ -92,6 +104,7 @@ struct FontAtlas {
     float ascent;
     Glyph glyphs[128];
     bool  glyph_valid[128];
+    std::map<unsigned int, Glyph> glyph_map; // UTF-8 decoded codepoint -> glyph
     unsigned int tex_id;    // set by the renderer backend
     Vec2  white_uv;         // uv of a fully-opaque texel
 };
@@ -99,6 +112,8 @@ struct FontAtlas {
 // --------------------------------------------------------------- input ----
 struct IO {
     Vec2  display_size;
+    Vec2  framebuffer_scale;
+    float dpi_scale;
     float delta_time;
     Vec2  mouse_pos;
     bool  mouse_down[3];
@@ -107,9 +122,13 @@ struct IO {
     unsigned int input_chars[32];
     int          input_char_count;
     bool         key_down[256];
+    const char* (*get_clipboard_text)(void* user_data);
+    void (*set_clipboard_text)(void* user_data, const char* text);
+    void* clipboard_user_data;
     // computed
     float framerate;
     bool  want_capture_mouse;
+    bool  want_capture_keyboard;
 };
 
 // -------------------------------------------------------------- style -----
@@ -123,6 +142,7 @@ enum Col_ {
     Col_ScrollbarBg, Col_ScrollbarGrab, Col_PlotLines, Col_PlotHistogram,
     Col_WindowShadow, Col_GradientStart, Col_GradientEnd, Col_CodeBg,
     Col_Link, Col_Success, Col_Warning,
+    Col_NodeBg, Col_NodeTitle, Col_NodeGrid, Col_NodeLink,
     Col_COUNT
 };
 struct Style {
@@ -147,10 +167,16 @@ enum ThemePreset {
     Theme_Light
 };
 
+enum DockSlot {
+    Dock_None, Dock_Left, Dock_Right, Dock_Top, Dock_Bottom, Dock_Fill
+};
+
 enum EventType {
     Event_Clicked,
     Event_ValueChanged,
-    Event_WindowClosed
+    Event_WindowClosed,
+    Event_TextChanged,
+    Event_LinkActivated
 };
 
 struct Event {
@@ -167,6 +193,13 @@ struct AnimationState {
     float velocity;
     int   last_frame;
     AnimationState() : value(0), target(0), velocity(0), last_frame(0) {}
+};
+
+struct NodePin {
+    ID id;
+    Vec2 position;
+    NodePin() : id(0), position() {}
+    NodePin(ID i, const Vec2& p) : id(i), position(p) {}
 };
 
 class StreamingSeries {
@@ -192,6 +225,7 @@ struct Context {
     Style     style;
     FontAtlas atlas;
     DrawData  draw_data;
+    DrawList  overlay_draw;
 
     std::vector<Window*> windows;
     Window*   cur_window;
@@ -200,6 +234,7 @@ struct Context {
     Window*   nav_window;          // focused window
 
     ID        active_id;
+    ID        text_active_id;
     Window*   active_id_window;
     ID        hovered_id;
     Vec2      active_id_click_offset;
@@ -207,6 +242,8 @@ struct Context {
     bool      mouse_down_prev[3];
     bool      mouse_clicked[3];
     bool      mouse_released[3];
+    bool      key_down_prev[256];
+    bool      key_pressed[256];
     Vec2      mouse_pos_prev;
 
     int       frame_count;
@@ -217,6 +254,11 @@ struct Context {
     std::map<ID, int> storage;     // open/closed state for headers & tree nodes
     std::map<ID, AnimationState> animations;
     std::vector<Event> events;
+    std::vector<ID> nav_order;
+    std::vector<ID> nav_order_prev;
+    ID nav_id;
+    ID nav_activate_id;
+    std::map<ID, int> text_cursor;
 
     Style theme_from;
     Style theme_target;
@@ -224,6 +266,7 @@ struct Context {
     float theme_duration;
     bool  theme_transitioning;
     ThemePreset theme_preset;
+    float ui_scale;
 
     bool next_pos_set, next_size_set;
     Vec2 next_pos, next_size;
@@ -249,12 +292,17 @@ Style GetBuiltinTheme(ThemePreset preset);
 void  SetTheme(ThemePreset preset, float transition_seconds = 0.25f);
 bool  IsThemeTransitioning();
 float Animate(const char* key, float target, float speed = 0.0f);
+void  SetUIScale(float scale);
+float GetUIScale();
+bool  IsKeyPressed(int key);
 
 // windows
 bool Begin(const char* name, bool* p_open = 0);
 void End();
 void SetNextWindowPos(const Vec2& pos);    // applied once, on first appearance
 void SetNextWindowSize(const Vec2& size);  // applied once, on first appearance
+void SetNextWindowDock(DockSlot slot);
+void DockWindow(const char* name, DockSlot slot);
 
 // layout
 void SameLine(float offset_x = 0.0f, float spacing = -1.0f);
@@ -278,10 +326,47 @@ bool Checkbox(const char* label, bool* v);
 bool RadioButton(const char* label, int* v, int v_button);
 bool SliderFloat(const char* label, float* v, float v_min, float v_max, const char* fmt = "%.3f");
 bool SliderInt(const char* label, int* v, int v_min, int v_max);
+enum InputTextFlags_ {
+    InputTextFlags_None = 0,
+    InputTextFlags_Password = 1 << 0,
+    InputTextFlags_ReadOnly = 1 << 1,
+    InputTextFlags_EnterReturnsTrue = 1 << 2
+};
+bool InputText(const char* label, char* buffer, int buffer_size, int flags = InputTextFlags_None);
+bool InputTextMultiline(const char* label, char* buffer, int buffer_size,
+                        const Vec2& size = Vec2(-1, 100), int flags = InputTextFlags_None);
+bool Combo(const char* label, int* current_item, const char* const items[], int item_count);
+bool BeginTabBar(const char* id);
+bool BeginTabItem(const char* label, bool* p_open = 0);
+void EndTabItem();
+void EndTabBar();
+bool ColorEdit4(const char* label, float color[4]);
 bool CollapsingHeader(const char* label);
 bool TreeNode(const char* label);
 void TreePop();
 void ProgressBar(float fraction, const Vec2& size = Vec2(-1, 0), const char* overlay = 0);
+void GlassCard(const char* label, const Vec2& size = Vec2(-1, 72), float blur_radius = 8.0f);
+void Image(unsigned int texture_id, const Vec2& size, const Vec2& uv0 = Vec2(0, 0), const Vec2& uv1 = Vec2(1, 1), U32 tint = OG_COL32_WHITE);
+void SetTooltip(const char* text);
+enum ToastType { Toast_Info, Toast_Success, Toast_Warning, Toast_Error };
+void AddToast(const char* message, ToastType type = Toast_Info, float duration = 3.0f);
+void RenderNotifications();
+void OpenPopup(const char* id);
+bool BeginPopup(const char* id);
+bool BeginPopupModal(const char* title, bool* p_open = 0);
+void CloseCurrentPopup();
+void EndPopup();
+
+enum TableFlags_ { TableFlags_None = 0, TableFlags_RowBg = 1 << 0, TableFlags_Borders = 1 << 1, TableFlags_Sortable = 1 << 2 };
+enum SortDirection { Sort_None, Sort_Ascending, Sort_Descending };
+struct TableSortSpec { int column; SortDirection direction; bool dirty; TableSortSpec() : column(-1), direction(Sort_None), dirty(false) {} };
+bool BeginTable(const char* id, int columns, int flags = TableFlags_RowBg | TableFlags_Borders);
+bool TableHeader(const char* label);
+void TableNextRow();
+void TableNextColumn();
+bool TableSelectable(const char* label, bool selected = false);
+const TableSortSpec* TableGetSortSpec();
+void EndTable();
 void PlotLines(const char* label, const float* values, int count, const Vec2& size = Vec2(-1, 60));
 void PlotHistogram(const char* label, const float* values, int count, const Vec2& size = Vec2(-1, 60));
 
@@ -290,10 +375,32 @@ bool BeginChart(const char* label, const Vec2& size = Vec2(-1, 150));
 void ChartLine(const char* label, const float* values, int count, U32 color = 0);
 void ChartLine(const char* label, const StreamingSeries& series, U32 color = 0);
 void ChartBars(const char* label, const float* values, int count, U32 color = 0);
+void ChartArea(const char* label, const float* values, int count, U32 color = 0);
+void ChartScatter(const char* label, const Vec2* points, int count, U32 color = 0);
+void ChartPie(const char* label, const float* values, const char* const labels[], int count);
+struct Candlestick { float open, high, low, close; Candlestick(float o=0, float h=0, float l=0, float c=0) : open(o), high(h), low(l), close(c) {} };
+void ChartCandlesticks(const char* label, const Candlestick* values, int count);
 void EndChart();
 
 // lightweight built-in rich text / Markdown
 void Markdown(const char* markdown);
+typedef void (*MarkdownLinkCallback)(const char* url, void* user_data);
+typedef bool (*MarkdownImageResolver)(const char* url, unsigned int* texture_id, Vec2* size, void* user_data);
+void SetMarkdownLinkCallback(MarkdownLinkCallback callback, void* user_data = 0);
+void SetMarkdownImageResolver(MarkdownImageResolver resolver, void* user_data = 0);
+
+// JSON persistence for window layouts, docking, UI scale, and complete themes.
+bool SaveStateJSON(const char* path);
+bool LoadStateJSON(const char* path);
+
+// immediate-mode node canvas
+bool BeginNodeEditor(const char* id, const Vec2& size = Vec2(-1, 300));
+void EndNodeEditor();
+bool BeginNode(int node_id, const char* title, Vec2* position, const Vec2& size = Vec2(180, 120));
+NodePin NodeInput(const char* label);
+NodePin NodeOutput(const char* label);
+void EndNode();
+void NodeLink(const NodePin& from, const NodePin& to, U32 color = 0);
 
 // helpers
 Vec2 CalcTextSize(const char* text, const char* text_end = 0);
@@ -301,5 +408,7 @@ U32  GetColorU32(int idx);
 
 // demo (osgui_demo.cpp)
 void ShowDemoWindow(bool* p_open = 0);
+void ShowNodeEditorDemo(bool* p_open = 0);
+void ShowThemeEditor(bool* p_open = 0);
 
 } // namespace og

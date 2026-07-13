@@ -50,6 +50,10 @@ static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
 }
 
 int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
+    // Enables crisp physical-pixel rendering; the backend tracks per-monitor DPI.
+    typedef BOOL (WINAPI* SetDpiContextFn)(HANDLE);
+    SetDpiContextFn set_dpi = (SetDpiContextFn)GetProcAddress(GetModuleHandleA("user32.dll"), "SetProcessDpiAwarenessContext");
+    if (set_dpi) set_dpi((HANDLE)-4); else SetProcessDPIAware();
     WNDCLASSEXA wc;
     memset(&wc, 0, sizeof(wc));
     wc.cbSize = sizeof(wc);
@@ -61,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     RegisterClassExA(&wc);
 
     HWND hwnd = CreateWindowA("osGUIWindow", "OSGui - Modern C++ Interface",
-                              WS_OVERLAPPEDWINDOW, 80, 50, 1000, 860,
+                              WS_OVERLAPPEDWINDOW, 30, 30, 1440, 900,
                               0, 0, hInst, 0);
     if (!CreateGLContext(hwnd)) { MessageBoxA(0, "Failed to create OpenGL context", "osGUI", MB_OK); return 1; }
 
@@ -73,6 +77,8 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     OG_ImplOpenGL2_Init();
 
     bool show_demo = true;
+    bool show_nodes = true;
+    bool show_theme_editor = true;
 
     bool running = true;
     while (running) {
@@ -90,6 +96,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
 
         // ---- UI ----
         og::ShowDemoWindow(&show_demo);
+        og::ShowNodeEditorDemo(&show_nodes);
+        og::ShowThemeEditor(&show_theme_editor);
+        og::RenderNotifications();
 
         // ---- render ----
         og::Render();

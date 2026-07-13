@@ -7,3 +7,4 @@ void OG_ImplOpenGL2_Shutdown();
 void OG_ImplOpenGL2_NewFrame();
 void OG_ImplOpenGL2_RenderDrawData(og::DrawData* draw_data);
 bool OG_ImplOpenGL2_CreateFontsTexture();
+bool OG_ImplOpenGL2_HasShaderEffects();
