@@ -58,6 +58,10 @@ struct DrawList {
 
     void AddRectFilled(const Vec2& a, const Vec2& b, U32 col);
     void AddRectFilledRounded(const Vec2& a, const Vec2& b, U32 col, float radius = 6.0f);
+    void AddRectFilledMultiColor(const Vec2& a, const Vec2& b,
+                                 U32 col_tl, U32 col_tr, U32 col_br, U32 col_bl);
+    void AddShadowRect(const Vec2& a, const Vec2& b, U32 col,
+                       float radius = 8.0f, float spread = 10.0f);
     void AddRect(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddLine(const Vec2& a, const Vec2& b, U32 col, float thickness = 1.0f);
     void AddTriangleFilled(const Vec2& a, const Vec2& b, const Vec2& c, U32 col);
@@ -117,6 +121,8 @@ enum Col_ {
     Col_CheckMark, Col_SliderGrab, Col_SliderGrabActive, Col_Separator,
     Col_ResizeGrip, Col_ResizeGripHovered, Col_ResizeGripActive,
     Col_ScrollbarBg, Col_ScrollbarGrab, Col_PlotLines, Col_PlotHistogram,
+    Col_WindowShadow, Col_GradientStart, Col_GradientEnd, Col_CodeBg,
+    Col_Link, Col_Success, Col_Warning,
     Col_COUNT
 };
 struct Style {
@@ -128,8 +134,54 @@ struct Style {
     float scrollbar_size;
     float grab_min_size;
     float window_title_height;   // computed in NewFrame
+    float window_rounding;
+    float frame_rounding;
+    float shadow_size;
+    float animation_speed;
     U32   colors[Col_COUNT];
     Style();
+};
+
+enum ThemePreset {
+    Theme_Dark,
+    Theme_Light
+};
+
+enum EventType {
+    Event_Clicked,
+    Event_ValueChanged,
+    Event_WindowClosed
+};
+
+struct Event {
+    EventType   type;
+    ID          id;
+    std::string label;
+    Event() : type(Event_Clicked), id(0) {}
+    Event(EventType t, ID i, const char* l) : type(t), id(i), label(l ? l : "") {}
+};
+
+struct AnimationState {
+    float value;
+    float target;
+    float velocity;
+    int   last_frame;
+    AnimationState() : value(0), target(0), velocity(0), last_frame(0) {}
+};
+
+class StreamingSeries {
+public:
+    explicit StreamingSeries(int capacity = 512);
+    void Push(float value);
+    void Clear();
+    int  Size() const;
+    int  Capacity() const;
+    void GetOrdered(std::vector<float>& out) const;
+
+private:
+    std::vector<float> values_;
+    int head_;
+    int count_;
 };
 
 // ------------------------------------------------------------- context ----
@@ -163,6 +215,15 @@ struct Context {
     float     framerate_acc;
 
     std::map<ID, int> storage;     // open/closed state for headers & tree nodes
+    std::map<ID, AnimationState> animations;
+    std::vector<Event> events;
+
+    Style theme_from;
+    Style theme_target;
+    float theme_elapsed;
+    float theme_duration;
+    bool  theme_transitioning;
+    ThemePreset theme_preset;
 
     bool next_pos_set, next_size_set;
     Vec2 next_pos, next_size;
@@ -178,9 +239,16 @@ IO&         GetIO();
 Style&      GetStyle();
 FontAtlas&  GetFontAtlas();
 DrawData*   GetDrawData();
+const std::vector<Event>& GetEvents();
 
 void NewFrame();
 void Render();
+
+// themes and animation
+Style GetBuiltinTheme(ThemePreset preset);
+void  SetTheme(ThemePreset preset, float transition_seconds = 0.25f);
+bool  IsThemeTransitioning();
+float Animate(const char* key, float target, float speed = 0.0f);
 
 // windows
 bool Begin(const char* name, bool* p_open = 0);
@@ -195,6 +263,9 @@ void Separator();
 void Indent(float w = 0.0f);
 void Unindent(float w = 0.0f);
 Vec2 GetContentRegionAvail();
+bool BeginGrid(const char* id, int columns, float gap = 12.0f);
+void NextGridColumn();
+void EndGrid();
 
 // widgets
 void Text(const char* fmt, ...);
@@ -213,6 +284,16 @@ void TreePop();
 void ProgressBar(float fraction, const Vec2& size = Vec2(-1, 0), const char* overlay = 0);
 void PlotLines(const char* label, const float* values, int count, const Vec2& size = Vec2(-1, 60));
 void PlotHistogram(const char* label, const float* values, int count, const Vec2& size = Vec2(-1, 60));
+
+// chart builder: collect one or more series, then render together in EndChart
+bool BeginChart(const char* label, const Vec2& size = Vec2(-1, 150));
+void ChartLine(const char* label, const float* values, int count, U32 color = 0);
+void ChartLine(const char* label, const StreamingSeries& series, U32 color = 0);
+void ChartBars(const char* label, const float* values, int count, U32 color = 0);
+void EndChart();
+
+// lightweight built-in rich text / Markdown
+void Markdown(const char* markdown);
 
 // helpers
 Vec2 CalcTextSize(const char* text, const char* text_end = 0);

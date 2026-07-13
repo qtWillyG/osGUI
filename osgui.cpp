@@ -16,6 +16,7 @@ IO&        GetIO()        { return GOG->io; }
 Style&     GetStyle()     { return GOG->style; }
 FontAtlas& GetFontAtlas() { return GOG->atlas; }
 DrawData*  GetDrawData()  { return &GOG->draw_data; }
+const std::vector<Event>& GetEvents() { return GOG->events; }
 U32        GetColorU32(int idx) { return GOG->style.colors[idx]; }
 
 // =====================================================================
@@ -53,6 +54,21 @@ struct Window {
                scroll_y(0), scroll_max_y(0), scrollbar_active(false) {}
 };
 
+struct GridState {
+    Window* window;
+    Vec2 outer_cursor;
+    Vec2 outer_cursor_start;
+    float outer_content_w;
+    float outer_indent;
+    int columns;
+    int column;
+    float gap;
+    float column_width;
+    float row_y;
+    float row_height;
+};
+static std::vector<GridState> GGridStack;
+
 // =====================================================================
 //  Small helpers
 // =====================================================================
@@ -62,6 +78,20 @@ static inline float Clamp(float v, float lo, float hi) { return v < lo ? lo : (v
 static inline Vec2  Add(const Vec2& a, const Vec2& b) { return Vec2(a.x + b.x, a.y + b.y); }
 static inline bool  PointIn(const Vec2& p, const Vec4& r) {
     return p.x >= r.x && p.y >= r.y && p.x < r.z && p.y < r.w;
+}
+static inline int ColR(U32 c) { return (int)(c & 255); }
+static inline int ColG(U32 c) { return (int)((c >> 8) & 255); }
+static inline int ColB(U32 c) { return (int)((c >> 16) & 255); }
+static inline int ColA(U32 c) { return (int)((c >> 24) & 255); }
+static U32 ColorLerp(U32 a, U32 b, float t) {
+    t = Clamp(t, 0.0f, 1.0f);
+    return OG_COL32((int)(ColR(a) + (ColR(b) - ColR(a)) * t),
+                    (int)(ColG(a) + (ColG(b) - ColG(a)) * t),
+                    (int)(ColB(a) + (ColB(b) - ColB(a)) * t),
+                    (int)(ColA(a) + (ColA(b) - ColA(a)) * t));
+}
+static U32 ColorWithAlpha(U32 c, int alpha) {
+    return (c & 0x00FFFFFFu) | ((U32)Clamp((float)alpha, 0.0f, 255.0f) << 24);
 }
 static ID HashStr(const char* s, const char* s_end, ID seed) {
     ID h = seed ? seed : 1469598103934665603ULL;
@@ -78,6 +108,24 @@ static const char* FindDisplayEnd(const char* label) {
 static ID GetID(const char* label) {
     Window* w = GOG->cur_window;
     return HashStr(label, 0, w->id_stack.back());
+}
+static float AnimateID(ID id, float target, float speed) {
+    Context& g = *GOG;
+    AnimationState& state = g.animations[id];
+    if (state.last_frame == 0) state.value = target;
+    state.target = target;
+    state.last_frame = g.frame_count;
+    if (speed <= 0.0f) speed = g.style.animation_speed;
+    float dt = Clamp(g.io.delta_time, 0.0f, 0.05f);
+    float blend = 1.0f - expf(-speed * dt);
+    state.value += (state.target - state.value) * blend;
+    if (fabsf(state.target - state.value) < 0.0005f) state.value = state.target;
+    return state.value;
+}
+float Animate(const char* key, float target, float speed) {
+    ID seed = (GOG->cur_window && !GOG->cur_window->id_stack.empty())
+        ? GOG->cur_window->id_stack.back() : 0;
+    return AnimateID(HashStr(key, 0, seed), target, speed);
 }
 
 // =====================================================================
@@ -126,6 +174,28 @@ void DrawList::AddRectFilledRounded(const Vec2& a, const Vec2& b, U32 col, float
     AddCircleFilled(Vec2(b.x - r, a.y + r), r, col, 10);
     AddCircleFilled(Vec2(a.x + r, b.y - r), r, col, 10);
     AddCircleFilled(Vec2(b.x - r, b.y - r), r, col, 10);
+}
+void DrawList::AddRectFilledMultiColor(const Vec2& a, const Vec2& b,
+                                       U32 col_tl, U32 col_tr, U32 col_br, U32 col_bl) {
+    DrawIdx base = (DrawIdx)vtx.size();
+    PrimReserve(6, 4);
+    DrawVert v; v.uv = white_uv;
+    v.pos = Vec2(a.x, a.y); v.col = col_tl; vtx.push_back(v);
+    v.pos = Vec2(b.x, a.y); v.col = col_tr; vtx.push_back(v);
+    v.pos = Vec2(b.x, b.y); v.col = col_br; vtx.push_back(v);
+    v.pos = Vec2(a.x, b.y); v.col = col_bl; vtx.push_back(v);
+    idx.push_back(base + 0); idx.push_back(base + 1); idx.push_back(base + 2);
+    idx.push_back(base + 0); idx.push_back(base + 2); idx.push_back(base + 3);
+}
+void DrawList::AddShadowRect(const Vec2& a, const Vec2& b, U32 col, float radius, float spread) {
+    const int layers = 5;
+    for (int i = layers; i >= 1; --i) {
+        float t = (float)i / (float)layers;
+        float grow = spread * t;
+        int alpha = (int)(ColA(col) * (1.0f - t * 0.78f) / layers);
+        AddRectFilledRounded(Vec2(a.x - grow, a.y - grow), Vec2(b.x + grow, b.y + grow),
+                             ColorWithAlpha(col, alpha), radius + grow);
+    }
 }
 void DrawList::AddQuad(const Vec2& a, const Vec2& b, const Vec2& c, const Vec2& d, U32 col) {
     DrawIdx base = (DrawIdx)vtx.size();
@@ -209,12 +279,16 @@ Style::Style() {
     scrollbar_size   = 10.0f;
     grab_min_size    = 14.0f;
     window_title_height = 0.0f;
+    window_rounding = 10.0f;
+    frame_rounding = 6.0f;
+    shadow_size = 12.0f;
+    animation_speed = 14.0f;
     colors[Col_Text]              = OG_COL32(237, 240, 249, 255);
     colors[Col_TextDisabled]      = OG_COL32(139, 146, 170, 255);
     colors[Col_WindowBg]          = OG_COL32(22, 24, 36, 250);
     colors[Col_TitleBg]           = OG_COL32(27, 29, 43, 255);
     colors[Col_TitleBgActive]     = OG_COL32(31, 34, 50, 255);
-    colors[Col_MenuBarBg]         = OG_COL32(36, 36, 36, 255);
+    colors[Col_MenuBarBg]         = OG_COL32(8, 10, 18, 255);
     colors[Col_Border]            = OG_COL32(59, 63, 86, 210);
     colors[Col_FrameBg]           = OG_COL32(38, 41, 58, 255);
     colors[Col_FrameBgHovered]    = OG_COL32(49, 53, 74, 255);
@@ -236,7 +310,51 @@ Style::Style() {
     colors[Col_ScrollbarGrab]     = OG_COL32(79, 79, 79, 255);
     colors[Col_PlotLines]         = OG_COL32(114, 226, 204, 255);
     colors[Col_PlotHistogram]     = OG_COL32(126, 105, 255, 255);
+    colors[Col_WindowShadow]      = OG_COL32(0, 0, 0, 150);
+    colors[Col_GradientStart]     = OG_COL32(126, 105, 255, 255);
+    colors[Col_GradientEnd]       = OG_COL32(91, 210, 231, 255);
+    colors[Col_CodeBg]            = OG_COL32(12, 14, 24, 255);
+    colors[Col_Link]              = OG_COL32(111, 205, 255, 255);
+    colors[Col_Success]           = OG_COL32(114, 226, 204, 255);
+    colors[Col_Warning]           = OG_COL32(247, 193, 96, 255);
 }
+
+Style GetBuiltinTheme(ThemePreset preset) {
+    Style s;
+    if (preset == Theme_Dark) return s;
+
+    s.colors[Col_Text]              = OG_COL32(28, 31, 43, 255);
+    s.colors[Col_TextDisabled]      = OG_COL32(104, 110, 130, 255);
+    s.colors[Col_WindowBg]          = OG_COL32(244, 246, 252, 252);
+    s.colors[Col_TitleBg]           = OG_COL32(233, 236, 246, 255);
+    s.colors[Col_TitleBgActive]     = OG_COL32(239, 241, 250, 255);
+    s.colors[Col_MenuBarBg]         = OG_COL32(224, 228, 240, 255);
+    s.colors[Col_Border]            = OG_COL32(195, 201, 218, 220);
+    s.colors[Col_FrameBg]           = OG_COL32(224, 228, 240, 255);
+    s.colors[Col_FrameBgHovered]    = OG_COL32(211, 216, 233, 255);
+    s.colors[Col_FrameBgActive]     = OG_COL32(199, 205, 225, 255);
+    s.colors[Col_Header]            = OG_COL32(229, 232, 243, 255);
+    s.colors[Col_HeaderHovered]     = OG_COL32(214, 218, 235, 255);
+    s.colors[Col_HeaderActive]      = OG_COL32(202, 207, 228, 255);
+    s.colors[Col_Separator]         = OG_COL32(183, 189, 207, 180);
+    s.colors[Col_ScrollbarBg]       = OG_COL32(225, 228, 237, 180);
+    s.colors[Col_ScrollbarGrab]     = OG_COL32(166, 173, 196, 255);
+    s.colors[Col_WindowShadow]      = OG_COL32(39, 45, 70, 90);
+    s.colors[Col_CodeBg]            = OG_COL32(224, 227, 238, 255);
+    return s;
+}
+
+void SetTheme(ThemePreset preset, float transition_seconds) {
+    Context& g = *GOG;
+    g.theme_from = g.style;
+    g.theme_target = GetBuiltinTheme(preset);
+    g.theme_elapsed = 0.0f;
+    g.theme_duration = Max(transition_seconds, 0.0f);
+    g.theme_transitioning = g.theme_duration > 0.0f;
+    g.theme_preset = preset;
+    if (!g.theme_transitioning) g.style = g.theme_target;
+}
+bool IsThemeTransitioning() { return GOG && GOG->theme_transitioning; }
 
 Context::Context() {
     cur_window = hovered_window = moving_window = nav_window = 0;
@@ -247,6 +365,29 @@ Context::Context() {
     memset(&io, 0, sizeof(io));
     io.framerate = 60.0f;
     atlas.pixels = 0; atlas.tex_id = 0;
+    theme_from = style;
+    theme_target = style;
+    theme_elapsed = 0.0f;
+    theme_duration = 0.0f;
+    theme_transitioning = false;
+    theme_preset = Theme_Dark;
+}
+
+StreamingSeries::StreamingSeries(int capacity)
+    : values_((size_t)Max((float)capacity, 1.0f)), head_(0), count_(0) {}
+void StreamingSeries::Push(float value) {
+    values_[(size_t)head_] = value;
+    head_ = (head_ + 1) % (int)values_.size();
+    if (count_ < (int)values_.size()) ++count_;
+}
+void StreamingSeries::Clear() { head_ = 0; count_ = 0; }
+int StreamingSeries::Size() const { return count_; }
+int StreamingSeries::Capacity() const { return (int)values_.size(); }
+void StreamingSeries::GetOrdered(std::vector<float>& out) const {
+    out.resize((size_t)count_);
+    int start = (head_ - count_ + (int)values_.size()) % (int)values_.size();
+    for (int i = 0; i < count_; ++i)
+        out[(size_t)i] = values_[(size_t)((start + i) % (int)values_.size())];
 }
 
 // =====================================================================
@@ -290,6 +431,42 @@ void NewFrame() {
     IO& io = g.io;
     g.frame_count++;
     g.time += io.delta_time;
+    g.events.clear();
+
+    if (g.theme_transitioning) {
+        g.theme_elapsed += Clamp(io.delta_time, 0.0f, 0.05f);
+        float t = g.theme_duration > 0.0f ? Clamp(g.theme_elapsed / g.theme_duration, 0.0f, 1.0f) : 1.0f;
+        // Smoothstep makes theme changes feel deliberate without overshoot.
+        t = t * t * (3.0f - 2.0f * t);
+        g.style.window_padding = Vec2(g.theme_from.window_padding.x + (g.theme_target.window_padding.x - g.theme_from.window_padding.x) * t,
+                                      g.theme_from.window_padding.y + (g.theme_target.window_padding.y - g.theme_from.window_padding.y) * t);
+        g.style.frame_padding = Vec2(g.theme_from.frame_padding.x + (g.theme_target.frame_padding.x - g.theme_from.frame_padding.x) * t,
+                                     g.theme_from.frame_padding.y + (g.theme_target.frame_padding.y - g.theme_from.frame_padding.y) * t);
+        g.style.item_spacing = Vec2(g.theme_from.item_spacing.x + (g.theme_target.item_spacing.x - g.theme_from.item_spacing.x) * t,
+                                    g.theme_from.item_spacing.y + (g.theme_target.item_spacing.y - g.theme_from.item_spacing.y) * t);
+        g.style.item_inner_spacing = Vec2(g.theme_from.item_inner_spacing.x + (g.theme_target.item_inner_spacing.x - g.theme_from.item_inner_spacing.x) * t,
+                                          g.theme_from.item_inner_spacing.y + (g.theme_target.item_inner_spacing.y - g.theme_from.item_inner_spacing.y) * t);
+        g.style.indent_spacing = g.theme_from.indent_spacing + (g.theme_target.indent_spacing - g.theme_from.indent_spacing) * t;
+        g.style.scrollbar_size = g.theme_from.scrollbar_size + (g.theme_target.scrollbar_size - g.theme_from.scrollbar_size) * t;
+        g.style.grab_min_size = g.theme_from.grab_min_size + (g.theme_target.grab_min_size - g.theme_from.grab_min_size) * t;
+        g.style.window_rounding = g.theme_from.window_rounding + (g.theme_target.window_rounding - g.theme_from.window_rounding) * t;
+        g.style.frame_rounding = g.theme_from.frame_rounding + (g.theme_target.frame_rounding - g.theme_from.frame_rounding) * t;
+        g.style.shadow_size = g.theme_from.shadow_size + (g.theme_target.shadow_size - g.theme_from.shadow_size) * t;
+        g.style.animation_speed = g.theme_from.animation_speed + (g.theme_target.animation_speed - g.theme_from.animation_speed) * t;
+        for (int i = 0; i < Col_COUNT; ++i)
+            g.style.colors[i] = ColorLerp(g.theme_from.colors[i], g.theme_target.colors[i], t);
+        if (g.theme_elapsed >= g.theme_duration) {
+            g.style = g.theme_target;
+            g.theme_transitioning = false;
+        }
+    }
+
+    if ((g.frame_count % 120) == 0) {
+        for (std::map<ID, AnimationState>::iterator it = g.animations.begin(); it != g.animations.end(); ) {
+            if (g.frame_count - it->second.last_frame > 240) it = g.animations.erase(it);
+            else ++it;
+        }
+    }
 
     // smoothed framerate
     if (io.delta_time > 0)
@@ -417,6 +594,69 @@ Vec2 GetContentRegionAvail() {
     float used = w->cursor.x - w->cursor_start.x;
     return Vec2(w->content_w - used, 0);
 }
+bool BeginGrid(const char* id, int columns, float gap) {
+    if (!GOG || !GOG->cur_window || columns < 1) return false;
+    Window* w = GOG->cur_window;
+    GridState grid;
+    grid.window = w;
+    grid.outer_cursor = w->cursor;
+    grid.outer_cursor_start = w->cursor_start;
+    grid.outer_content_w = w->content_w;
+    grid.outer_indent = w->indent;
+    grid.columns = columns;
+    grid.column = 0;
+    grid.gap = Max(gap, 0.0f);
+    float available = Max(GetContentRegionAvail().x, (float)columns);
+    grid.column_width = Max((available - grid.gap * (columns - 1)) / columns, 1.0f);
+    grid.row_y = w->cursor.y;
+    grid.row_height = 0.0f;
+    GGridStack.push_back(grid);
+
+    w->id_stack.push_back(HashStr(id ? id : "grid", 0, w->id_stack.back()));
+    w->cursor_start = Vec2(grid.outer_cursor.x, grid.row_y);
+    w->cursor = w->cursor_start;
+    w->indent = 0.0f;
+    w->content_w = grid.column_width;
+    return true;
+}
+void NextGridColumn() {
+    if (GGridStack.empty()) return;
+    GridState& grid = GGridStack.back();
+    Window* w = grid.window;
+    float used = Max(0.0f, w->cursor.y - grid.row_y - GOG->style.item_spacing.y);
+    grid.row_height = Max(grid.row_height, used);
+    ++grid.column;
+    if (grid.column >= grid.columns) {
+        grid.column = 0;
+        grid.row_y += grid.row_height + grid.gap;
+        grid.row_height = 0.0f;
+    }
+    float x = grid.outer_cursor.x + grid.column * (grid.column_width + grid.gap);
+    w->cursor_start = Vec2(x, grid.row_y);
+    w->cursor = w->cursor_start;
+    w->cursor_prev_line = w->cursor;
+    w->curr_line_height = w->prev_line_height = 0.0f;
+    w->indent = 0.0f;
+    w->content_w = grid.column_width;
+}
+void EndGrid() {
+    if (GGridStack.empty()) return;
+    GridState grid = GGridStack.back();
+    GGridStack.pop_back();
+    Window* w = grid.window;
+    float used = Max(0.0f, w->cursor.y - grid.row_y - GOG->style.item_spacing.y);
+    grid.row_height = Max(grid.row_height, used);
+    float total_height = (grid.row_y - grid.outer_cursor.y) + grid.row_height;
+
+    if (w->id_stack.size() > 1) w->id_stack.pop_back();
+    w->cursor_start = grid.outer_cursor_start;
+    w->content_w = grid.outer_content_w;
+    w->indent = grid.outer_indent;
+    w->cursor = grid.outer_cursor;
+    w->cursor_prev_line = w->cursor;
+    w->curr_line_height = w->prev_line_height = 0.0f;
+    ItemSize(Vec2(grid.outer_content_w, total_height));
+}
 static float CalcItemWidth() {
     Window* w = GOG->cur_window;
     float fw = w->content_w * 0.62f;
@@ -505,12 +745,20 @@ bool Begin(const char* name, bool* p_open) {
     DrawList* dl = &w->draw;
     bool focused = (g.nav_window == w);
 
-    dl->PushClipRect(Vec4(pos.x, pos.y, pos.x + size.x, pos.y + size.y));
+    dl->PushClipRect(Vec4(pos.x - s.shadow_size - 2, pos.y - s.shadow_size - 2,
+                          pos.x + size.x + s.shadow_size + 2, pos.y + size.y + s.shadow_size + 2));
+
+    dl->AddShadowRect(pos, Vec2(pos.x + size.x, pos.y + size.y),
+                      GetColorU32(Col_WindowShadow), s.window_rounding, s.shadow_size);
 
     if (!w->collapsed)
-        dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + size.y), GetColorU32(Col_WindowBg), 10.0f);
-    dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + title_h + 8), GetColorU32(focused ? Col_TitleBgActive : Col_TitleBg), 10.0f);
+        dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + size.y), GetColorU32(Col_WindowBg), s.window_rounding);
+    dl->AddRectFilledRounded(pos, Vec2(pos.x + size.x, pos.y + title_h + 8), GetColorU32(focused ? Col_TitleBgActive : Col_TitleBg), s.window_rounding);
     dl->AddRectFilled(Vec2(pos.x, pos.y + title_h), Vec2(pos.x + size.x, pos.y + title_h + 8), GetColorU32(Col_WindowBg));
+    dl->AddRectFilledMultiColor(Vec2(pos.x + s.window_rounding, pos.y + title_h - 2),
+                                Vec2(pos.x + size.x - s.window_rounding, pos.y + title_h),
+                                GetColorU32(Col_GradientStart), GetColorU32(Col_GradientEnd),
+                                GetColorU32(Col_GradientEnd), GetColorU32(Col_GradientStart));
     dl->AddCircleFilled(Vec2(pos.x + 18, pos.y + title_h * 0.5f), 4.0f, GetColorU32(Col_CheckMark), 16);
 
     // collapse arrow
@@ -548,7 +796,10 @@ bool Begin(const char* name, bool* p_open) {
     } else if (title_hov && !close_clicked && g.mouse_clicked[0]) {
         g.moving_window = w; g.active_id = 0;
     }
-    if (close_clicked && p_open) *p_open = false;
+    if (close_clicked && p_open) {
+        *p_open = false;
+        g.events.push_back(Event(Event_WindowClosed, w->id, name));
+    }
 
     // -------- layout setup --------
     w->scrollbar_active = (!w->collapsed && w->scroll_max_y > 0.0f);
@@ -666,9 +917,16 @@ static bool ButtonImpl(const char* label, Vec2 size_arg) {
     ItemSize(size);
     bool hovered, held;
     bool pressed = ButtonBehavior(r, id, &hovered, &held);
-    U32 col = GetColorU32(held ? Col_ButtonActive : (hovered ? Col_ButtonHovered : Col_Button));
-    w->draw.AddRectFilledRounded(pos, Vec2(r.z, r.w), col, 6.0f);
+    float hover_t = AnimateID(id ^ 0xB0770A11ULL, hovered ? 1.0f : 0.0f, 18.0f);
+    U32 col = held ? GetColorU32(Col_ButtonActive)
+                   : ColorLerp(GetColorU32(Col_Button), GetColorU32(Col_ButtonHovered), hover_t);
+    w->draw.AddRectFilledRounded(pos, Vec2(r.z, r.w), col, s.frame_rounding);
+    if (hover_t > 0.01f)
+        w->draw.AddLine(Vec2(pos.x + s.frame_rounding, pos.y + 1),
+                        Vec2(r.z - s.frame_rounding, pos.y + 1),
+                        ColorWithAlpha(OG_COL32_WHITE, (int)(45 * hover_t)), 1.0f);
     RenderTextClipped(r, label, end, true);
+    if (pressed) GOG->events.push_back(Event(Event_Clicked, id, label));
     return pressed;
 }
 bool Button(const char* label, const Vec2& size) { return ButtonImpl(label, size); }
@@ -690,16 +948,19 @@ bool Checkbox(const char* label, bool* v) {
     ItemSize(total);
     bool hovered, held;
     bool pressed = ButtonBehavior(Vec4(pos.x, pos.y, pos.x + total.x, pos.y + total.y), id, &hovered, &held);
-    if (pressed) *v = !*v;
+    if (pressed) {
+        *v = !*v;
+        GOG->events.push_back(Event(Event_ValueChanged, id, label));
+    }
     U32 bg = GetColorU32(held ? Col_FrameBgActive : (hovered ? Col_FrameBgHovered : Col_FrameBg));
     float pill_h = sq * 0.72f, pill_w = sq * 1.35f;
     Vec2 pill_a(box.x, box.y + (sq - pill_h) * 0.5f), pill_b(box.x + pill_w, box.y + (sq + pill_h) * 0.5f);
-    w->draw.AddRectFilledRounded(pill_a, pill_b, *v ? GetColorU32(Col_Button) : bg, pill_h * 0.5f);
-    if (*v) {
-        w->draw.AddCircleFilled(Vec2(pill_b.x - pill_h * 0.5f, (pill_a.y + pill_b.y) * 0.5f), pill_h * 0.34f, OG_COL32_WHITE, 16);
-    } else {
-        w->draw.AddCircleFilled(Vec2(pill_a.x + pill_h * 0.5f, (pill_a.y + pill_b.y) * 0.5f), pill_h * 0.34f, GetColorU32(Col_TextDisabled), 16);
-    }
+    float toggle_t = AnimateID(id ^ 0xC4EC0B11ULL, *v ? 1.0f : 0.0f, 20.0f);
+    U32 track_col = ColorLerp(bg, GetColorU32(Col_Button), toggle_t);
+    w->draw.AddRectFilledRounded(pill_a, pill_b, track_col, pill_h * 0.5f);
+    float knob_x = pill_a.x + pill_h * 0.5f + (pill_w - pill_h) * toggle_t;
+    w->draw.AddCircleFilled(Vec2(knob_x, (pill_a.y + pill_b.y) * 0.5f), pill_h * 0.34f,
+                            ColorLerp(GetColorU32(Col_TextDisabled), OG_COL32_WHITE, toggle_t), 16);
     w->draw.AddText(Vec2(pos.x + pill_w + s.item_inner_spacing.x, pos.y + s.frame_padding.y), GetColorU32(Col_Text), label, end);
     return pressed;
 }
@@ -716,11 +977,15 @@ bool RadioButton(const char* label, int* v, int v_button) {
     ItemSize(total);
     bool hovered, held;
     bool pressed = ButtonBehavior(Vec4(pos.x, pos.y, pos.x + total.x, pos.y + total.y), id, &hovered, &held);
-    if (pressed) *v = v_button;
+    if (pressed) {
+        *v = v_button;
+        GOG->events.push_back(Event(Event_ValueChanged, id, label));
+    }
     Vec2 c(pos.x + sq * 0.5f, pos.y + sq * 0.5f);
     U32 bg = GetColorU32(held ? Col_FrameBgActive : (hovered ? Col_FrameBgHovered : Col_FrameBg));
     w->draw.AddCircleFilled(c, sq * 0.5f, bg, 16);
-    if (*v == v_button) w->draw.AddCircleFilled(c, sq * 0.25f, GetColorU32(Col_CheckMark), 16);
+    float selected_t = AnimateID(id ^ 0xA11D1010ULL, *v == v_button ? 1.0f : 0.0f, 18.0f);
+    if (selected_t > 0.01f) w->draw.AddCircleFilled(c, sq * 0.25f * selected_t, GetColorU32(Col_CheckMark), 16);
     w->draw.AddText(Vec2(pos.x + sq + s.item_inner_spacing.x, pos.y + s.frame_padding.y), GetColorU32(Col_Text), label, end);
     return pressed;
 }
@@ -776,6 +1041,7 @@ static bool SliderScalar(const char* label, float* v, float v_min, float v_max, 
     RenderTextClipped(frame, buf, 0, true);
     // label
     w->draw.AddText(Vec2(frame.z + s.item_inner_spacing.x, pos.y + s.frame_padding.y), GetColorU32(Col_Text), label, end);
+    if (changed) GOG->events.push_back(Event(Event_ValueChanged, id, label));
     return changed;
 }
 bool SliderFloat(const char* label, float* v, float v_min, float v_max, const char* fmt) {
@@ -813,7 +1079,6 @@ bool CollapsingHeader(const char* label) {
 
 bool TreeNode(const char* label) {
     Window* w = GOG->cur_window;
-    Style& s = GOG->style;
     ID id = GetID(label);
     const char* end = FindDisplayEnd(label);
     int& open = GOG->storage[id];
@@ -851,8 +1116,15 @@ void ProgressBar(float fraction, const Vec2& size_arg, const char* overlay) {
     Vec2 pos = w->cursor;
     Vec4 r(pos.x, pos.y, pos.x + fw, pos.y + fh);
     ItemSize(Vec2(fw, fh));
-    w->draw.AddRectFilled(pos, Vec2(r.z, r.w), GetColorU32(Col_FrameBg));
-    w->draw.AddRectFilled(pos, Vec2(pos.x + fw * fraction, r.w), GetColorU32(Col_Button));
+    w->draw.AddRectFilledRounded(pos, Vec2(r.z, r.w), GetColorU32(Col_FrameBg), s.frame_rounding);
+    if (fraction > 0.0f) {
+        float fill_x = pos.x + fw * fraction;
+        w->draw.AddRectFilledRounded(pos, Vec2(fill_x, r.w), GetColorU32(Col_Button), s.frame_rounding);
+        if (fill_x - pos.x > s.frame_rounding * 2)
+            w->draw.AddRectFilledMultiColor(Vec2(pos.x + s.frame_rounding, pos.y), Vec2(fill_x - s.frame_rounding, r.w),
+                                            GetColorU32(Col_GradientStart), GetColorU32(Col_GradientEnd),
+                                            GetColorU32(Col_GradientEnd), GetColorU32(Col_GradientStart));
+    }
     char buf[32];
     if (!overlay) { snprintf(buf, sizeof(buf), "%.0f%%", fraction * 100.0f); overlay = buf; }
     RenderTextClipped(r, overlay, 0, true);
@@ -897,5 +1169,243 @@ static void PlotImpl(const char* label, const float* values, int count, Vec2 siz
 }
 void PlotLines(const char* label, const float* values, int count, const Vec2& size)     { PlotImpl(label, values, count, size, false); }
 void PlotHistogram(const char* label, const float* values, int count, const Vec2& size)  { PlotImpl(label, values, count, size, true); }
+
+// =====================================================================
+//  Chart builder
+// =====================================================================
+struct ChartSeriesData {
+    std::string label;
+    std::vector<float> values;
+    U32 color;
+    bool bars;
+};
+struct ChartBuildState {
+    bool active;
+    Window* window;
+    ID id;
+    std::string label;
+    Vec4 rect;
+    std::vector<ChartSeriesData> series;
+    ChartBuildState() : active(false), window(0), id(0) {}
+};
+static ChartBuildState GChart;
+
+bool BeginChart(const char* label, const Vec2& size_arg) {
+    if (!GOG || !GOG->cur_window || GChart.active) return false;
+    Window* w = GOG->cur_window;
+    float width = size_arg.x > 0.0f ? size_arg.x : GetContentRegionAvail().x;
+    float height = size_arg.y > 0.0f ? size_arg.y : 150.0f;
+    Vec2 pos = w->cursor;
+    GChart.active = true;
+    GChart.window = w;
+    GChart.id = GetID(label);
+    GChart.label = label ? label : "Chart";
+    GChart.rect = Vec4(pos.x, pos.y, pos.x + width, pos.y + height);
+    GChart.series.clear();
+    ItemSize(Vec2(width, height));
+    return true;
+}
+static void ChartAddSeries(const char* label, const float* values, int count, U32 color, bool bars) {
+    if (!GChart.active || !values || count <= 0) return;
+    ChartSeriesData data;
+    data.label = label ? label : "Series";
+    data.values.assign(values, values + count);
+    data.color = color;
+    data.bars = bars;
+    GChart.series.push_back(data);
+}
+void ChartLine(const char* label, const float* values, int count, U32 color) {
+    ChartAddSeries(label, values, count, color, false);
+}
+void ChartLine(const char* label, const StreamingSeries& series, U32 color) {
+    if (!GChart.active || series.Size() <= 0) return;
+    ChartSeriesData data;
+    data.label = label ? label : "Series";
+    series.GetOrdered(data.values);
+    data.color = color;
+    data.bars = false;
+    GChart.series.push_back(data);
+}
+void ChartBars(const char* label, const float* values, int count, U32 color) {
+    ChartAddSeries(label, values, count, color, true);
+}
+void EndChart() {
+    if (!GChart.active || !GChart.window) return;
+    Window* w = GChart.window;
+    const Style& s = GOG->style;
+    Vec4 r = GChart.rect;
+    w->draw.AddRectFilledRounded(Vec2(r.x, r.y), Vec2(r.z, r.w), GetColorU32(Col_FrameBg), s.frame_rounding + 2.0f);
+    w->draw.AddText(Vec2(r.x + 12, r.y + 9), GetColorU32(Col_Text), GChart.label.c_str());
+
+    Vec4 plot(r.x + 12, r.y + 34, r.z - 12, r.w - 12);
+    for (int i = 1; i < 4; ++i) {
+        float y = plot.y + (plot.w - plot.y) * (float)i / 4.0f;
+        w->draw.AddLine(Vec2(plot.x, y), Vec2(plot.z, y), ColorWithAlpha(GetColorU32(Col_Separator), 75), 1.0f);
+    }
+
+    float vmin = 0.0f, vmax = 1.0f;
+    bool first = true;
+    for (size_t n = 0; n < GChart.series.size(); ++n) {
+        const std::vector<float>& values = GChart.series[n].values;
+        for (size_t i = 0; i < values.size(); ++i) {
+            if (first) { vmin = vmax = values[i]; first = false; }
+            else { vmin = Min(vmin, values[i]); vmax = Max(vmax, values[i]); }
+        }
+    }
+    if (vmax <= vmin) vmax = vmin + 1.0f;
+    // Keep zero visible for positive-only or negative-only data.
+    if (vmin > 0.0f) vmin = 0.0f;
+    if (vmax < 0.0f) vmax = 0.0f;
+
+    const U32 palette[] = {
+        GetColorU32(Col_PlotLines), GetColorU32(Col_GradientStart),
+        GetColorU32(Col_Warning), GetColorU32(Col_Link)
+    };
+    for (size_t n = 0; n < GChart.series.size(); ++n) {
+        const ChartSeriesData& data = GChart.series[n];
+        int count = (int)data.values.size();
+        if (count <= 0) continue;
+        U32 color = data.color ? data.color : palette[n % 4];
+        if (data.bars) {
+            float bw = (plot.z - plot.x) / Max((float)count, 1.0f);
+            for (int i = 0; i < count; ++i) {
+                float t = (data.values[(size_t)i] - vmin) / (vmax - vmin);
+                float x0 = plot.x + i * bw;
+                w->draw.AddRectFilledRounded(Vec2(x0 + 1, plot.w - t * (plot.w - plot.y)),
+                                             Vec2(x0 + bw - 1, plot.w), ColorWithAlpha(color, 210), 2.0f);
+            }
+        } else if (count == 1) {
+            float t = (data.values[0] - vmin) / (vmax - vmin);
+            w->draw.AddCircleFilled(Vec2(plot.x, plot.w - t * (plot.w - plot.y)), 3.0f, color, 14);
+        } else {
+            int max_points = (int)(plot.z - plot.x);
+            if (max_points < 2) max_points = 2;
+            int step = count / max_points;
+            if (step < 1) step = 1;
+            Vec2 previous;
+            bool have_previous = false;
+            for (int i = 0; i < count; i += step) {
+                int end = i + step; if (end > count) end = count;
+                float sum = 0.0f;
+                for (int j = i; j < end; ++j) sum += data.values[(size_t)j];
+                float value = sum / (end - i);
+                float x = plot.x + (float)i / (count - 1) * (plot.z - plot.x);
+                float t = (value - vmin) / (vmax - vmin);
+                Vec2 p(x, plot.w - t * (plot.w - plot.y));
+                if (have_previous) {
+                    w->draw.AddQuad(previous, p, Vec2(p.x, plot.w), Vec2(previous.x, plot.w), ColorWithAlpha(color, 24));
+                    w->draw.AddLine(previous, p, color, 2.0f);
+                }
+                previous = p;
+                have_previous = true;
+            }
+        }
+    }
+
+    float legend_x = r.z - 12.0f;
+    for (int n = (int)GChart.series.size() - 1; n >= 0; --n) {
+        const ChartSeriesData& data = GChart.series[(size_t)n];
+        Vec2 text_size = CalcTextSize(data.label.c_str());
+        legend_x -= text_size.x;
+        U32 color = data.color ? data.color : palette[n % 4];
+        w->draw.AddText(Vec2(legend_x, r.y + 9), GetColorU32(Col_TextDisabled), data.label.c_str());
+        legend_x -= 12.0f;
+        w->draw.AddCircleFilled(Vec2(legend_x + 4, r.y + 16), 3.0f, color, 12);
+        legend_x -= 10.0f;
+    }
+
+    GChart.active = false;
+    GChart.window = 0;
+    GChart.series.clear();
+}
+
+// =====================================================================
+//  Markdown
+// =====================================================================
+static std::string StripInlineMarkdown(const std::string& line) {
+    std::string out;
+    for (size_t i = 0; i < line.size(); ++i) {
+        if (line[i] == '*' || line[i] == '`') continue;
+        if (line[i] == '[') {
+            size_t close = line.find(']', i + 1);
+            if (close != std::string::npos && close + 1 < line.size() && line[close + 1] == '(') {
+                out.append(line, i + 1, close - i - 1);
+                size_t end = line.find(')', close + 2);
+                if (end != std::string::npos) { i = end; continue; }
+            }
+        }
+        out.push_back(line[i]);
+    }
+    return out;
+}
+static void MarkdownCodeLine(const std::string& line) {
+    Window* w = GOG->cur_window;
+    Style& s = GOG->style;
+    float height = GOG->atlas.line_height + s.frame_padding.y * 2.0f;
+    Vec2 pos = w->cursor;
+    w->draw.AddRectFilledRounded(pos, Vec2(pos.x + w->content_w, pos.y + height), GetColorU32(Col_CodeBg), 4.0f);
+    w->draw.AddText(Vec2(pos.x + s.frame_padding.x, pos.y + s.frame_padding.y), GetColorU32(Col_Link), line.c_str());
+    ItemSize(Vec2(w->content_w, height));
+}
+static void MarkdownWrappedLine(const std::string& text, U32 color) {
+    Window* w = GOG->cur_window;
+    std::string line;
+    size_t start = 0;
+    while (start < text.size()) {
+        while (start < text.size() && text[start] == ' ') ++start;
+        size_t end = text.find(' ', start);
+        if (end == std::string::npos) end = text.size();
+        std::string word = text.substr(start, end - start);
+        std::string candidate = line.empty() ? word : line + " " + word;
+        if (!line.empty() && CalcTextSize(candidate.c_str()).x > w->content_w) {
+            TextImpl(line.c_str(), 0, color);
+            line = word;
+        } else {
+            line = candidate;
+        }
+        start = end + 1;
+    }
+    if (!line.empty()) TextImpl(line.c_str(), 0, color);
+}
+void Markdown(const char* markdown) {
+    if (!markdown || !GOG || !GOG->cur_window) return;
+    std::string source(markdown);
+    bool code = false;
+    size_t start = 0;
+    while (start <= source.size()) {
+        size_t end = source.find('\n', start);
+        if (end == std::string::npos) end = source.size();
+        std::string line = source.substr(start, end - start);
+        if (!line.empty() && line[line.size() - 1] == '\r') line.erase(line.size() - 1);
+
+        if (line.compare(0, 3, "```") == 0) {
+            code = !code;
+        } else if (code) {
+            MarkdownCodeLine(line);
+        } else if (line.empty()) {
+            Spacing();
+        } else if (line == "---" || line == "***") {
+            Separator();
+        } else if (line.compare(0, 2, "# ") == 0) {
+            TextColored(Vec4(0.55f, 0.93f, 0.85f, 1.0f), "%s", StripInlineMarkdown(line.substr(2)).c_str());
+            Separator();
+        } else if (line.compare(0, 3, "## ") == 0) {
+            TextColored(Vec4(0.63f, 0.56f, 1.0f, 1.0f), "%s", StripInlineMarkdown(line.substr(3)).c_str());
+        } else if (line.compare(0, 2, "- ") == 0 || line.compare(0, 2, "* ") == 0) {
+            BulletText("%s", StripInlineMarkdown(line.substr(2)).c_str());
+        } else if (line.compare(0, 2, "> ") == 0) {
+            Window* w = GOG->cur_window;
+            Vec2 pos = w->cursor;
+            w->draw.AddRectFilledRounded(pos, Vec2(pos.x + 3, pos.y + GOG->atlas.line_height), GetColorU32(Col_Link), 1.5f);
+            w->cursor.x += 12.0f;
+            TextDisabled("%s", StripInlineMarkdown(line.substr(2)).c_str());
+        } else {
+            std::string clean = StripInlineMarkdown(line);
+            MarkdownWrappedLine(clean, GetColorU32(Col_Text));
+        }
+        if (end == source.size()) break;
+        start = end + 1;
+    }
+}
 
 } // namespace og

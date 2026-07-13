@@ -1,65 +1,67 @@
 # OSGui
 
 <p align="center">
-  <strong>A small, modern immediate-mode GUI for native C++ tools.</strong><br>
-  Purpose-built controls, a portable draw-list core, and a dependency-free Windows demo.
+  <strong>A modern immediate-mode GUI foundation for native C++ tools.</strong><br>
+  Animated controls, smooth themes, grid layouts, native charts, and Markdown—without a retained widget tree.
 </p>
 
 <p align="center">
-  <img src="docs/demo.png" alt="OSGui modern control center demo" width="820">
+  <img src="docs/demo.png" alt="OSGui Studio Dashboard" width="900">
 </p>
 
-## Why OSGui?
+## What makes OSGui different?
 
-OSGui is for projects that need a compact native interface without bringing in a large UI framework. It keeps the convenient immediate-mode workflow, but uses its own modern visual language: spacious dark surfaces, rounded controls, vivid violet actions, mint status accents, switch-style checkboxes, and crisp Cascadia Mono typography.
+OSGui keeps the convenient build-the-interface-each-frame workflow, but its
+visual and technical direction is intentionally its own. The default skin uses
+layered surfaces, rounded controls, gradient accents, soft shadows, animated
+switches, and semantic design tokens. Small retained caches underneath the API
+provide motion, theme transitions, grids, streaming data, and rich content
+without making applications own widget objects.
 
-The project is intentionally focused. It is not trying to replace a full desktop application framework—it is a practical foundation for debug panels, launchers, utilities, overlays, editors, and game-development tools.
+## Implemented foundation
 
-## Highlights
+- **Animated modern controls** — hover fades, animated switches, radio motion,
+  rounded surfaces, shadows, and gradient accents.
+- **Smooth dark/light themes** — colors, spacing, radii, shadows, and motion
+  settings interpolate during a theme change.
+- **Hybrid layout** — ordinary sequential layout plus multi-row grid helpers.
+- **Native chart builder** — line and bar series, shared scaling, legends,
+  area fills, grid lines, and screen-aware downsampling.
+- **Real-time data** — fixed-capacity `StreamingSeries` ring buffers.
+- **Built-in Markdown** — headings, lists, quotes, rules, fenced code, links,
+  and inline marker handling.
+- **Frame event queue** — structured click, value-change, and window events in
+  addition to familiar boolean widget results.
+- **Backend-neutral core** — widgets emit vertices, indices, textures, and clip
+  commands for renderer backends.
+- **Zero downloaded demo dependencies** — the included example uses Win32, GDI,
+  and OpenGL libraries provided with Windows.
 
-- **Modern by default** — a cohesive dark theme designed specifically for OSGui.
-- **Familiar controls** — buttons, switches, radio buttons, sliders, progress bars, trees, plots, and layout helpers.
-- **Tiny integration surface** — one core pair plus a platform and renderer backend.
-- **No downloaded dependencies** — the Windows demo uses Win32, GDI, and the OpenGL library included with Windows.
-- **Backend-friendly core** — widgets emit vertices, indices, textures, and clip commands instead of talking directly to the OS.
-- **Immediate-mode workflow** — describe the current interface each frame; OSGui handles interaction state and draw data.
+## Build the demo
 
-## Quick start
+Requirements: Windows 10 or 11 and Visual Studio with the **Desktop development
+with C++** workload.
 
-### 1. Build the included Windows demo
-
-Open an **x64 Native Tools Command Prompt for Visual Studio**, change to this folder, then run:
+The quickest Windows build is:
 
 ```bat
 build.bat
+osgui_demo.exe
 ```
 
-The build uses only libraries shipped with Windows. MinGW users can build with:
+`build.bat` uses the active compiler environment or asks Visual Studio's
+`vswhere` utility for the newest installed C++ toolchain.
 
-```sh
-g++ main.cpp osgui.cpp osgui_demo.cpp osgui_impl_win32.cpp osgui_impl_opengl2.cpp \
-    -o osgui_demo.exe -lopengl32 -lgdi32 -luser32 -mwindows
+### CMake
+
+```bat
+build-cmake.bat
 ```
 
-### 2. Add OSGui to your application
+The reusable targets are `osgui` for the portable core and
+`osgui_win32_opengl2` for the included Windows backend pair.
 
-Compile these source files with your project:
-
-```text
-osgui.cpp
-osgui_impl_win32.cpp
-osgui_impl_opengl2.cpp
-```
-
-Then initialize a context and both backends after creating your Win32/OpenGL window:
-
-```cpp
-og::CreateContext();
-OG_ImplWin32_Init(hwnd);
-OG_ImplOpenGL2_Init();
-```
-
-### 3. Build the interface each frame
+## Immediate-mode usage
 
 ```cpp
 OG_ImplOpenGL2_NewFrame();
@@ -67,71 +69,115 @@ OG_ImplWin32_NewFrame();
 og::NewFrame();
 
 og::Begin("Project settings");
+
 static bool preview = true;
 static float opacity = 0.75f;
-
 og::Checkbox("Live preview", &preview);
 og::SliderFloat("Opacity", &opacity, 0.0f, 1.0f);
-if (og::Button("Apply changes")) {
-    // Handle the action here.
-}
-og::End();
 
+if (og::Button("Apply changes")) {
+    ApplySettings();
+}
+
+og::End();
 og::Render();
 OG_ImplOpenGL2_RenderDrawData(og::GetDrawData());
 ```
 
-## Included widgets
+## Themes and animation
 
-| Category | API |
-| --- | --- |
-| Text | `Text`, `TextDisabled`, `TextColored`, `BulletText` |
-| Actions | `Button`, `SmallButton` |
-| Selection | `Checkbox`, `RadioButton` |
-| Values | `SliderFloat`, `SliderInt`, `ProgressBar` |
-| Structure | `CollapsingHeader`, `TreeNode`, `TreePop` |
-| Data | `PlotLines`, `PlotHistogram` |
-| Layout | `SameLine`, `Separator`, `Spacing`, `Indent`, `Unindent` |
+```cpp
+if (og::Button("Light theme"))
+    og::SetTheme(og::Theme_Light, 0.35f);
 
-Windows can be moved, collapsed, resized, closed, focused, layered, and scrolled. Stable widget IDs support the familiar `Visible label##unique_id` pattern.
-
-## Architecture
-
-```text
-Application
-    |
-    +-- OSGui core                  layout, state, widgets, draw lists
-    |
-    +-- Platform backend (Win32)    input, timing, display size, font atlas
-    |
-    +-- Renderer backend (OpenGL2)  textures, clipping, indexed triangles
+float panel_visibility = og::Animate(
+    "settings-panel",
+    settings_open ? 1.0f : 0.0f
+);
 ```
+
+The built-in themes use semantic roles such as `Col_WindowBg`, `Col_Link`,
+`Col_Success`, and `Col_WindowShadow`. Direct style editing remains available
+through `og::GetStyle()`.
+
+<p align="center">
+  <img src="docs/demo-light.png" alt="OSGui light theme" width="900">
+</p>
+
+## Grid layout
+
+```cpp
+if (og::BeginGrid("dashboard", 2, 16.0f)) {
+    DrawControls();
+
+    og::NextGridColumn();
+    DrawInspector();
+
+    og::NextGridColumn();
+    DrawTelemetry();
+
+    og::NextGridColumn();
+    DrawActivity();
+
+    og::EndGrid();
+}
+```
+
+Grid cells accept normal widgets and can contain multiple rows. Sequential
+layout remains the simplest and fastest path for ordinary panels.
+
+## Streaming charts
+
+```cpp
+static og::StreamingSeries frame_times(2048);
+frame_times.Push(delta_time_ms);
+
+if (og::BeginChart("Frame time", og::Vec2(-1, 180))) {
+    og::ChartLine("CPU", frame_times);
+    og::ChartLine("budget", budget_values, budget_count,
+                  og::GetColorU32(og::Col_Warning));
+    og::EndChart();
+}
+```
+
+Multiple line and bar series share a scale. Large line series are reduced to
+roughly the visible pixel width before geometry is generated.
+
+## Markdown
+
+```cpp
+og::Markdown(
+    "## Build status\n"
+    "- **Core:** ready\n"
+    "- **Renderer:** running\n"
+    "> No external Markdown extension required."
+);
+```
+
+The current parser is intentionally lightweight. Full Unicode shaping,
+selectable links, images, and cached document trees are planned for the richer
+text-engine milestone.
+
+## Repository map
 
 | File | Purpose |
 | --- | --- |
-| `osgui.h` / `osgui.cpp` | Public API, state, layout, widgets, and draw-list generation |
-| `osgui_impl_win32.*` | Win32 input, timing, and Cascadia Mono font-atlas creation |
-| `osgui_impl_opengl2.*` | Fixed-function OpenGL renderer with no loader dependency |
-| `osgui_demo.cpp` | Showcase window used in the screenshot |
-| `main.cpp` | Minimal native Windows host application |
+| `osgui.h` / `osgui.cpp` | Public API and portable core systems |
+| `osgui_impl_win32.*` | Win32 input, timing, and font-atlas backend |
+| `osgui_impl_opengl2.*` | Dependency-free compatibility renderer |
+| `osgui_demo.cpp` | Dashboard demonstrating the advanced API |
+| `main.cpp` | Native Windows example host |
+| `CMakeLists.txt` | Reusable core/backend targets and demo build |
+| `docs/architecture.md` | Frame pipeline, subsystem boundaries, and roadmap |
 
-## Customization
+## Current renderer scope
 
-Theme colors and spacing are available through `og::GetStyle()`:
+The included renderer uses fixed-function OpenGL so the demo can build without
+GLAD, GLEW, GLFW, or downloaded packages. The draw-data boundary is already
+backend-neutral. Shader-based OpenGL 3, DirectX 11, and Vulkan backends are the
+next step for true backdrop blur, higher-quality shadows, richer text, and GPU
+path rendering.
 
-```cpp
-og::Style& style = og::GetStyle();
-style.window_padding = og::Vec2(20, 18);
-style.colors[og::Col_Button] = OG_COL32(255, 110, 140, 255);
-style.colors[og::Col_CheckMark] = OG_COL32(110, 235, 200, 255);
-```
+## License
 
-## Current scope
-
-OSGui currently ships with one platform backend (Win32) and one renderer backend (OpenGL 1.x/2-compatible fixed function). It does not yet include docking, tables, text editing, pop-up menus, drag and drop, or multi-viewport support.
-
-That limited scope is deliberate: the codebase stays approachable, and the draw-data boundary makes additional backends possible without rewriting the widget layer.
-
-## Project status
-
-OSGui is an early, usable foundation. The API may evolve as more controls and backends are added. If you use it in a project, pin the commit you integrated and review changes before upgrading.
+OSGui is available under the [MIT License](LICENSE).

@@ -61,7 +61,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     RegisterClassExA(&wc);
 
     HWND hwnd = CreateWindowA("osGUIWindow", "OSGui - Modern C++ Interface",
-                              WS_OVERLAPPEDWINDOW, 100, 100, 1000, 760,
+                              WS_OVERLAPPEDWINDOW, 80, 50, 1000, 860,
                               0, 0, hInst, 0);
     if (!CreateGLContext(hwnd)) { MessageBoxA(0, "Failed to create OpenGL context", "osGUI", MB_OK); return 1; }
 
@@ -72,7 +72,6 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
     OG_ImplWin32_Init(hwnd);
     OG_ImplOpenGL2_Init();
 
-    float clear_col[3] = { 0.035f, 0.039f, 0.065f };
     bool show_demo = true;
 
     bool running = true;
@@ -94,7 +93,11 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE, LPSTR, int nCmdShow) {
 
         // ---- render ----
         og::Render();
-        glClearColor(clear_col[0], clear_col[1], clear_col[2], 1.0f);
+        og::U32 canvas = og::GetStyle().colors[og::Col_MenuBarBg];
+        float clear_r = (float)(canvas & 255) / 255.0f;
+        float clear_g = (float)((canvas >> 8) & 255) / 255.0f;
+        float clear_b = (float)((canvas >> 16) & 255) / 255.0f;
+        glClearColor(clear_r, clear_g, clear_b, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         OG_ImplOpenGL2_RenderDrawData(og::GetDrawData());
         SwapBuffers(g_hDC);

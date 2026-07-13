@@ -13,7 +13,6 @@ if errorlevel 1 (
     )
 )
 
-cl /nologo /EHsc /O2 /W4 /MD main.cpp osgui.cpp osgui_demo.cpp ^
-   osgui_impl_win32.cpp osgui_impl_opengl2.cpp ^
-   /Fe:osgui_demo.exe ^
-   /link user32.lib gdi32.lib opengl32.lib /SUBSYSTEM:WINDOWS
+cmake -S . -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release
+if errorlevel 1 exit /b 1
+cmake --build build
