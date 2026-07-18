@@ -5,7 +5,7 @@
 
 # Configuration directories and files
 SourceDirectory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer
-BuildDirectory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release
+BuildDirectory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug
 
 # Where to place the cost data store
 CostDataFile: 
