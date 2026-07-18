@@ -3,7 +3,7 @@
 
 # Relative path conversion top directories.
 set(CMAKE_RELATIVE_PATH_TOP_SOURCE "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer")
-set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release")
+set(CMAKE_RELATIVE_PATH_TOP_BINARY "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug")
 
 
 # The C and CXX include file regular expressions for this directory.

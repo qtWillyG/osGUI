@@ -28,9 +28,9 @@ events:
     names:
       - "cl"
     candidate_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -74,20 +74,20 @@ events:
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/"
     searched_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cl.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cl.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cl"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cl.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cl.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cl"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cl.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cl.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cl"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cl.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cl.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cl"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cl.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cl.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cl"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cl.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cl.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cl"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.com"
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -158,7 +158,7 @@ events:
     found: "C:/Program Files/CMake/share/cmake-4.3/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -243,7 +243,7 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
       
       The CXX compiler identification is MSVC, found in:
-        C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/4.3.3/CompilerIdCXX/CMakeCXXCompilerId.exe
+        C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/4.3.3/CompilerIdCXX/CMakeCXXCompilerId.exe
       
   -
     kind: "message-v1"
@@ -255,7 +255,7 @@ events:
     message: |
       Detecting CXX compiler /showIncludes prefix:
         main.c
-        Note: including file: C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-release\\CMakeFiles\\ShowIncludes\\foo.h
+        Note: including file: C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-debug\\CMakeFiles\\ShowIncludes\\foo.h
         
       Found prefix "Note: including file: "
   -
@@ -327,7 +327,7 @@ events:
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -565,7 +565,7 @@ events:
     found: false
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -676,7 +676,7 @@ events:
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/link.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -814,7 +814,7 @@ events:
     found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/mt.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -925,7 +925,7 @@ events:
     found: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -992,9 +992,9 @@ events:
     names:
       - "rc"
     candidate_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -1050,15 +1050,15 @@ events:
       - "C:/Program Files (x86)/OSGuiPackageConsumer/sbin/"
       - "C:/Program Files (x86)/OSGuiPackageConsumer/"
     searched_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/rc.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/rc.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/rc"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/rc.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/rc.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/rc"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/rc.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/rc.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/rc"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/rc.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/rc.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/rc"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/rc.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/rc.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/rc"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/rc.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/rc.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/rc"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/rc.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/rc.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/rc"
@@ -1090,7 +1090,7 @@ events:
     found: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe"
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -1149,8 +1149,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/CMakeScratch/TryCompile-2zlx94"
-      binary: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/CMakeScratch/TryCompile-2zlx94"
+      source: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/CMakeScratch/TryCompile-2i2op3"
+      binary: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/CMakeScratch/TryCompile-2i2op3"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -1161,28 +1161,28 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/CMakeScratch/TryCompile-2zlx94'
+        Change Dir: 'C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/CMakeScratch/TryCompile-2i2op3'
         
-        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_ebf8e\\fast
-        	"C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_ebf8e.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_ebf8e.dir\\build
-        Building CXX object CMakeFiles/cmTC_ebf8e.dir/CMakeCXXCompilerABI.cpp.obj
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_ebf8e.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-release\\CMakeFiles\\CMakeScratch\\TryCompile-2zlx94" --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\mrwge\\AppData\\Local\\Temp\\nm1B31.tmp
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_c2a6f\\fast
+        	"C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64\\nmake.exe"  -f CMakeFiles\\cmTC_c2a6f.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_c2a6f.dir\\build
+        Building CXX object CMakeFiles/cmTC_c2a6f.dir/CMakeCXXCompilerABI.cpp.obj
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_c2a6f.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir="C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-debug\\CMakeFiles\\CMakeScratch\\TryCompile-2i2op3" --filter-prefix="Note: including file: " -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\cl.exe @C:\\Users\\mrwge\\AppData\\Local\\Temp\\nm2CF8.tmp
         CMakeCXXCompilerABI.cpp
-        Linking CXX executable cmTC_ebf8e.exe
-        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_ebf8e.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_ebf8e.dir\\objects1.rsp @C:\\Users\\mrwge\\AppData\\Local\\Temp\\nm1CA9.tmp
+        Linking CXX executable cmTC_c2a6f.exe
+        	"C:\\Program Files\\CMake\\bin\\cmake.exe" -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_c2a6f.dir --rc=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe --mt=C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe --manifests -- C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c2a6f.dir\\objects1.rsp @C:\\Users\\mrwge\\AppData\\Local\\Temp\\nm2D67.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_ebf8e.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_ebf8e.dir/embed.manifest
+        Create CMakeFiles\\cmTC_c2a6f.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_c2a6f.dir/embed.manifest
         RC Pass 1:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_ebf8e.dir/manifest.res CMakeFiles\\cmTC_ebf8e.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c2a6f.dir/manifest.res CMakeFiles\\cmTC_c2a6f.dir/manifest.rc
         LINK Pass 1:
-        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_ebf8e.dir\\objects1.rsp /out:cmTC_ebf8e.exe /implib:cmTC_ebf8e.lib /pdb:C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-release\\CMakeFiles\\CMakeScratch\\TryCompile-2zlx94\\cmTC_ebf8e.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_ebf8e.dir/intermediate.manifest CMakeFiles\\cmTC_ebf8e.dir/manifest.res
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c2a6f.dir\\objects1.rsp /out:cmTC_c2a6f.exe /implib:cmTC_c2a6f.lib /pdb:C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-debug\\CMakeFiles\\CMakeScratch\\TryCompile-2i2op3\\cmTC_c2a6f.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c2a6f.dir/intermediate.manifest CMakeFiles\\cmTC_c2a6f.dir/manifest.res
         MT:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_ebf8e.dir/intermediate.manifest /out:CMakeFiles\\cmTC_ebf8e.dir/embed.manifest /notify_update
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\mt.exe /nologo /manifest CMakeFiles\\cmTC_c2a6f.dir/intermediate.manifest /out:CMakeFiles\\cmTC_c2a6f.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_ebf8e.dir/manifest.res CMakeFiles\\cmTC_ebf8e.dir/manifest.rc
+        C:\\PROGRA~2\\WI3CF2~1\\10\\bin\\100261~1.0\\x64\\rc.exe /fo CMakeFiles\\cmTC_c2a6f.dir/manifest.res CMakeFiles\\cmTC_c2a6f.dir/manifest.rc
         FINAL LINK:
-        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_ebf8e.dir\\objects1.rsp /out:cmTC_ebf8e.exe /implib:cmTC_ebf8e.lib /pdb:C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-release\\CMakeFiles\\CMakeScratch\\TryCompile-2zlx94\\cmTC_ebf8e.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_ebf8e.dir/intermediate.manifest CMakeFiles\\cmTC_ebf8e.dir/manifest.res
+        C:\\PROGRA~1\\MICROS~2\\18\\COMMUN~1\\VC\\Tools\\MSVC\\1451~1.362\\bin\\Hostx64\\x64\\link.exe /nologo @CMakeFiles\\cmTC_c2a6f.dir\\objects1.rsp /out:cmTC_c2a6f.exe /implib:cmTC_c2a6f.lib /pdb:C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\consumer-verify-debug\\CMakeFiles\\CMakeScratch\\TryCompile-2i2op3\\cmTC_c2a6f.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_c2a6f.dir/intermediate.manifest CMakeFiles\\cmTC_c2a6f.dir/manifest.res
         
       exitCode: 0
   -
@@ -1237,9 +1237,9 @@ events:
       - "cuda-memcheck"
       - "compute-sanitizer"
     candidate_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -1296,15 +1296,15 @@ events:
       - "C:/Program Files (x86)/OSGuiPackageConsumer/"
       - "/REGISTRY-NOTFOUND/"
     searched_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/purify.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/purify.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/purify"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/purify.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/purify.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/purify"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/purify.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/purify.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/purify"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/purify.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/purify.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/purify"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/purify.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/purify.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/purify"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/purify.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/purify.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/purify"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/purify.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/purify.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/purify"
@@ -1470,15 +1470,15 @@ events:
       - "/REGISTRY-NOTFOUND/purify.com"
       - "/REGISTRY-NOTFOUND/purify.exe"
       - "/REGISTRY-NOTFOUND/purify"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/valgrind.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/valgrind.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/valgrind"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/valgrind.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/valgrind.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/valgrind"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/valgrind.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/valgrind.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/valgrind"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/valgrind.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/valgrind.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/valgrind"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/valgrind.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/valgrind.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/valgrind"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/valgrind.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/valgrind.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/valgrind"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/valgrind.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/valgrind.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/valgrind"
@@ -1644,15 +1644,15 @@ events:
       - "/REGISTRY-NOTFOUND/valgrind.com"
       - "/REGISTRY-NOTFOUND/valgrind.exe"
       - "/REGISTRY-NOTFOUND/valgrind"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/boundscheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/boundscheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/boundscheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/boundscheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/boundscheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/boundscheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/boundscheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/boundscheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/boundscheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/boundscheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/boundscheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/boundscheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/boundscheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/boundscheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/boundscheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/boundscheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/boundscheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/boundscheck"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/boundscheck.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/boundscheck.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/boundscheck"
@@ -1818,15 +1818,15 @@ events:
       - "/REGISTRY-NOTFOUND/boundscheck.com"
       - "/REGISTRY-NOTFOUND/boundscheck.exe"
       - "/REGISTRY-NOTFOUND/boundscheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/drmemory.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/drmemory.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/drmemory"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/drmemory.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/drmemory.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/drmemory"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/drmemory.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/drmemory.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/drmemory"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/drmemory.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/drmemory.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/drmemory"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/drmemory.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/drmemory.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/drmemory"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/drmemory.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/drmemory.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/drmemory"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/drmemory.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/drmemory.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/drmemory"
@@ -1992,15 +1992,15 @@ events:
       - "/REGISTRY-NOTFOUND/drmemory.com"
       - "/REGISTRY-NOTFOUND/drmemory.exe"
       - "/REGISTRY-NOTFOUND/drmemory"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cuda-memcheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cuda-memcheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/cuda-memcheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cuda-memcheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cuda-memcheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/cuda-memcheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cuda-memcheck.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cuda-memcheck.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/cuda-memcheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cuda-memcheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cuda-memcheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/cuda-memcheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cuda-memcheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cuda-memcheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/cuda-memcheck"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cuda-memcheck.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cuda-memcheck.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/cuda-memcheck"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cuda-memcheck.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cuda-memcheck.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cuda-memcheck"
@@ -2166,15 +2166,15 @@ events:
       - "/REGISTRY-NOTFOUND/cuda-memcheck.com"
       - "/REGISTRY-NOTFOUND/cuda-memcheck.exe"
       - "/REGISTRY-NOTFOUND/cuda-memcheck"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/compute-sanitizer.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/compute-sanitizer.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/compute-sanitizer"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/compute-sanitizer.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/compute-sanitizer.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/compute-sanitizer"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/compute-sanitizer.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/compute-sanitizer.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/compute-sanitizer"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/compute-sanitizer.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/compute-sanitizer.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/compute-sanitizer"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/compute-sanitizer.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/compute-sanitizer.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/compute-sanitizer"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/compute-sanitizer.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/compute-sanitizer.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/compute-sanitizer"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/compute-sanitizer.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/compute-sanitizer.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/compute-sanitizer"
@@ -2343,7 +2343,7 @@ events:
     found: false
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -2412,9 +2412,9 @@ events:
     names:
       - "gcov"
     candidate_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/"
@@ -2470,15 +2470,15 @@ events:
       - "C:/Program Files (x86)/OSGuiPackageConsumer/sbin/"
       - "C:/Program Files (x86)/OSGuiPackageConsumer/"
     searched_directories:
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/gcov.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/gcov.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/bin/gcov"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/gcov.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/gcov.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/sbin/gcov"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/gcov.com"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/gcov.exe"
-      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/gcov"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/gcov.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/gcov.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/bin/gcov"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/gcov.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/gcov.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/sbin/gcov"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/gcov.com"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/gcov.exe"
+      - "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer/build-verify-debug/install/gcov"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/gcov.com"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/gcov.exe"
       - "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/gcov"
@@ -2644,7 +2644,7 @@ events:
     found: false
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"
@@ -2703,7 +2703,7 @@ events:
       -
         name: "Core"
         required: true
-        found: true
+        found: false
     configs:
       -
         filename: "OSGui.cps"
@@ -2743,60 +2743,1049 @@ events:
         CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
     candidates:
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/OSGuiConfig.cmake"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/OSGuiConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/osgui-config.cmake"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/osgui-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/lib/cps/OSGui.cps"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/lib/cps/OSGui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/lib/cps/osgui.cps"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/lib/cps/osgui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/share/cps/OSGui.cps"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/share/cps/OSGui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/CMakeFiles/pkgRedirects/share/cps/osgui.cps"
+        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/CMakeFiles/pkgRedirects/share/cps/osgui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/OSGuiConfig.cmake"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/OSGuiConfig.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/osgui-config.cmake"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/osgui-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/lib/cps/OSGui.cps"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib/cps/OSGui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/lib/cps/osgui.cps"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/lib/cps/osgui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/share/cps/OSGui.cps"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/share/cps/OSGui.cps"
         mode: "cps"
         reason: "no_exist"
       -
-        path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/share/cps/osgui.cps"
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/share/cps/osgui.cps"
         mode: "cps"
         reason: "no_exist"
-    found:
-      path: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-release/install/lib/cmake/OSGui/OSGuiConfig.cmake"
-      mode: "config"
-      version: "2.0.0"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/vcpackages/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TestWindow/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/TeamFoundation/Team Explorer/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/Roslyn/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Microsoft SDKs/Windows/v10.0A/bin/NETFX 4.8 Tools/x64/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/FSharp/Tools/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Team Tools/DiagnosticsHub/Collector/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/Extensions/Microsoft/CodeCoverage.Console/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x64/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/bin/x64/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/MSBuild/Current/Bin/amd64/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/Microsoft.NET/Framework64/v4.0.30319/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/Tools/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.codex/tmp/arg0/codex-arg0zXeu7Z/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Common Files/Oracle/Java/java8path/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/wbem/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/WindowsPowerShell/v1.0/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Windows/System32/OpenSSH/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/Windows Kits/10/Windows Performance Toolkit/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git/cmd/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/dotnet/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Git LFS/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.grok/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Microsoft/WindowsApps/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/Programs/Antigravity IDE/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Users/mrwge/AppData/Local/OpenAI/Codex/bin/ada252862d154cdd/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/WindowsApps/OpenAI.Codex_26.715.4045.0_x64__2p2nqsd0c76g0/app/resources/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/VC/Linux/bin/ConnectionManagerExe/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/Microsoft Visual Studio/18/Community/VC/vcpkg/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/CMake/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/OSGuiConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/osgui-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/lib/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/lib/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/share/cps/OSGui.cps"
+        mode: "cps"
+        reason: "no_exist"
+      -
+        path: "C:/Program Files (x86)/share/cps/osgui.cps"
+        mode: "cps"
+        reason: "no_exist"
+    found: null
     search_context:
       CMAKE_PREFIX_PATH:
-        - "C:\\Users\\mrwge\\Documents\\anti gravity\\claude\\osgui\\build-verify-release\\install"
+        - "build-verify-debug\\install"
       ENV{PATH}:
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX64\\x64"
         - "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\Common7\\IDE\\VC\\VCPackages"

@@ -2,8 +2,8 @@ Start testing: Jul 18 21:06 E. Australia Standard Time
 ----------------------------------------------------------
 1/1 Testing: osgui_package_consumer
 1/1 Test: osgui_package_consumer
-Command: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release/osgui_package_consumer.exe"
-Directory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-release
+Command: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/osgui_package_consumer.exe"
+Directory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug
 "osgui_package_consumer" start time: Jul 18 21:06 E. Australia Standard Time
 Output:
 ----------------------------------------------------------
