@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree"
 
 # Utility rule file for NightlyMemoryCheck.
 
@@ -74,6 +74,6 @@ CMakeFiles\NightlyMemoryCheck.dir\clean:
 .PHONY : CMakeFiles\NightlyMemoryCheck.dir\clean
 
 CMakeFiles\NightlyMemoryCheck.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\NightlyMemoryCheck.dir\DependInfo.cmake" "--color=$(COLOR)" NightlyMemoryCheck
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles\NightlyMemoryCheck.dir\DependInfo.cmake" "--color=$(COLOR)" NightlyMemoryCheck
 .PHONY : CMakeFiles\NightlyMemoryCheck.dir\depend
 

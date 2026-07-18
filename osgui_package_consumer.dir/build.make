@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree"
 
 # Include any dependencies generated for this target.
 include CMakeFiles\osgui_package_consumer.dir\depend.make
@@ -64,8 +64,8 @@ CMakeFiles\osgui_package_consumer.dir\codegen:
 CMakeFiles\osgui_package_consumer.dir\main.cpp.obj: CMakeFiles\osgui_package_consumer.dir\flags.make
 CMakeFiles\osgui_package_consumer.dir\main.cpp.obj: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer\main.cpp"
 CMakeFiles\osgui_package_consumer.dir\main.cpp.obj: CMakeFiles\osgui_package_consumer.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/osgui_package_consumer.dir/main.cpp.obj"
-	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\osgui_package_consumer.dir\main.cpp.obj.d --working-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1451~1.362\bin\Hostx64\x64\cl.exe @<<
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/osgui_package_consumer.dir/main.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\osgui_package_consumer.dir\main.cpp.obj.d --working-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" --filter-prefix="Note: including file: " -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1451~1.362\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\osgui_package_consumer.dir\main.cpp.obj /FdCMakeFiles\osgui_package_consumer.dir\ /FS -c "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer\main.cpp"
 <<
 
@@ -90,16 +90,16 @@ osgui_package_consumer_EXTERNAL_OBJECTS =
 
 osgui_package_consumer.exe: CMakeFiles\osgui_package_consumer.dir\main.cpp.obj
 osgui_package_consumer.exe: CMakeFiles\osgui_package_consumer.dir\build.make
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osguid.lib"
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_examplesd.lib"
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_opengl3d.lib"
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_win32_opengl2d.lib"
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_dx11d.lib"
-osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osguid.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_examples.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_opengl3.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_win32_opengl2.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_dx11.lib"
+osgui_package_consumer.exe: "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui.lib"
 osgui_package_consumer.exe: CMakeFiles\osgui_package_consumer.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable osgui_package_consumer.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable osgui_package_consumer.exe"
 	"C:\Program Files\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\osgui_package_consumer.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests -- C:\PROGRA~1\MICROS~2\18\COMMUN~1\VC\Tools\MSVC\1451~1.362\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\osgui_package_consumer.dir\objects1.rsp @<<
- /out:osgui_package_consumer.exe /implib:osgui_package_consumer.lib /pdb:"C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\osgui_package_consumer.pdb" /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console  "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osguid.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_examplesd.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_opengl3d.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_win32_opengl2d.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osgui_dx11d.lib" opengl32.lib gdi32.lib user32.lib "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-debug\install\lib\osguid.lib" d3d11.lib d3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
+ /out:osgui_package_consumer.exe /implib:osgui_package_consumer.lib /pdb:"C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\osgui_package_consumer.pdb" /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console  "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_examples.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_opengl3.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_win32_opengl2.lib" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui_dx11.lib" opengl32.lib gdi32.lib user32.lib "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build-verify-release\osgui.lib" d3d11.lib d3dcompiler.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
 <<
 
 # Rule to build all files generated by this target.
@@ -111,6 +111,6 @@ CMakeFiles\osgui_package_consumer.dir\clean:
 .PHONY : CMakeFiles\osgui_package_consumer.dir\clean
 
 CMakeFiles\osgui_package_consumer.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\osgui_package_consumer.dir\DependInfo.cmake" "--color=$(COLOR)" osgui_package_consumer
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles\osgui_package_consumer.dir\DependInfo.cmake" "--color=$(COLOR)" osgui_package_consumer
 .PHONY : CMakeFiles\osgui_package_consumer.dir\depend
 

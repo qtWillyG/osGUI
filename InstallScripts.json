@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/cmake_install.cmake"
+		"C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-buildtree/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

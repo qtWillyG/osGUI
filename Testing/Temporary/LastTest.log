@@ -1,18 +1,18 @@
-Start testing: Jul 18 21:06 E. Australia Standard Time
+Start testing: Jul 18 21:07 E. Australia Standard Time
 ----------------------------------------------------------
 1/1 Testing: osgui_package_consumer
 1/1 Test: osgui_package_consumer
-Command: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug/osgui_package_consumer.exe"
-Directory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug
-"osgui_package_consumer" start time: Jul 18 21:06 E. Australia Standard Time
+Command: "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-buildtree/osgui_package_consumer.exe"
+Directory: C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-buildtree
+"osgui_package_consumer" start time: Jul 18 21:07 E. Australia Standard Time
 Output:
 ----------------------------------------------------------
 <end of output>
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"osgui_package_consumer" end time: Jul 18 21:06 E. Australia Standard Time
+"osgui_package_consumer" end time: Jul 18 21:07 E. Australia Standard Time
 "osgui_package_consumer" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jul 18 21:06 E. Australia Standard Time
+End testing: Jul 18 21:07 E. Australia Standard Time

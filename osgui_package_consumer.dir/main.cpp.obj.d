@@ -1,4 +1,4 @@
-C:/Users/mrwge/Documents/anti gravity/claude/osgui/build-verify-debug/install/include/osgui/osgui.h
+C:/Users/mrwge/Documents/anti gravity/claude/osgui/osgui.h
 C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include/stdint.h
 C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include/vcruntime.h
 C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/include/sal.h

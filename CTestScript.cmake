@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 4.3.3)
 
 # CTest Start Step
 set(CTEST_SOURCE_DIRECTORY "C:/Users/mrwge/Documents/anti gravity/claude/osgui/cmake/package-consumer")
-set(CTEST_BINARY_DIRECTORY "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-debug")
+set(CTEST_BINARY_DIRECTORY "C:/Users/mrwge/Documents/anti gravity/claude/osgui/consumer-verify-buildtree")
 
 # CTest Update Step
 set(CTEST_UPDATE_COMMAND "")

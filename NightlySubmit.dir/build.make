@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree"
 
 # Utility rule file for NightlySubmit.
 
@@ -74,6 +74,6 @@ CMakeFiles\NightlySubmit.dir\clean:
 .PHONY : CMakeFiles\NightlySubmit.dir\clean
 
 CMakeFiles\NightlySubmit.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\NightlySubmit.dir\DependInfo.cmake" "--color=$(COLOR)" NightlySubmit
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles\NightlySubmit.dir\DependInfo.cmake" "--color=$(COLOR)" NightlySubmit
 .PHONY : CMakeFiles\NightlySubmit.dir\depend
 
