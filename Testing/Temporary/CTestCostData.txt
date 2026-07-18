@@ -1,2 +1,2 @@
-osgui_core 3 0.0026991
+osgui_package_consumer 3 0.00268003
 ---

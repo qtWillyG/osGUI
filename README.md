@@ -1,95 +1,102 @@
 <div align="center">
 
-# OSGui
+# OSGui v2
 
-### Modern immediate-mode UI for native C++ applications
+### Immediate-mode UI for instrument-grade native C++ tools
 
-Build animated tools, launchers, editors, overlays, node graphs, and telemetry
-panels with a small frame-driven API and renderer-neutral draw data.
+Build animated editors, launchers, overlays, node canvases, and telemetry
+surfaces with a frame-driven API, inspectable state, and renderer-neutral draw
+data.
 
+[![OSGui v2 alpha](https://img.shields.io/badge/OSGui-v2%20alpha-8B5CF6?style=for-the-badge)](#project-status)
 [![C++11](https://img.shields.io/badge/C%2B%2B-11%2B-6D5DFC?style=for-the-badge&logo=cplusplus&logoColor=white)](#requirements)
-[![Windows + Linux](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-171A28?style=for-the-badge)](#backend-matrix)
-[![OpenGL + DirectX](https://img.shields.io/badge/renderers-OpenGL%203%20%7C%20DX11-27C7B8?style=for-the-badge)](#backend-matrix)
-[![Tests](https://img.shields.io/badge/tests-passing-22C55E?style=for-the-badge)](#testing)
-[![MIT](https://img.shields.io/badge/license-MIT-8B5CF6?style=for-the-badge)](LICENSE)
+[![Build](https://github.com/qtWillyG/osGUI/actions/workflows/build.yml/badge.svg)](https://github.com/qtWillyG/osGUI/actions/workflows/build.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-27C7B8?style=for-the-badge)](LICENSE)
 
-[Quick start](#quick-start) · [Features](#feature-overview) · [Backends](#backend-matrix) · [Examples](#examples) · [Architecture](#architecture) · [Status](#project-status)
+[Quick start](#quick-start) | [What is in v2](#what-is-in-v2) | [Backends](#backend-capabilities) | [Documentation](#documentation) | [Status](#project-status)
 
 </div>
 
 ![OSGui Studio Dashboard](docs/demo.png)
 
-OSGui keeps the productive part of immediate-mode UI—describe the interface
-each frame, receive a result immediately—but gives it a softer visual language
-and several systems normally supplied by extensions. Rounded surfaces,
-animation, charts, Markdown, node editing, docking helpers, persistence, and
-GPU effects share one compact draw pipeline.
+> [!IMPORTANT]
+> OSGui `2.0.0-alpha.1` is a working alpha. Its public API and state format may
+> change before the stable v2 release. It is not yet feature-compatible or as
+> battle-tested as Dear ImGui; the current limitations are listed below.
 
-> OSGui is an independent project inspired by immediate-mode GUI design. It is
-> not a fork of Dear ImGui and does not use Dear ImGui source code.
+OSGui keeps the productive part of immediate-mode UI: describe the interface
+each frame, keep application data in the application, and receive interaction
+results immediately. V2 develops a different identity around three priorities:
 
-## Why OSGui?
+- product-oriented motion and semantic themes, including reduced-motion and
+  high-contrast modes;
+- built-in data surfaces such as charts, metric cards, Markdown, and a compact
+  node canvas;
+- observability through frame metrics, ID-conflict reporting, validation, and
+  capturable draw-data snapshots.
 
-<table>
-<tr>
-<td width="33%" valign="top">
-
-### Designed for modern tools
-
-Animated switches, translucent cards, gradient accents, rounded windows,
-shadows, theme transitions, and a live Theme Studio are included by default.
-
-</td>
-<td width="33%" valign="top">
-
-### More than basic widgets
-
-Real-time charts, sortable tables, rich text, editable UTF-8 text, popups,
-notifications, node graphs, grids, tabs, and colour editing are native APIs.
-
-</td>
-<td width="33%" valign="top">
-
-### Backend-neutral core
-
-The core emits vertices, indices, textures, clip rectangles, and effect
-commands. Platform and graphics integrations remain separate and replaceable.
-
-</td>
-</tr>
-</table>
+OSGui is an independent project. It is not a Dear ImGui fork and does not use
+Dear ImGui source code.
 
 ## Quick start
 
-### Build the Windows showcase
+### Requirements
 
-```bat
-git clone <your-osgui-repository>
-cd osgui
-build.bat
-osgui_demo.exe
-```
+- a C++11 compiler;
+- CMake 3.20 or newer for the supported build and install flow;
+- Windows for the bundled showcase application;
+- a graphics and platform backend appropriate for the host application.
 
-`build.bat` uses an active Visual Studio developer shell or locates the newest
-installed MSVC toolchain through `vswhere`.
+### Build from source
 
-For reusable CMake targets, tests, OpenGL 3, and DirectX 11:
-
-```bat
-build-cmake.bat
+```sh
+git clone https://github.com/qtWillyG/osGUI.git
+cd osGUI
+cmake -S . -B build -DBUILD_TESTING=ON -DOSGUI_BUILD_TESTS=ON
+cmake --build build --config Release --parallel
 ctest --test-dir build -C Release --output-on-failure
 ```
 
+On Windows, `build.bat` runs the clean CMake build, test, and local install
+pipeline and locates MSVC through an active developer shell or `vswhere`.
+
+```bat
+build.bat
+build\osgui_demo.exe
+```
+
+See [Getting started](docs/getting-started.md) for backend setup, package
+installation, and custom-backend input examples.
+
 ### Frame integration
 
+The Windows showcase uses the Win32 platform backend with the compatibility
+OpenGL renderer:
+
 ```cpp
-og::CreateContext();
-OG_ImplWin32_Init(hwnd);
-OG_ImplOpenGL2_Init(); // OpenGL compatibility demo backend
+#include "osgui.h"
+#include "osgui_impl_win32.h"
+#include "osgui_impl_opengl2.h"
+
+og::Context* context = og::CreateContext();
+if (!OG_CHECKVERSION()) {
+    og::DestroyContext(context);
+    return false;
+}
+if (!OG_ImplWin32_Init(hwnd)) {
+    og::DestroyContext(context);
+    return false;
+}
+if (!OG_ImplOpenGL2_Init()) {
+    OG_ImplWin32_Shutdown();
+    og::DestroyContext(context);
+    return false;
+}
 
 while (running) {
-    OG_ImplOpenGL2_NewFrame();
+    // Poll/forward platform events before beginning the frame.
     OG_ImplWin32_NewFrame();
+    OG_ImplOpenGL2_NewFrame();
     og::NewFrame();
 
     if (og::Begin("Project settings")) {
@@ -99,7 +106,7 @@ while (running) {
 
         og::InputText("Project", name, sizeof(name));
         og::Checkbox("Live preview", &preview);
-        og::SliderFloat("Opacity", &opacity, 0.0f, 1.0f);
+        og::DragFloat("Opacity", &opacity, 0.01f, 0.0f, 1.0f);
 
         if (og::Button("Save"))
             og::AddToast("Workspace saved", og::Toast_Success);
@@ -110,378 +117,274 @@ while (running) {
     og::Render();
     OG_ImplOpenGL2_RenderDrawData(og::GetDrawData());
 }
+
+OG_ImplOpenGL2_Shutdown();
+OG_ImplWin32_Shutdown();
+og::DestroyContext(context);
 ```
 
-## Feature overview
+Forward Win32 messages to `OG_ImplWin32_WndProcHandler()`. Applications using
+another window system or renderer can combine the core with a different backend
+without changing widget code.
 
-| Area | Included |
+Keep a context on one owning thread for its entire lifetime, including
+destruction. `SetCurrentContext()` selects among contexts owned by the calling
+thread; it is not a context-migration mechanism. The bundled backends also use
+backend-specific singleton state, so initialize, drive, and shut down each one
+with its intended context current.
+
+## What is in v2
+
+| Area | Implemented in the alpha |
 | --- | --- |
-| **Windows** | Movable, resizable, collapsible windows; close controls; scrolling; left, right, top, bottom, and fill docking slots |
-| **Inputs** | Buttons, animated checkboxes, radio buttons, integer/float sliders, single-line text, multiline text, password and read-only modes |
-| **Navigation** | Mouse interaction plus Tab, Shift+Tab, arrows, Enter, Space, Escape, Home, End, Backspace, and Delete |
-| **Selection** | Combo boxes, dropdown lists, tab bars, tree nodes, collapsible sections, popup windows, and modal dialogs |
-| **Data** | Sortable tables, selectable rows, progress bars, fixed-capacity streaming series, and frame events |
-| **Charts** | Line, bar, area, scatter, pie, candlestick, histogram, and multi-series real-time plots |
-| **Rich content** | Markdown headings, lists, quotes, rules, code blocks, interactive links, callback-resolved images, and texture images |
-| **Visuals** | Rounded geometry, shadows, gradients, GPU framebuffer blur, translucent glass cards, and animated state transitions |
-| **Themes** | Dark/light presets, smooth transitions, semantic colour tokens, live Theme Studio, and JSON persistence |
-| **Fonts** | Runtime Windows font selection, configurable fallback, proportional advances, UTF-8 decoding, CJK/script ranges, and emoji fallback |
-| **Editors** | Draggable node canvas with pins, curved links, clipping, and application-owned serializable positions |
-| **Platform** | Per-monitor DPI scaling, framebuffer scaling, UTF-8 clipboard integration, Win32 input, and optional GLFW input |
+| **Lifecycle** | Runtime version/data-layout check; explicit current-context API; context-isolated core state with lifetime-long owning-thread affinity |
+| **Input** | Queued mouse, wheel, key, Unicode text, and focus events; complete press/release pulses and event-time modifiers; ordered text-editor actions; named keys and capability flags |
+| **Identity and scopes** | String, integer, and pointer ID scopes; style color/variable stacks; item-width and disabled scopes |
+| **Windows and layout** | Window flags and conditions, size constraints and queries, sequential layout, grids, dock slots, child scrolling, list clipping |
+| **Interaction** | Last-item queries, selectable and invisible items, typed copy-owned drag/drop payloads, keyboard focus navigation |
+| **Widgets** | Buttons, toggles, sliders, drags, knobs, multiline UTF-8 text editing with selection, range clipboard, and undo/redo; combo boxes, tabs, trees, popups, tables, status badges, spinners, skeletons, and metric cards |
+| **Data surfaces** | Streaming line, bar, area, scatter, pie, candlestick, and histogram charts; Markdown links/images; node canvas |
+| **Presentation** | Dark, light, and high-contrast themes; transitions; reduced motion; semantic colors; notifications and glass surfaces |
+| **Draw contract** | `uintptr_t` texture IDs, nested clip intersection, draw callbacks, vertex offsets, command compaction, deep-copy `DrawDataSnapshot` |
+| **Diagnostics** | Per-frame counters, Metrics Studio, duplicate-ID counts, open-scope/stack validation, debug-log callback |
+| **Persistence** | Versioned workspace JSON (writes v2; reads v1/v2); transactional file and memory load; bounded reads and `GetLastError()` diagnostics |
+| **Distribution** | CMake build-tree aliases, install/export package, component-aware `find_package`, installed-package consumer test, Windows/Linux CI matrix |
 
-## Text, fonts, and UTF-8
+### Scoped composition
 
-`InputText` stores UTF-8 and moves or deletes by complete codepoint, so editing
-does not split multibyte characters. The Win32 baker uses a three-stage font
-chain:
-
-1. the selected primary family;
-2. a configurable international fallback;
-3. Segoe UI Emoji for supplementary-plane symbols.
+Repeated controls should receive a stable identity. Presentation overrides and
+disabled state are explicit scopes:
 
 ```cpp
-OG_ImplWin32_SetFont("Segoe UI", 17, FW_NORMAL);
-OG_ImplWin32_SetFontFallback("Microsoft YaHei UI");
+for (int row = 0; row < row_count; ++row) {
+    og::PushID(row);
+    og::BeginDisabled(!rows[row].available);
 
-char title[256] = "OSGui";
-og::InputText("Window title", title, sizeof(title));
-og::InputTextMultiline("Notes", notes, sizeof(notes), og::Vec2(-1, 100));
-```
+    if (og::Selectable(rows[row].name, rows[row].selected))
+        rows[row].selected = !rows[row].selected;
 
-UTF-8 decoding, clipboard conversion, CJK, common script ranges, and emoji are
-implemented. Complex shaping and bidirectional layout are not yet implemented;
-applications that require fully shaped Arabic or Indic typography should treat
-that as a current limitation.
-
-## Modern visual systems
-
-### GPU glass
-
-Backdrop blur travels through the normal draw-command stream. The included
-OpenGL compatibility backend copies the live framebuffer and applies a GLSL
-blur/tint shader inside the requested shape. Other backends preserve the
-translucent fallback surface when that effect path is unavailable.
-
-```cpp
-og::GlassCard(
-    "Live framebuffer blur + shader tint",
-    og::Vec2(-1, 64),
-    7.0f
-);
-```
-
-### Smooth themes and Theme Studio
-
-```cpp
-if (og::Button("Daylight"))
-    og::SetTheme(og::Theme_Light, 0.35f);
-
-float panel_alpha = og::Animate(
-    "settings-panel",
-    settings_open ? 1.0f : 0.0f
-);
-```
-
-Theme transitions interpolate colour, spacing, rounding, shadows, and motion
-timing. `ShowThemeEditor()` exposes the same live tokens used by application
-widgets.
-
-<table>
-<tr>
-<td align="center"><strong>Midnight</strong></td>
-<td align="center"><strong>Daylight</strong></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/demo.png" alt="OSGui dark theme"></td>
-<td width="50%"><img src="docs/demo-light.png" alt="OSGui light theme"></td>
-</tr>
-</table>
-
-## Advanced data visualization
-
-Charts accept ordinary arrays or a fixed-capacity `StreamingSeries`. Multiple
-series share one scale, while dense line data is reduced toward the visible
-pixel width before geometry is emitted.
-
-```cpp
-static og::StreamingSeries frame_time(2048);
-frame_time.Push(delta_ms);
-
-if (og::BeginChart("Frame time", og::Vec2(-1, 190))) {
-    og::ChartArea("CPU", cpu_values, cpu_count);
-    og::ChartScatter("samples", points, point_count);
-    og::ChartLine("live", frame_time, og::GetColorU32(og::Col_Success));
-    og::EndChart();
+    og::EndDisabled();
+    og::PopID();
 }
 ```
 
-Financial or range visualizations can use `ChartCandlesticks`, while
-proportional summaries can use `ChartPie`.
+Use `PushStyleColor`, `PushStyleVar`, `PushItemWidth`, or `SetNextItemWidth` for
+temporary presentation changes. `IsItemHovered`, `IsItemActive`,
+`IsItemEdited`, and the item-rectangle queries describe the control submitted
+immediately before them.
 
-## Sortable tables
+Label identity follows two distinct conventions: `Label##scope` displays
+`Label` and hashes the complete string, while `Changing title###stable_id`
+displays the changing prefix and hashes only `stable_id`.
+
+### Large lists and child regions
+
+`ListClipper` skips rows outside the active clip rectangle while leaving row
+storage and selection in application code:
 
 ```cpp
-if (og::BeginTable("processes", 3,
-        og::TableFlags_Borders | og::TableFlags_RowBg | og::TableFlags_Sortable)) {
-    og::TableHeader("Process");
-    og::TableHeader("CPU");
-    og::TableHeader("State");
-
-    og::TableSelectable("Renderer");
-    og::TableSelectable("12.4%");
-    og::TableSelectable("Running", true);
-
-    if (const og::TableSortSpec* sort = og::TableGetSortSpec()) {
-        if (sort->dirty)
-            SortRows(sort->column, sort->direction);
+if (og::BeginChild("events", og::Vec2(0, 240))) {
+    og::ListClipper clipper;
+    clipper.Begin(event_count);
+    while (clipper.Step()) {
+        for (int row = clipper.display_start; row < clipper.display_end; ++row) {
+            og::PushID(row);
+            og::Selectable(events[row].label, events[row].selected);
+            og::PopID();
+        }
     }
-    og::EndTable();
 }
+og::EndChild();
 ```
 
-## Interactive Markdown and images
+### Draw-data capture
+
+The live `DrawData` points into context-owned draw lists. Capture it after
+`Render()` when a frame must outlive the context's next frame:
 
 ```cpp
-og::SetMarkdownLinkCallback(OpenURL);
-og::SetMarkdownImageResolver(ResolveTexture);
+og::Render();
 
-og::Markdown(
-    "## Build status\n"
-    "- Core tests passing\n"
-    "[Open documentation](https://example.com/docs)\n"
-    "![Preview](texture://preview)"
-);
+og::DrawDataSnapshot snapshot;
+snapshot.Capture(og::GetDrawData());
+QueueForInspection(snapshot.GetDrawData());
 ```
 
-Links emit `Event_LinkActivated` and invoke the optional callback. Image URLs
-are resolved by the host application into a backend texture ID and size, which
-keeps file, network, and GPU resource policy outside the core.
+Snapshots are useful for tests, frame recording, deferred consumption, and
+experiments with remote transport. They do not copy application textures.
 
-## Node editor
-
-Node positions remain in application state instead of a hidden document tree.
+### Metrics and validation
 
 ```cpp
-static og::Vec2 source_pos(24, 38);
-static og::Vec2 filter_pos(240, 126);
+static bool show_metrics = true;
+og::ShowMetricsWindow(&show_metrics);
 
-if (og::BeginNodeEditor("pipeline", og::Vec2(-1, 320))) {
-    og::NodePin samples, stream;
-
-    if (og::BeginNode(1, "Telemetry", &source_pos)) {
-        samples = og::NodeOutput("Samples");
-        og::EndNode();
-    }
-    if (og::BeginNode(2, "Smoothing", &filter_pos)) {
-        stream = og::NodeInput("Stream");
-        og::EndNode();
-    }
-
-    og::NodeLink(samples, stream);
-    og::EndNodeEditor();
-}
+if (!og::ValidateState())
+    LogError(og::GetLastError());
 ```
 
-## Layout, docking, and persistence
+Metrics Studio reports submitted and clipped items, ID conflicts, active
+windows, input/UI events, animation channels, and compacted draw geometry.
+Validation detects unbalanced window, grid, child, table, tab, popup, chart,
+node, style, ID, item-width, disabled, texture, and effect scopes that remain
+open. It is an end-of-frame scope check, not a validator for arbitrary numeric
+state or every possible extra `End`/`Pop` call.
 
-Sequential layout remains the default. Grids provide aligned dashboards, and
-docking slots provide deterministic tool layouts without a heavyweight docking
-tree.
+### Accessibility-oriented presentation options
 
 ```cpp
-og::SetNextWindowDock(og::Dock_Right);
-og::Begin("Inspector");
+og::SetTheme(og::Theme_HighContrast, 0.0f);
+og::SetReducedMotion(true);
+```
 
-if (og::BeginGrid("properties", 2, 14.0f)) {
-    DrawGeneralSettings();
-    og::NextGridColumn();
-    DrawAdvancedSettings();
-    og::EndGrid();
-}
+These options improve visual contrast and reduce animation. They are not an OS
+accessibility tree or screen-reader implementation.
 
-og::End();
+## Backend capabilities
 
+| Component | Alpha support | Important limits |
+| --- | --- | --- |
+| **Portable core** | C++11; no OS or graphics headers | Requires a host to provide timing, input, a font atlas, and rendering |
+| **Win32 platform** | Mouse/key/text events, clipboard, DPI polling, GDI font atlas with fallback fonts | No IME composition; convenience atlas is capped and does not shape complex scripts |
+| **GLFW platform** | Optional input, clipboard, framebuffer scale, and callback chaining | Does not build fonts itself: pre-populate `FontAtlas`, or register a builder for automatic initial/DPI rebuilds |
+| **OpenGL compatibility** | Windows showcase, indexed rendering, scissor clipping, and optional framebuffer-copy backdrop blur | Legacy renderer; blur is advertised only when its shader path initializes and otherwise falls back to tint |
+| **OpenGL 3** | Loader-driven shaders, VAO, streaming vertex/index buffers, custom textures | Backdrop blur currently renders as the translucent tint fallback |
+| **DirectX 11** | Dynamic buffers, scissor clipping, texture registry, state preservation | Backdrop blur currently renders as the translucent tint fallback |
+| **Vulkan** | Not implemented | Planned after the v2 draw/backend contract settles |
+
+The renderer contract expresses nested clips, callbacks, effects, and vertex
+offsets. A backend advertises optional behavior through `IO::backend_flags`;
+applications should not assume an effect path is available on every renderer.
+
+## Charts, Markdown, and nodes
+
+These modules intentionally remain immediate-mode:
+
+- charts accept ordinary arrays or a fixed-capacity `StreamingSeries` and emit
+  geometry during `EndChart()`;
+- Markdown resolves links through a callback and images through an
+  application-owned `TextureID` resolver;
+- node positions and graph meaning remain application data, while OSGui draws
+  draggable nodes, pins, and curved links.
+
+The modules are useful alpha building blocks, not replacements for a complete
+plotting package, CommonMark implementation, or full visual graph editor.
+
+## Persistence
+
+```cpp
 og::SaveStateJSON("workspace.json");
 og::LoadStateJSON("workspace.json");
+
+std::string state = og::SaveStateToMemory();
+if (!og::LoadStateFromMemory(state.data(), state.size()))
+    Report(og::GetLastError());
 ```
 
-The JSON state includes window positions, sizes, collapse state, docking slots,
-UI scale, theme metrics, and the complete semantic colour array.
+Schema v2 stores UI scale, theme metrics and colors, and saved window position,
+size, scroll, collapse, and dock-slot state. `WindowFlags_NoSavedSettings`
+excludes a window. Loads accept supported v1/v2 workspace data, constrain known
+fields, and roll back context mutations when validation fails. Persistence
+errors are reported through `GetLastError()`; they are not sent to the debug-log
+callback. The format is for OSGui workspace state, not arbitrary application
+documents or a general-purpose JSON Schema implementation.
 
-## Backend matrix
+## CMake package
 
-| Component | Status | Notes |
+Build-tree and installed-package consumers can use the same friendly targets:
+
+| Target | Component | Purpose |
 | --- | --- | --- |
-| Portable core | Ready | C++11; no OS or graphics headers |
-| Win32 platform | Ready | Mouse, keyboard, Unicode input, clipboard, per-monitor DPI, font fallback |
-| GLFW platform | Ready, optional | Windows/Linux input, clipboard, framebuffer scale, host-provided font builder |
-| OpenGL compatibility | Ready | Zero-loader Windows demo plus GLSL framebuffer blur |
-| OpenGL 3 | Ready | Shader, VAO, dynamic VBO/EBO; accepts GLFW, SDL, WGL, or GLX proc loader |
-| DirectX 11 | Ready | Dynamic GPU buffers, shaders, font texture, scissor clipping, texture registry |
-| Vulkan | Planned | The draw-data contract is already renderer-neutral |
-
-### Modern OpenGL 3
-
-```cpp
-OG_ImplOpenGL3_Init(
-    reinterpret_cast<OG_GLGetProcAddress>(glfwGetProcAddress)
-);
-
-OG_ImplOpenGL3_NewFrame();
-// Build UI and call og::Render()
-OG_ImplOpenGL3_RenderDrawData(og::GetDrawData());
-```
-
-### DirectX 11
-
-```cpp
-OG_ImplDX11_Init(device, immediate_context);
-
-OG_ImplDX11_NewFrame();
-// Build UI and call og::Render()
-OG_ImplDX11_RenderDrawData(og::GetDrawData());
-```
-
-Custom DX11 images are registered with `OG_ImplDX11_RegisterTexture` and then
-passed to `og::Image` or returned by the Markdown image resolver.
-
-### GLFW on Linux
-
-Enable `OSGUI_BUILD_GLFW_BACKEND`, provide a GLFW window, and supply a font
-builder appropriate for your application (for example FreeType or your engine's
-existing atlas builder).
+| `OSGui::Core` | `Core` | Portable immediate-mode core |
+| `OSGui::Examples` | `Examples` | Reusable example windows |
+| `OSGui::OpenGL3` | `OpenGL3` | Loader-driven OpenGL 3 renderer |
+| `OSGui::Win32OpenGL2` | `Win32OpenGL2` | Win32 plus compatibility OpenGL |
+| `OSGui::DX11` | `DX11` | DirectX 11 renderer |
+| `OSGui::GLFW` | `GLFW` | Optional GLFW platform backend |
 
 ```sh
-cmake -S . -B build \
-  -DOSGUI_BUILD_DEMO=OFF \
-  -DOSGUI_BUILD_DX11=OFF \
-  -DOSGUI_BUILD_GLFW_BACKEND=ON
-cmake --build build --parallel
+cmake --install build --config Release --prefix /path/to/osgui
 ```
 
-## Examples
-
-The reusable examples in `examples/osgui_examples.cpp` cover common real
-applications:
-
-- settings panel with text, combos, toggles, and save notifications;
-- launcher with release channels, validation, progress, and glass status;
-- sortable file browser with selectable rows and filtering;
-- live performance monitor with streaming and candlestick charts.
-
-Call any example after `og::NewFrame()`:
-
-```cpp
-og::ShowSettingsExample(&show_settings);
-og::ShowLauncherExample(&show_launcher);
-og::ShowFileBrowserExample(&show_files);
-og::ShowPerformanceMonitorExample(&show_performance);
+```cmake
+find_package(OSGui 2.0 CONFIG REQUIRED COMPONENTS Core OpenGL3)
+target_link_libraries(my_tool PRIVATE OSGui::Core OSGui::OpenGL3)
 ```
 
-## Architecture
+Useful configuration options include:
 
 ```text
-Application / game loop
-        |
-        +-- platform backend ------ mouse, keys, UTF-8, clipboard, DPI
-        |
-        v
-Immediate widget API
-        |
-        +-- sequential + grid + docking layout
-        +-- focus navigation + frame event queue
-        +-- animation + theme transition cache
-        +-- charts + Markdown + nodes + tables
-        |
-        v
-Renderer-neutral DrawData
-        |
-        +-- vertices + indices + clip rectangles
-        +-- texture IDs + shader-effect commands
-        |
-        +-- OpenGL compatibility / OpenGL 3 / DirectX 11
+OSGUI_BUILD_DEMO
+OSGUI_BUILD_TESTS
+OSGUI_BUILD_EXAMPLES
+OSGUI_BUILD_OPENGL3
+OSGUI_BUILD_WIN32_OPENGL2
+OSGUI_BUILD_DX11
+OSGUI_BUILD_GLFW_BACKEND
+OSGUI_INSTALL
+OSGUI_WARNINGS_AS_ERRORS
 ```
 
-Only small, ID-keyed state survives between frames: animation values, text
-cursors, navigation focus, popup state, window layout, theme transitions, and
-streaming buffers. There is no retained widget hierarchy.
+## Documentation
 
-See [docs/architecture.md](docs/architecture.md) for the frame pipeline and
-backend contract.
+- [Getting started](docs/getting-started.md) - build, install, lifecycle, input,
+  and troubleshooting.
+- [Architecture](docs/architecture.md) - context, frame, draw-data, backend, and
+  persistence contracts.
+- [Migrating to v2](docs/migration-v2.md) - source and integration changes from
+  the 0.x prototype.
+- [Changelog](CHANGELOG.md) - alpha changes and known limitations.
+- [Contributing](CONTRIBUTING.md) - build checks and project invariants.
 
-## Repository structure
+## Testing and CI
 
-```text
-osgui/
-├── osgui.h / osgui.cpp              portable core and public API
-├── osgui_impl_win32.*               Windows platform, DPI, clipboard, fonts
-├── osgui_impl_glfw.*                optional cross-platform platform backend
-├── osgui_impl_opengl2.*             compatibility renderer + GPU blur
-├── osgui_impl_opengl3.*             modern shader/VBO renderer
-├── osgui_impl_dx11.*                DirectX 11 renderer
-├── osgui_demo.cpp                   Studio Dashboard
-├── osgui_theme_editor.cpp           live design-token editor
-├── examples/                        settings, launcher, files, performance
-├── tests/                            headless core tests
-├── .github/workflows/build.yml      Windows and Linux CI
-├── docs/                             screenshots and architecture notes
-├── CMakeLists.txt                   reusable targets and options
-└── LICENSE                          MIT License
-```
+The repository's GitHub Actions workflow builds Debug and Release on Windows
+and Linux with warnings as errors. It runs CTest, installs the generated CMake
+package, and builds a separate consumer against every component installed on
+that platform. Windows also builds the showcase, Win32/OpenGL compatibility
+backend, and DirectX 11; Linux builds the portable core, examples, and OpenGL 3
+renderer.
 
-## CMake targets
-
-| Target | Purpose |
-| --- | --- |
-| `osgui` | Portable core |
-| `osgui_examples` | Reusable example windows |
-| `osgui_opengl3` | Modern OpenGL renderer |
-| `osgui_win32_opengl2` | Win32 plus compatibility OpenGL demo backends |
-| `osgui_dx11` | DirectX 11 renderer |
-| `osgui_glfw` | Optional GLFW platform backend |
-| `osgui_tests` | Headless automated tests |
-
-Useful options:
-
-```text
-OSGUI_BUILD_DEMO=ON
-OSGUI_BUILD_TESTS=ON
-OSGUI_BUILD_EXAMPLES=ON
-OSGUI_BUILD_DX11=ON
-OSGUI_BUILD_GLFW_BACKEND=OFF
-```
-
-## Testing
-
-The core test builds a headless font atlas, generates a representative UI,
-checks draw output, edits a multibyte UTF-8 value, verifies codepoint-safe
-Backspace, and round-trips JSON state.
-
-```sh
-cmake -S . -B build -DOSGUI_BUILD_DEMO=OFF
-cmake --build build --config Release
-ctest --test-dir build -C Release --output-on-failure
-```
-
-GitHub Actions runs the portable core, examples, OpenGL 3 renderer, and tests on
-Ubuntu, plus the full Win32, OpenGL, and DirectX 11 build on Windows.
+The headless core suite now exercises queued pulses and modifier chords,
+context isolation, clipping and command compaction, scope and child scrolling,
+persistence, snapshots and textures, ordered UTF-8 editing, selection and text
+history, navigation activation, integer and floating-point controls, drag/drop,
+modal blocking, and broad widget smoke paths. Backend runtime matrices, fuzzing,
+accessibility automation, and visual regression coverage remain gaps.
 
 ## Project status
 
-OSGui is an early-stage but working library. The current Windows demo, portable
-core, OpenGL 3 renderer, DirectX 11 renderer, examples, and test executable all
-compile cleanly with MSVC warning level 4. The public API may still evolve while
-the project works toward stronger text shaping, drag-and-drop docking trees,
-multi-pass blur for every renderer, and a Vulkan backend.
+OSGui v2 is for evaluation, experimentation, and controlled tool development.
+It is not yet a drop-in alternative with Dear ImGui's breadth, compatibility,
+or production history.
+
+Known gaps:
+
+- IME composition, grapheme-cluster-aware editing, bidirectional layout,
+  complex-script shaping, and full native desktop text-control semantics;
+- full drag-to-dock split/tab trees and programmable docking workspaces;
+- multi-viewport/platform-window support;
+- Vulkan and other modern renderer backends;
+- advanced tables such as resizable/reorderable/frozen columns and multi-sort;
+- a complete accessibility/automation semantic tree.
+
+The current docking API provides deterministic edge/fill slots only. The text
+editor supports mouse/keyboard range selection, callback-backed cut/copy/paste,
+per-widget undo/redo, multiline input, and ordered queued key/text actions. It
+still edits by Unicode codepoint rather than grapheme cluster and is not a full
+native desktop text-control implementation.
 
 ## License
 
 OSGui is available under the [MIT License](LICENSE). Commercial use,
-modification, distribution, and private use are permitted with the copyright
-and license notice preserved.
+modification, distribution, and private use are permitted when the copyright
+and license notice are preserved.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a public API or backend
+change.
 
 <div align="center">
 
-Built for native tools that should feel like products—not debug panels.
+Built for native tools that should feel like products, not incidental panels.
 
 </div>

@@ -46,10 +46,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui"
+CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -116,126 +116,388 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named osgui
+# Target rules for targets named Experimental
 
 # Build rule for target.
-osgui: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui
-.PHONY : osgui
+Experimental: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) Experimental
+.PHONY : Experimental
 
 # fast build rule for target.
-osgui\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\build
-.PHONY : osgui\fast
+Experimental\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Experimental.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\build
+.PHONY : Experimental\fast
 
 #=============================================================================
-# Target rules for targets named osgui_examples
+# Target rules for targets named Nightly
 
 # Build rule for target.
-osgui_examples: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_examples
-.PHONY : osgui_examples
+Nightly: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) Nightly
+.PHONY : Nightly
 
 # fast build rule for target.
-osgui_examples\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\build
-.PHONY : osgui_examples\fast
+Nightly\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Nightly.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\build
+.PHONY : Nightly\fast
 
 #=============================================================================
-# Target rules for targets named osgui_opengl3
+# Target rules for targets named Continuous
 
 # Build rule for target.
-osgui_opengl3: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_opengl3
-.PHONY : osgui_opengl3
+Continuous: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) Continuous
+.PHONY : Continuous
 
 # fast build rule for target.
-osgui_opengl3\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\build
-.PHONY : osgui_opengl3\fast
+Continuous\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Continuous.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\build
+.PHONY : Continuous\fast
 
 #=============================================================================
-# Target rules for targets named osgui_win32_opengl2
+# Target rules for targets named NightlyMemoryCheck
 
 # Build rule for target.
-osgui_win32_opengl2: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_win32_opengl2
-.PHONY : osgui_win32_opengl2
+NightlyMemoryCheck: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyMemoryCheck
+.PHONY : NightlyMemoryCheck
 
 # fast build rule for target.
-osgui_win32_opengl2\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\build
-.PHONY : osgui_win32_opengl2\fast
+NightlyMemoryCheck\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemoryCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\build
+.PHONY : NightlyMemoryCheck\fast
 
 #=============================================================================
-# Target rules for targets named osgui_dx11
+# Target rules for targets named NightlyStart
 
 # Build rule for target.
-osgui_dx11: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_dx11
-.PHONY : osgui_dx11
+NightlyStart: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyStart
+.PHONY : NightlyStart
 
 # fast build rule for target.
-osgui_dx11\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\build
-.PHONY : osgui_dx11\fast
+NightlyStart\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\build
+.PHONY : NightlyStart\fast
 
 #=============================================================================
-# Target rules for targets named osgui_demo
+# Target rules for targets named NightlyUpdate
 
 # Build rule for target.
-osgui_demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_demo
-.PHONY : osgui_demo
+NightlyUpdate: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyUpdate
+.PHONY : NightlyUpdate
 
 # fast build rule for target.
-osgui_demo\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\build
-.PHONY : osgui_demo\fast
+NightlyUpdate\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\build
+.PHONY : NightlyUpdate\fast
 
 #=============================================================================
-# Target rules for targets named osgui_tests
+# Target rules for targets named NightlyConfigure
 
 # Build rule for target.
-osgui_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_tests
-.PHONY : osgui_tests
+NightlyConfigure: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyConfigure
+.PHONY : NightlyConfigure
 
 # fast build rule for target.
-osgui_tests\fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\build
-.PHONY : osgui_tests\fast
+NightlyConfigure\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\build
+.PHONY : NightlyConfigure\fast
 
-examples\osgui_examples.obj: examples\osgui_examples.cpp.obj
-.PHONY : examples\osgui_examples.obj
+#=============================================================================
+# Target rules for targets named NightlyBuild
 
-# target to build an object file
-examples\osgui_examples.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\examples\osgui_examples.cpp.obj
-.PHONY : examples\osgui_examples.cpp.obj
+# Build rule for target.
+NightlyBuild: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyBuild
+.PHONY : NightlyBuild
 
-examples\osgui_examples.i: examples\osgui_examples.cpp.i
-.PHONY : examples\osgui_examples.i
+# fast build rule for target.
+NightlyBuild\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\build
+.PHONY : NightlyBuild\fast
 
-# target to preprocess a source file
-examples\osgui_examples.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\examples\osgui_examples.cpp.i
-.PHONY : examples\osgui_examples.cpp.i
+#=============================================================================
+# Target rules for targets named NightlyTest
 
-examples\osgui_examples.s: examples\osgui_examples.cpp.s
-.PHONY : examples\osgui_examples.s
+# Build rule for target.
+NightlyTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyTest
+.PHONY : NightlyTest
 
-# target to generate assembly for a file
-examples\osgui_examples.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\examples\osgui_examples.cpp.s
-.PHONY : examples\osgui_examples.cpp.s
+# fast build rule for target.
+NightlyTest\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\build
+.PHONY : NightlyTest\fast
+
+#=============================================================================
+# Target rules for targets named NightlyCoverage
+
+# Build rule for target.
+NightlyCoverage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyCoverage
+.PHONY : NightlyCoverage
+
+# fast build rule for target.
+NightlyCoverage\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\build
+.PHONY : NightlyCoverage\fast
+
+#=============================================================================
+# Target rules for targets named NightlyMemCheck
+
+# Build rule for target.
+NightlyMemCheck: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlyMemCheck
+.PHONY : NightlyMemCheck
+
+# fast build rule for target.
+NightlyMemCheck\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\build
+.PHONY : NightlyMemCheck\fast
+
+#=============================================================================
+# Target rules for targets named NightlySubmit
+
+# Build rule for target.
+NightlySubmit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) NightlySubmit
+.PHONY : NightlySubmit
+
+# fast build rule for target.
+NightlySubmit\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlySubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\build
+.PHONY : NightlySubmit\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalStart
+
+# Build rule for target.
+ExperimentalStart: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalStart
+.PHONY : ExperimentalStart
+
+# fast build rule for target.
+ExperimentalStart\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\build
+.PHONY : ExperimentalStart\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalUpdate
+
+# Build rule for target.
+ExperimentalUpdate: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalUpdate
+.PHONY : ExperimentalUpdate
+
+# fast build rule for target.
+ExperimentalUpdate\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\build
+.PHONY : ExperimentalUpdate\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalConfigure
+
+# Build rule for target.
+ExperimentalConfigure: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalConfigure
+.PHONY : ExperimentalConfigure
+
+# fast build rule for target.
+ExperimentalConfigure\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\build
+.PHONY : ExperimentalConfigure\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalBuild
+
+# Build rule for target.
+ExperimentalBuild: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalBuild
+.PHONY : ExperimentalBuild
+
+# fast build rule for target.
+ExperimentalBuild\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\build
+.PHONY : ExperimentalBuild\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalTest
+
+# Build rule for target.
+ExperimentalTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalTest
+.PHONY : ExperimentalTest
+
+# fast build rule for target.
+ExperimentalTest\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\build
+.PHONY : ExperimentalTest\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalCoverage
+
+# Build rule for target.
+ExperimentalCoverage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalCoverage
+.PHONY : ExperimentalCoverage
+
+# fast build rule for target.
+ExperimentalCoverage\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\build
+.PHONY : ExperimentalCoverage\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalMemCheck
+
+# Build rule for target.
+ExperimentalMemCheck: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalMemCheck
+.PHONY : ExperimentalMemCheck
+
+# fast build rule for target.
+ExperimentalMemCheck\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\build
+.PHONY : ExperimentalMemCheck\fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalSubmit
+
+# Build rule for target.
+ExperimentalSubmit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ExperimentalSubmit
+.PHONY : ExperimentalSubmit
+
+# fast build rule for target.
+ExperimentalSubmit\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\build
+.PHONY : ExperimentalSubmit\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousStart
+
+# Build rule for target.
+ContinuousStart: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousStart
+.PHONY : ContinuousStart
+
+# fast build rule for target.
+ContinuousStart\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\build
+.PHONY : ContinuousStart\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousUpdate
+
+# Build rule for target.
+ContinuousUpdate: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousUpdate
+.PHONY : ContinuousUpdate
+
+# fast build rule for target.
+ContinuousUpdate\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\build
+.PHONY : ContinuousUpdate\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousConfigure
+
+# Build rule for target.
+ContinuousConfigure: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousConfigure
+.PHONY : ContinuousConfigure
+
+# fast build rule for target.
+ContinuousConfigure\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\build
+.PHONY : ContinuousConfigure\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousBuild
+
+# Build rule for target.
+ContinuousBuild: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousBuild
+.PHONY : ContinuousBuild
+
+# fast build rule for target.
+ContinuousBuild\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\build
+.PHONY : ContinuousBuild\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousTest
+
+# Build rule for target.
+ContinuousTest: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousTest
+.PHONY : ContinuousTest
+
+# fast build rule for target.
+ContinuousTest\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\build
+.PHONY : ContinuousTest\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousCoverage
+
+# Build rule for target.
+ContinuousCoverage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousCoverage
+.PHONY : ContinuousCoverage
+
+# fast build rule for target.
+ContinuousCoverage\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\build
+.PHONY : ContinuousCoverage\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousMemCheck
+
+# Build rule for target.
+ContinuousMemCheck: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousMemCheck
+.PHONY : ContinuousMemCheck
+
+# fast build rule for target.
+ContinuousMemCheck\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\build
+.PHONY : ContinuousMemCheck\fast
+
+#=============================================================================
+# Target rules for targets named ContinuousSubmit
+
+# Build rule for target.
+ContinuousSubmit: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) ContinuousSubmit
+.PHONY : ContinuousSubmit
+
+# fast build rule for target.
+ContinuousSubmit\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\build
+.PHONY : ContinuousSubmit\fast
+
+#=============================================================================
+# Target rules for targets named osgui_package_consumer
+
+# Build rule for target.
+osgui_package_consumer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) osgui_package_consumer
+.PHONY : osgui_package_consumer
+
+# fast build rule for target.
+osgui_package_consumer\fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\build
+.PHONY : osgui_package_consumer\fast
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -243,7 +505,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -251,200 +513,8 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\main.cpp.s
 .PHONY : main.cpp.s
-
-osgui.obj: osgui.cpp.obj
-.PHONY : osgui.obj
-
-# target to build an object file
-osgui.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\osgui.cpp.obj
-.PHONY : osgui.cpp.obj
-
-osgui.i: osgui.cpp.i
-.PHONY : osgui.i
-
-# target to preprocess a source file
-osgui.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\osgui.cpp.i
-.PHONY : osgui.cpp.i
-
-osgui.s: osgui.cpp.s
-.PHONY : osgui.s
-
-# target to generate assembly for a file
-osgui.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\osgui.cpp.s
-.PHONY : osgui.cpp.s
-
-osgui_demo.obj: osgui_demo.cpp.obj
-.PHONY : osgui_demo.obj
-
-# target to build an object file
-osgui_demo.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_demo.cpp.obj
-.PHONY : osgui_demo.cpp.obj
-
-osgui_demo.i: osgui_demo.cpp.i
-.PHONY : osgui_demo.i
-
-# target to preprocess a source file
-osgui_demo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_demo.cpp.i
-.PHONY : osgui_demo.cpp.i
-
-osgui_demo.s: osgui_demo.cpp.s
-.PHONY : osgui_demo.s
-
-# target to generate assembly for a file
-osgui_demo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_demo.cpp.s
-.PHONY : osgui_demo.cpp.s
-
-osgui_impl_dx11.obj: osgui_impl_dx11.cpp.obj
-.PHONY : osgui_impl_dx11.obj
-
-# target to build an object file
-osgui_impl_dx11.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\osgui_impl_dx11.cpp.obj
-.PHONY : osgui_impl_dx11.cpp.obj
-
-osgui_impl_dx11.i: osgui_impl_dx11.cpp.i
-.PHONY : osgui_impl_dx11.i
-
-# target to preprocess a source file
-osgui_impl_dx11.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\osgui_impl_dx11.cpp.i
-.PHONY : osgui_impl_dx11.cpp.i
-
-osgui_impl_dx11.s: osgui_impl_dx11.cpp.s
-.PHONY : osgui_impl_dx11.s
-
-# target to generate assembly for a file
-osgui_impl_dx11.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\osgui_impl_dx11.cpp.s
-.PHONY : osgui_impl_dx11.cpp.s
-
-osgui_impl_opengl2.obj: osgui_impl_opengl2.cpp.obj
-.PHONY : osgui_impl_opengl2.obj
-
-# target to build an object file
-osgui_impl_opengl2.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_opengl2.cpp.obj
-.PHONY : osgui_impl_opengl2.cpp.obj
-
-osgui_impl_opengl2.i: osgui_impl_opengl2.cpp.i
-.PHONY : osgui_impl_opengl2.i
-
-# target to preprocess a source file
-osgui_impl_opengl2.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_opengl2.cpp.i
-.PHONY : osgui_impl_opengl2.cpp.i
-
-osgui_impl_opengl2.s: osgui_impl_opengl2.cpp.s
-.PHONY : osgui_impl_opengl2.s
-
-# target to generate assembly for a file
-osgui_impl_opengl2.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_opengl2.cpp.s
-.PHONY : osgui_impl_opengl2.cpp.s
-
-osgui_impl_opengl3.obj: osgui_impl_opengl3.cpp.obj
-.PHONY : osgui_impl_opengl3.obj
-
-# target to build an object file
-osgui_impl_opengl3.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\osgui_impl_opengl3.cpp.obj
-.PHONY : osgui_impl_opengl3.cpp.obj
-
-osgui_impl_opengl3.i: osgui_impl_opengl3.cpp.i
-.PHONY : osgui_impl_opengl3.i
-
-# target to preprocess a source file
-osgui_impl_opengl3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\osgui_impl_opengl3.cpp.i
-.PHONY : osgui_impl_opengl3.cpp.i
-
-osgui_impl_opengl3.s: osgui_impl_opengl3.cpp.s
-.PHONY : osgui_impl_opengl3.s
-
-# target to generate assembly for a file
-osgui_impl_opengl3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\osgui_impl_opengl3.cpp.s
-.PHONY : osgui_impl_opengl3.cpp.s
-
-osgui_impl_win32.obj: osgui_impl_win32.cpp.obj
-.PHONY : osgui_impl_win32.obj
-
-# target to build an object file
-osgui_impl_win32.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_win32.cpp.obj
-.PHONY : osgui_impl_win32.cpp.obj
-
-osgui_impl_win32.i: osgui_impl_win32.cpp.i
-.PHONY : osgui_impl_win32.i
-
-# target to preprocess a source file
-osgui_impl_win32.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_win32.cpp.i
-.PHONY : osgui_impl_win32.cpp.i
-
-osgui_impl_win32.s: osgui_impl_win32.cpp.s
-.PHONY : osgui_impl_win32.s
-
-# target to generate assembly for a file
-osgui_impl_win32.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\osgui_impl_win32.cpp.s
-.PHONY : osgui_impl_win32.cpp.s
-
-osgui_theme_editor.obj: osgui_theme_editor.cpp.obj
-.PHONY : osgui_theme_editor.obj
-
-# target to build an object file
-osgui_theme_editor.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_theme_editor.cpp.obj
-.PHONY : osgui_theme_editor.cpp.obj
-
-osgui_theme_editor.i: osgui_theme_editor.cpp.i
-.PHONY : osgui_theme_editor.i
-
-# target to preprocess a source file
-osgui_theme_editor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_theme_editor.cpp.i
-.PHONY : osgui_theme_editor.cpp.i
-
-osgui_theme_editor.s: osgui_theme_editor.cpp.s
-.PHONY : osgui_theme_editor.s
-
-# target to generate assembly for a file
-osgui_theme_editor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\osgui_theme_editor.cpp.s
-.PHONY : osgui_theme_editor.cpp.s
-
-tests\osgui_tests.obj: tests\osgui_tests.cpp.obj
-.PHONY : tests\osgui_tests.obj
-
-# target to build an object file
-tests\osgui_tests.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\tests\osgui_tests.cpp.obj
-.PHONY : tests\osgui_tests.cpp.obj
-
-tests\osgui_tests.i: tests\osgui_tests.cpp.i
-.PHONY : tests\osgui_tests.i
-
-# target to preprocess a source file
-tests\osgui_tests.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\tests\osgui_tests.cpp.i
-.PHONY : tests\osgui_tests.cpp.i
-
-tests\osgui_tests.s: tests\osgui_tests.cpp.s
-.PHONY : tests\osgui_tests.s
-
-# target to generate assembly for a file
-tests\osgui_tests.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\tests\osgui_tests.cpp.s
-.PHONY : tests\osgui_tests.cpp.s
 
 # Help Target
 help:
@@ -455,43 +525,38 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... test
-	@echo ... osgui
-	@echo ... osgui_demo
-	@echo ... osgui_dx11
-	@echo ... osgui_examples
-	@echo ... osgui_opengl3
-	@echo ... osgui_tests
-	@echo ... osgui_win32_opengl2
-	@echo ... examples/osgui_examples.obj
-	@echo ... examples/osgui_examples.i
-	@echo ... examples/osgui_examples.s
+	@echo ... Continuous
+	@echo ... ContinuousBuild
+	@echo ... ContinuousConfigure
+	@echo ... ContinuousCoverage
+	@echo ... ContinuousMemCheck
+	@echo ... ContinuousStart
+	@echo ... ContinuousSubmit
+	@echo ... ContinuousTest
+	@echo ... ContinuousUpdate
+	@echo ... Experimental
+	@echo ... ExperimentalBuild
+	@echo ... ExperimentalConfigure
+	@echo ... ExperimentalCoverage
+	@echo ... ExperimentalMemCheck
+	@echo ... ExperimentalStart
+	@echo ... ExperimentalSubmit
+	@echo ... ExperimentalTest
+	@echo ... ExperimentalUpdate
+	@echo ... Nightly
+	@echo ... NightlyBuild
+	@echo ... NightlyConfigure
+	@echo ... NightlyCoverage
+	@echo ... NightlyMemCheck
+	@echo ... NightlyMemoryCheck
+	@echo ... NightlyStart
+	@echo ... NightlySubmit
+	@echo ... NightlyTest
+	@echo ... NightlyUpdate
+	@echo ... osgui_package_consumer
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... osgui.obj
-	@echo ... osgui.i
-	@echo ... osgui.s
-	@echo ... osgui_demo.obj
-	@echo ... osgui_demo.i
-	@echo ... osgui_demo.s
-	@echo ... osgui_impl_dx11.obj
-	@echo ... osgui_impl_dx11.i
-	@echo ... osgui_impl_dx11.s
-	@echo ... osgui_impl_opengl2.obj
-	@echo ... osgui_impl_opengl2.i
-	@echo ... osgui_impl_opengl2.s
-	@echo ... osgui_impl_opengl3.obj
-	@echo ... osgui_impl_opengl3.i
-	@echo ... osgui_impl_opengl3.s
-	@echo ... osgui_impl_win32.obj
-	@echo ... osgui_impl_win32.i
-	@echo ... osgui_impl_win32.s
-	@echo ... osgui_theme_editor.obj
-	@echo ... osgui_theme_editor.i
-	@echo ... osgui_theme_editor.s
-	@echo ... tests/osgui_tests.obj
-	@echo ... tests/osgui_tests.i
-	@echo ... tests/osgui_tests.s
 .PHONY : help
 
 

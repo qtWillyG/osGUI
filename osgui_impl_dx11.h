@@ -10,5 +10,5 @@ void OG_ImplDX11_NewFrame();
 void OG_ImplDX11_RenderDrawData(og::DrawData* draw_data);
 bool OG_ImplDX11_CreateDeviceObjects();
 void OG_ImplDX11_InvalidateDeviceObjects();
-unsigned int OG_ImplDX11_RegisterTexture(ID3D11ShaderResourceView* texture);
-void OG_ImplDX11_UnregisterTexture(unsigned int texture_id);
+og::TextureID OG_ImplDX11_RegisterTexture(ID3D11ShaderResourceView* texture);
+void OG_ImplDX11_UnregisterTexture(og::TextureID texture_id);

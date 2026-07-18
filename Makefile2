@@ -43,32 +43,20 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui"
+CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release"
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles\osgui.dir\all
-all: CMakeFiles\osgui_examples.dir\all
-all: CMakeFiles\osgui_opengl3.dir\all
-all: CMakeFiles\osgui_win32_opengl2.dir\all
-all: CMakeFiles\osgui_dx11.dir\all
-all: CMakeFiles\osgui_demo.dir\all
-all: CMakeFiles\osgui_tests.dir\all
+all: CMakeFiles\osgui_package_consumer.dir\all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles\osgui.dir\codegen
-codegen: CMakeFiles\osgui_examples.dir\codegen
-codegen: CMakeFiles\osgui_opengl3.dir\codegen
-codegen: CMakeFiles\osgui_win32_opengl2.dir\codegen
-codegen: CMakeFiles\osgui_dx11.dir\codegen
-codegen: CMakeFiles\osgui_demo.dir\codegen
-codegen: CMakeFiles\osgui_tests.dir\codegen
+codegen: CMakeFiles\osgui_package_consumer.dir\codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -76,239 +64,964 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles\osgui.dir\clean
-clean: CMakeFiles\osgui_examples.dir\clean
-clean: CMakeFiles\osgui_opengl3.dir\clean
-clean: CMakeFiles\osgui_win32_opengl2.dir\clean
-clean: CMakeFiles\osgui_dx11.dir\clean
-clean: CMakeFiles\osgui_demo.dir\clean
-clean: CMakeFiles\osgui_tests.dir\clean
+clean: CMakeFiles\Experimental.dir\clean
+clean: CMakeFiles\Nightly.dir\clean
+clean: CMakeFiles\Continuous.dir\clean
+clean: CMakeFiles\NightlyMemoryCheck.dir\clean
+clean: CMakeFiles\NightlyStart.dir\clean
+clean: CMakeFiles\NightlyUpdate.dir\clean
+clean: CMakeFiles\NightlyConfigure.dir\clean
+clean: CMakeFiles\NightlyBuild.dir\clean
+clean: CMakeFiles\NightlyTest.dir\clean
+clean: CMakeFiles\NightlyCoverage.dir\clean
+clean: CMakeFiles\NightlyMemCheck.dir\clean
+clean: CMakeFiles\NightlySubmit.dir\clean
+clean: CMakeFiles\ExperimentalStart.dir\clean
+clean: CMakeFiles\ExperimentalUpdate.dir\clean
+clean: CMakeFiles\ExperimentalConfigure.dir\clean
+clean: CMakeFiles\ExperimentalBuild.dir\clean
+clean: CMakeFiles\ExperimentalTest.dir\clean
+clean: CMakeFiles\ExperimentalCoverage.dir\clean
+clean: CMakeFiles\ExperimentalMemCheck.dir\clean
+clean: CMakeFiles\ExperimentalSubmit.dir\clean
+clean: CMakeFiles\ContinuousStart.dir\clean
+clean: CMakeFiles\ContinuousUpdate.dir\clean
+clean: CMakeFiles\ContinuousConfigure.dir\clean
+clean: CMakeFiles\ContinuousBuild.dir\clean
+clean: CMakeFiles\ContinuousTest.dir\clean
+clean: CMakeFiles\ContinuousCoverage.dir\clean
+clean: CMakeFiles\ContinuousMemCheck.dir\clean
+clean: CMakeFiles\ContinuousSubmit.dir\clean
+clean: CMakeFiles\osgui_package_consumer.dir\clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui.dir
+# Target rules for target CMakeFiles/Experimental.dir
 
 # All Build rule for target.
-CMakeFiles\osgui.dir\all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=1,2 "Built target osgui"
-.PHONY : CMakeFiles\osgui.dir\all
+CMakeFiles\Experimental.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Experimental.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Experimental.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target Experimental"
+.PHONY : CMakeFiles\Experimental.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui.dir\rule
+CMakeFiles\Experimental.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\Experimental.dir\rule
 
 # Convenience name for target.
-osgui: CMakeFiles\osgui.dir\rule
-.PHONY : osgui
+Experimental: CMakeFiles\Experimental.dir\rule
+.PHONY : Experimental
 
 # codegen rule for target.
-CMakeFiles\osgui.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=1,2 "Finished codegen for target osgui"
-.PHONY : CMakeFiles\osgui.dir\codegen
+CMakeFiles\Experimental.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Experimental.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target Experimental"
+.PHONY : CMakeFiles\Experimental.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui.dir\clean
-.PHONY : CMakeFiles\osgui.dir\clean
+CMakeFiles\Experimental.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Experimental.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Experimental.dir\clean
+.PHONY : CMakeFiles\Experimental.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_examples.dir
+# Target rules for target CMakeFiles/Nightly.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_examples.dir\all: CMakeFiles\osgui.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=9,10 "Built target osgui_examples"
-.PHONY : CMakeFiles\osgui_examples.dir\all
+CMakeFiles\Nightly.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Nightly.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Nightly.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target Nightly"
+.PHONY : CMakeFiles\Nightly.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_examples.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_examples.dir\rule
+CMakeFiles\Nightly.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\Nightly.dir\rule
 
 # Convenience name for target.
-osgui_examples: CMakeFiles\osgui_examples.dir\rule
-.PHONY : osgui_examples
+Nightly: CMakeFiles\Nightly.dir\rule
+.PHONY : Nightly
 
 # codegen rule for target.
-CMakeFiles\osgui_examples.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=9,10 "Finished codegen for target osgui_examples"
-.PHONY : CMakeFiles\osgui_examples.dir\codegen
+CMakeFiles\Nightly.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Nightly.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target Nightly"
+.PHONY : CMakeFiles\Nightly.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_examples.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_examples.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_examples.dir\clean
-.PHONY : CMakeFiles\osgui_examples.dir\clean
+CMakeFiles\Nightly.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Nightly.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Nightly.dir\clean
+.PHONY : CMakeFiles\Nightly.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_opengl3.dir
+# Target rules for target CMakeFiles/Continuous.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_opengl3.dir\all: CMakeFiles\osgui.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=11,12 "Built target osgui_opengl3"
-.PHONY : CMakeFiles\osgui_opengl3.dir\all
+CMakeFiles\Continuous.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Continuous.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Continuous.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target Continuous"
+.PHONY : CMakeFiles\Continuous.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_opengl3.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_opengl3.dir\rule
+CMakeFiles\Continuous.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\Continuous.dir\rule
 
 # Convenience name for target.
-osgui_opengl3: CMakeFiles\osgui_opengl3.dir\rule
-.PHONY : osgui_opengl3
+Continuous: CMakeFiles\Continuous.dir\rule
+.PHONY : Continuous
 
 # codegen rule for target.
-CMakeFiles\osgui_opengl3.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=11,12 "Finished codegen for target osgui_opengl3"
-.PHONY : CMakeFiles\osgui_opengl3.dir\codegen
+CMakeFiles\Continuous.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Continuous.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target Continuous"
+.PHONY : CMakeFiles\Continuous.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_opengl3.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_opengl3.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_opengl3.dir\clean
-.PHONY : CMakeFiles\osgui_opengl3.dir\clean
+CMakeFiles\Continuous.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Continuous.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\Continuous.dir\clean
+.PHONY : CMakeFiles\Continuous.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_win32_opengl2.dir
+# Target rules for target CMakeFiles/NightlyMemoryCheck.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_win32_opengl2.dir\all: CMakeFiles\osgui.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=15,16,17 "Built target osgui_win32_opengl2"
-.PHONY : CMakeFiles\osgui_win32_opengl2.dir\all
+CMakeFiles\NightlyMemoryCheck.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemoryCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemoryCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyMemoryCheck"
+.PHONY : CMakeFiles\NightlyMemoryCheck.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_win32_opengl2.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_win32_opengl2.dir\rule
+CMakeFiles\NightlyMemoryCheck.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyMemoryCheck.dir\rule
 
 # Convenience name for target.
-osgui_win32_opengl2: CMakeFiles\osgui_win32_opengl2.dir\rule
-.PHONY : osgui_win32_opengl2
+NightlyMemoryCheck: CMakeFiles\NightlyMemoryCheck.dir\rule
+.PHONY : NightlyMemoryCheck
 
 # codegen rule for target.
-CMakeFiles\osgui_win32_opengl2.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=15,16,17 "Finished codegen for target osgui_win32_opengl2"
-.PHONY : CMakeFiles\osgui_win32_opengl2.dir\codegen
+CMakeFiles\NightlyMemoryCheck.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemoryCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyMemoryCheck"
+.PHONY : CMakeFiles\NightlyMemoryCheck.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_win32_opengl2.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_win32_opengl2.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_win32_opengl2.dir\clean
-.PHONY : CMakeFiles\osgui_win32_opengl2.dir\clean
+CMakeFiles\NightlyMemoryCheck.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemoryCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemoryCheck.dir\clean
+.PHONY : CMakeFiles\NightlyMemoryCheck.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_dx11.dir
+# Target rules for target CMakeFiles/NightlyStart.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_dx11.dir\all: CMakeFiles\osgui.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=7,8 "Built target osgui_dx11"
-.PHONY : CMakeFiles\osgui_dx11.dir\all
+CMakeFiles\NightlyStart.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyStart"
+.PHONY : CMakeFiles\NightlyStart.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_dx11.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_dx11.dir\rule
+CMakeFiles\NightlyStart.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyStart.dir\rule
 
 # Convenience name for target.
-osgui_dx11: CMakeFiles\osgui_dx11.dir\rule
-.PHONY : osgui_dx11
+NightlyStart: CMakeFiles\NightlyStart.dir\rule
+.PHONY : NightlyStart
 
 # codegen rule for target.
-CMakeFiles\osgui_dx11.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=7,8 "Finished codegen for target osgui_dx11"
-.PHONY : CMakeFiles\osgui_dx11.dir\codegen
+CMakeFiles\NightlyStart.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyStart"
+.PHONY : CMakeFiles\NightlyStart.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_dx11.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_dx11.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_dx11.dir\clean
-.PHONY : CMakeFiles\osgui_dx11.dir\clean
+CMakeFiles\NightlyStart.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyStart.dir\clean
+.PHONY : CMakeFiles\NightlyStart.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_demo.dir
+# Target rules for target CMakeFiles/NightlyUpdate.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_demo.dir\all: CMakeFiles\osgui.dir\all
-CMakeFiles\osgui_demo.dir\all: CMakeFiles\osgui_win32_opengl2.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=3,4,5,6 "Built target osgui_demo"
-.PHONY : CMakeFiles\osgui_demo.dir\all
+CMakeFiles\NightlyUpdate.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyUpdate"
+.PHONY : CMakeFiles\NightlyUpdate.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_demo.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 9
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_demo.dir\rule
+CMakeFiles\NightlyUpdate.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyUpdate.dir\rule
 
 # Convenience name for target.
-osgui_demo: CMakeFiles\osgui_demo.dir\rule
-.PHONY : osgui_demo
+NightlyUpdate: CMakeFiles\NightlyUpdate.dir\rule
+.PHONY : NightlyUpdate
 
 # codegen rule for target.
-CMakeFiles\osgui_demo.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=3,4,5,6 "Finished codegen for target osgui_demo"
-.PHONY : CMakeFiles\osgui_demo.dir\codegen
+CMakeFiles\NightlyUpdate.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyUpdate"
+.PHONY : CMakeFiles\NightlyUpdate.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_demo.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_demo.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_demo.dir\clean
-.PHONY : CMakeFiles\osgui_demo.dir\clean
+CMakeFiles\NightlyUpdate.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyUpdate.dir\clean
+.PHONY : CMakeFiles\NightlyUpdate.dir\clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/osgui_tests.dir
+# Target rules for target CMakeFiles/NightlyConfigure.dir
 
 # All Build rule for target.
-CMakeFiles\osgui_tests.dir\all: CMakeFiles\osgui.dir\all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=13,14 "Built target osgui_tests"
-.PHONY : CMakeFiles\osgui_tests.dir\all
+CMakeFiles\NightlyConfigure.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyConfigure"
+.PHONY : CMakeFiles\NightlyConfigure.dir\all
 
 # Build rule for subdir invocation for target.
-CMakeFiles\osgui_tests.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" 0
-.PHONY : CMakeFiles\osgui_tests.dir\rule
+CMakeFiles\NightlyConfigure.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyConfigure.dir\rule
 
 # Convenience name for target.
-osgui_tests: CMakeFiles\osgui_tests.dir\rule
-.PHONY : osgui_tests
+NightlyConfigure: CMakeFiles\NightlyConfigure.dir\rule
+.PHONY : NightlyConfigure
 
 # codegen rule for target.
-CMakeFiles\osgui_tests.dir\codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\build\CMakeFiles" --progress-num=13,14 "Finished codegen for target osgui_tests"
-.PHONY : CMakeFiles\osgui_tests.dir\codegen
+CMakeFiles\NightlyConfigure.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyConfigure"
+.PHONY : CMakeFiles\NightlyConfigure.dir\codegen
 
 # clean rule for target.
-CMakeFiles\osgui_tests.dir\clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_tests.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_tests.dir\clean
-.PHONY : CMakeFiles\osgui_tests.dir\clean
+CMakeFiles\NightlyConfigure.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyConfigure.dir\clean
+.PHONY : CMakeFiles\NightlyConfigure.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlyBuild.dir
+
+# All Build rule for target.
+CMakeFiles\NightlyBuild.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyBuild"
+.PHONY : CMakeFiles\NightlyBuild.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\NightlyBuild.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyBuild.dir\rule
+
+# Convenience name for target.
+NightlyBuild: CMakeFiles\NightlyBuild.dir\rule
+.PHONY : NightlyBuild
+
+# codegen rule for target.
+CMakeFiles\NightlyBuild.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyBuild"
+.PHONY : CMakeFiles\NightlyBuild.dir\codegen
+
+# clean rule for target.
+CMakeFiles\NightlyBuild.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyBuild.dir\clean
+.PHONY : CMakeFiles\NightlyBuild.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlyTest.dir
+
+# All Build rule for target.
+CMakeFiles\NightlyTest.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyTest"
+.PHONY : CMakeFiles\NightlyTest.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\NightlyTest.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyTest.dir\rule
+
+# Convenience name for target.
+NightlyTest: CMakeFiles\NightlyTest.dir\rule
+.PHONY : NightlyTest
+
+# codegen rule for target.
+CMakeFiles\NightlyTest.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyTest"
+.PHONY : CMakeFiles\NightlyTest.dir\codegen
+
+# clean rule for target.
+CMakeFiles\NightlyTest.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyTest.dir\clean
+.PHONY : CMakeFiles\NightlyTest.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlyCoverage.dir
+
+# All Build rule for target.
+CMakeFiles\NightlyCoverage.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyCoverage"
+.PHONY : CMakeFiles\NightlyCoverage.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\NightlyCoverage.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyCoverage.dir\rule
+
+# Convenience name for target.
+NightlyCoverage: CMakeFiles\NightlyCoverage.dir\rule
+.PHONY : NightlyCoverage
+
+# codegen rule for target.
+CMakeFiles\NightlyCoverage.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyCoverage"
+.PHONY : CMakeFiles\NightlyCoverage.dir\codegen
+
+# clean rule for target.
+CMakeFiles\NightlyCoverage.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyCoverage.dir\clean
+.PHONY : CMakeFiles\NightlyCoverage.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlyMemCheck.dir
+
+# All Build rule for target.
+CMakeFiles\NightlyMemCheck.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlyMemCheck"
+.PHONY : CMakeFiles\NightlyMemCheck.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\NightlyMemCheck.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlyMemCheck.dir\rule
+
+# Convenience name for target.
+NightlyMemCheck: CMakeFiles\NightlyMemCheck.dir\rule
+.PHONY : NightlyMemCheck
+
+# codegen rule for target.
+CMakeFiles\NightlyMemCheck.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlyMemCheck"
+.PHONY : CMakeFiles\NightlyMemCheck.dir\codegen
+
+# clean rule for target.
+CMakeFiles\NightlyMemCheck.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlyMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlyMemCheck.dir\clean
+.PHONY : CMakeFiles\NightlyMemCheck.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/NightlySubmit.dir
+
+# All Build rule for target.
+CMakeFiles\NightlySubmit.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlySubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlySubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target NightlySubmit"
+.PHONY : CMakeFiles\NightlySubmit.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\NightlySubmit.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\NightlySubmit.dir\rule
+
+# Convenience name for target.
+NightlySubmit: CMakeFiles\NightlySubmit.dir\rule
+.PHONY : NightlySubmit
+
+# codegen rule for target.
+CMakeFiles\NightlySubmit.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlySubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target NightlySubmit"
+.PHONY : CMakeFiles\NightlySubmit.dir\codegen
+
+# clean rule for target.
+CMakeFiles\NightlySubmit.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\NightlySubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\NightlySubmit.dir\clean
+.PHONY : CMakeFiles\NightlySubmit.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalStart.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalStart.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalStart"
+.PHONY : CMakeFiles\ExperimentalStart.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalStart.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalStart.dir\rule
+
+# Convenience name for target.
+ExperimentalStart: CMakeFiles\ExperimentalStart.dir\rule
+.PHONY : ExperimentalStart
+
+# codegen rule for target.
+CMakeFiles\ExperimentalStart.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalStart"
+.PHONY : CMakeFiles\ExperimentalStart.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalStart.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalStart.dir\clean
+.PHONY : CMakeFiles\ExperimentalStart.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalUpdate.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalUpdate.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalUpdate"
+.PHONY : CMakeFiles\ExperimentalUpdate.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalUpdate.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalUpdate.dir\rule
+
+# Convenience name for target.
+ExperimentalUpdate: CMakeFiles\ExperimentalUpdate.dir\rule
+.PHONY : ExperimentalUpdate
+
+# codegen rule for target.
+CMakeFiles\ExperimentalUpdate.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalUpdate"
+.PHONY : CMakeFiles\ExperimentalUpdate.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalUpdate.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalUpdate.dir\clean
+.PHONY : CMakeFiles\ExperimentalUpdate.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalConfigure.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalConfigure.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalConfigure"
+.PHONY : CMakeFiles\ExperimentalConfigure.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalConfigure.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalConfigure.dir\rule
+
+# Convenience name for target.
+ExperimentalConfigure: CMakeFiles\ExperimentalConfigure.dir\rule
+.PHONY : ExperimentalConfigure
+
+# codegen rule for target.
+CMakeFiles\ExperimentalConfigure.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalConfigure"
+.PHONY : CMakeFiles\ExperimentalConfigure.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalConfigure.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalConfigure.dir\clean
+.PHONY : CMakeFiles\ExperimentalConfigure.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalBuild.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalBuild.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalBuild"
+.PHONY : CMakeFiles\ExperimentalBuild.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalBuild.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalBuild.dir\rule
+
+# Convenience name for target.
+ExperimentalBuild: CMakeFiles\ExperimentalBuild.dir\rule
+.PHONY : ExperimentalBuild
+
+# codegen rule for target.
+CMakeFiles\ExperimentalBuild.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalBuild"
+.PHONY : CMakeFiles\ExperimentalBuild.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalBuild.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalBuild.dir\clean
+.PHONY : CMakeFiles\ExperimentalBuild.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalTest.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalTest.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalTest"
+.PHONY : CMakeFiles\ExperimentalTest.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalTest.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalTest.dir\rule
+
+# Convenience name for target.
+ExperimentalTest: CMakeFiles\ExperimentalTest.dir\rule
+.PHONY : ExperimentalTest
+
+# codegen rule for target.
+CMakeFiles\ExperimentalTest.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalTest"
+.PHONY : CMakeFiles\ExperimentalTest.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalTest.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalTest.dir\clean
+.PHONY : CMakeFiles\ExperimentalTest.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalCoverage.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalCoverage.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalCoverage"
+.PHONY : CMakeFiles\ExperimentalCoverage.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalCoverage.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalCoverage.dir\rule
+
+# Convenience name for target.
+ExperimentalCoverage: CMakeFiles\ExperimentalCoverage.dir\rule
+.PHONY : ExperimentalCoverage
+
+# codegen rule for target.
+CMakeFiles\ExperimentalCoverage.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalCoverage"
+.PHONY : CMakeFiles\ExperimentalCoverage.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalCoverage.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalCoverage.dir\clean
+.PHONY : CMakeFiles\ExperimentalCoverage.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalMemCheck.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalMemCheck.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalMemCheck"
+.PHONY : CMakeFiles\ExperimentalMemCheck.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalMemCheck.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalMemCheck.dir\rule
+
+# Convenience name for target.
+ExperimentalMemCheck: CMakeFiles\ExperimentalMemCheck.dir\rule
+.PHONY : ExperimentalMemCheck
+
+# codegen rule for target.
+CMakeFiles\ExperimentalMemCheck.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalMemCheck"
+.PHONY : CMakeFiles\ExperimentalMemCheck.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalMemCheck.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalMemCheck.dir\clean
+.PHONY : CMakeFiles\ExperimentalMemCheck.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ExperimentalSubmit.dir
+
+# All Build rule for target.
+CMakeFiles\ExperimentalSubmit.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ExperimentalSubmit"
+.PHONY : CMakeFiles\ExperimentalSubmit.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ExperimentalSubmit.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ExperimentalSubmit.dir\rule
+
+# Convenience name for target.
+ExperimentalSubmit: CMakeFiles\ExperimentalSubmit.dir\rule
+.PHONY : ExperimentalSubmit
+
+# codegen rule for target.
+CMakeFiles\ExperimentalSubmit.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ExperimentalSubmit"
+.PHONY : CMakeFiles\ExperimentalSubmit.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ExperimentalSubmit.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ExperimentalSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ExperimentalSubmit.dir\clean
+.PHONY : CMakeFiles\ExperimentalSubmit.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousStart.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousStart.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousStart"
+.PHONY : CMakeFiles\ContinuousStart.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousStart.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousStart.dir\rule
+
+# Convenience name for target.
+ContinuousStart: CMakeFiles\ContinuousStart.dir\rule
+.PHONY : ContinuousStart
+
+# codegen rule for target.
+CMakeFiles\ContinuousStart.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousStart"
+.PHONY : CMakeFiles\ContinuousStart.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousStart.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousStart.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousStart.dir\clean
+.PHONY : CMakeFiles\ContinuousStart.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousUpdate.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousUpdate.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousUpdate"
+.PHONY : CMakeFiles\ContinuousUpdate.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousUpdate.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousUpdate.dir\rule
+
+# Convenience name for target.
+ContinuousUpdate: CMakeFiles\ContinuousUpdate.dir\rule
+.PHONY : ContinuousUpdate
+
+# codegen rule for target.
+CMakeFiles\ContinuousUpdate.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousUpdate"
+.PHONY : CMakeFiles\ContinuousUpdate.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousUpdate.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousUpdate.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousUpdate.dir\clean
+.PHONY : CMakeFiles\ContinuousUpdate.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousConfigure.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousConfigure.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousConfigure"
+.PHONY : CMakeFiles\ContinuousConfigure.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousConfigure.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousConfigure.dir\rule
+
+# Convenience name for target.
+ContinuousConfigure: CMakeFiles\ContinuousConfigure.dir\rule
+.PHONY : ContinuousConfigure
+
+# codegen rule for target.
+CMakeFiles\ContinuousConfigure.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousConfigure"
+.PHONY : CMakeFiles\ContinuousConfigure.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousConfigure.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousConfigure.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousConfigure.dir\clean
+.PHONY : CMakeFiles\ContinuousConfigure.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousBuild.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousBuild.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousBuild"
+.PHONY : CMakeFiles\ContinuousBuild.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousBuild.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousBuild.dir\rule
+
+# Convenience name for target.
+ContinuousBuild: CMakeFiles\ContinuousBuild.dir\rule
+.PHONY : ContinuousBuild
+
+# codegen rule for target.
+CMakeFiles\ContinuousBuild.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousBuild"
+.PHONY : CMakeFiles\ContinuousBuild.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousBuild.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousBuild.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousBuild.dir\clean
+.PHONY : CMakeFiles\ContinuousBuild.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousTest.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousTest.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousTest"
+.PHONY : CMakeFiles\ContinuousTest.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousTest.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousTest.dir\rule
+
+# Convenience name for target.
+ContinuousTest: CMakeFiles\ContinuousTest.dir\rule
+.PHONY : ContinuousTest
+
+# codegen rule for target.
+CMakeFiles\ContinuousTest.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousTest"
+.PHONY : CMakeFiles\ContinuousTest.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousTest.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousTest.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousTest.dir\clean
+.PHONY : CMakeFiles\ContinuousTest.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousCoverage.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousCoverage.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousCoverage"
+.PHONY : CMakeFiles\ContinuousCoverage.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousCoverage.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousCoverage.dir\rule
+
+# Convenience name for target.
+ContinuousCoverage: CMakeFiles\ContinuousCoverage.dir\rule
+.PHONY : ContinuousCoverage
+
+# codegen rule for target.
+CMakeFiles\ContinuousCoverage.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousCoverage"
+.PHONY : CMakeFiles\ContinuousCoverage.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousCoverage.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousCoverage.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousCoverage.dir\clean
+.PHONY : CMakeFiles\ContinuousCoverage.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousMemCheck.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousMemCheck.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousMemCheck"
+.PHONY : CMakeFiles\ContinuousMemCheck.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousMemCheck.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousMemCheck.dir\rule
+
+# Convenience name for target.
+ContinuousMemCheck: CMakeFiles\ContinuousMemCheck.dir\rule
+.PHONY : ContinuousMemCheck
+
+# codegen rule for target.
+CMakeFiles\ContinuousMemCheck.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousMemCheck"
+.PHONY : CMakeFiles\ContinuousMemCheck.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousMemCheck.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousMemCheck.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousMemCheck.dir\clean
+.PHONY : CMakeFiles\ContinuousMemCheck.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ContinuousSubmit.dir
+
+# All Build rule for target.
+CMakeFiles\ContinuousSubmit.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Built target ContinuousSubmit"
+.PHONY : CMakeFiles\ContinuousSubmit.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\ContinuousSubmit.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\ContinuousSubmit.dir\rule
+
+# Convenience name for target.
+ContinuousSubmit: CMakeFiles\ContinuousSubmit.dir\rule
+.PHONY : ContinuousSubmit
+
+# codegen rule for target.
+CMakeFiles\ContinuousSubmit.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num= "Finished codegen for target ContinuousSubmit"
+.PHONY : CMakeFiles\ContinuousSubmit.dir\codegen
+
+# clean rule for target.
+CMakeFiles\ContinuousSubmit.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ContinuousSubmit.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ContinuousSubmit.dir\clean
+.PHONY : CMakeFiles\ContinuousSubmit.dir\clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/osgui_package_consumer.dir
+
+# All Build rule for target.
+CMakeFiles\osgui_package_consumer.dir\all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num=1,2 "Built target osgui_package_consumer"
+.PHONY : CMakeFiles\osgui_package_consumer.dir\all
+
+# Build rule for subdir invocation for target.
+CMakeFiles\osgui_package_consumer.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" 0
+.PHONY : CMakeFiles\osgui_package_consumer.dir\rule
+
+# Convenience name for target.
+osgui_package_consumer: CMakeFiles\osgui_package_consumer.dir\rule
+.PHONY : osgui_package_consumer
+
+# codegen rule for target.
+CMakeFiles\osgui_package_consumer.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles" --progress-num=1,2 "Finished codegen for target osgui_package_consumer"
+.PHONY : CMakeFiles\osgui_package_consumer.dir\codegen
+
+# clean rule for target.
+CMakeFiles\osgui_package_consumer.dir\clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\osgui_package_consumer.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\osgui_package_consumer.dir\clean
+.PHONY : CMakeFiles\osgui_package_consumer.dir\clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
