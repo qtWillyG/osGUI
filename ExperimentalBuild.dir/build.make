@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
 
 # Utility rule file for ExperimentalBuild.
 
@@ -74,6 +74,6 @@ CMakeFiles\ExperimentalBuild.dir\clean:
 .PHONY : CMakeFiles\ExperimentalBuild.dir\clean
 
 CMakeFiles\ExperimentalBuild.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles\ExperimentalBuild.dir\DependInfo.cmake" "--color=$(COLOR)" ExperimentalBuild
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\ExperimentalBuild.dir\DependInfo.cmake" "--color=$(COLOR)" ExperimentalBuild
 .PHONY : CMakeFiles\ExperimentalBuild.dir\depend
 

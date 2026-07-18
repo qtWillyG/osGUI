@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
 
 # Utility rule file for ContinuousUpdate.
 
@@ -74,6 +74,6 @@ CMakeFiles\ContinuousUpdate.dir\clean:
 .PHONY : CMakeFiles\ContinuousUpdate.dir\clean
 
 CMakeFiles\ContinuousUpdate.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-release\CMakeFiles\ContinuousUpdate.dir\DependInfo.cmake" "--color=$(COLOR)" ContinuousUpdate
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\ContinuousUpdate.dir\DependInfo.cmake" "--color=$(COLOR)" ContinuousUpdate
 .PHONY : CMakeFiles\ContinuousUpdate.dir\depend
 
