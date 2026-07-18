@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree"
 
 # Utility rule file for ExperimentalCoverage.
 
@@ -74,6 +74,6 @@ CMakeFiles\ExperimentalCoverage.dir\clean:
 .PHONY : CMakeFiles\ExperimentalCoverage.dir\clean
 
 CMakeFiles\ExperimentalCoverage.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\ExperimentalCoverage.dir\DependInfo.cmake" "--color=$(COLOR)" ExperimentalCoverage
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles\ExperimentalCoverage.dir\DependInfo.cmake" "--color=$(COLOR)" ExperimentalCoverage
 .PHONY : CMakeFiles\ExperimentalCoverage.dir\depend
 

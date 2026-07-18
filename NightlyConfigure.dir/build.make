@@ -45,7 +45,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug"
+CMAKE_BINARY_DIR = "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree"
 
 # Utility rule file for NightlyConfigure.
 
@@ -74,6 +74,6 @@ CMakeFiles\NightlyConfigure.dir\clean:
 .PHONY : CMakeFiles\NightlyConfigure.dir\clean
 
 CMakeFiles\NightlyConfigure.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-debug\CMakeFiles\NightlyConfigure.dir\DependInfo.cmake" "--color=$(COLOR)" NightlyConfigure
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\cmake\package-consumer" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree" "C:\Users\mrwge\Documents\anti gravity\claude\osgui\consumer-verify-buildtree\CMakeFiles\NightlyConfigure.dir\DependInfo.cmake" "--color=$(COLOR)" NightlyConfigure
 .PHONY : CMakeFiles\NightlyConfigure.dir\depend
 
